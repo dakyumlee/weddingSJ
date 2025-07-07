@@ -24,7 +24,7 @@ async function loadAdminMessages() {
     const data = docSnap.data();
     const div = document.createElement("div");
     div.innerHTML = `
-      <div style="border:1px solid #ccc; padding:1rem; margin-bottom:1rem;">
+      <div style="border:1px solid #ccc; padding:1rem; margin-bottom:1rem; border-radius:8px;">
         <p><strong>${data.name}</strong> (${data.status})</p>
         <p>${data.message}</p>
         <button onclick="deleteAdminMessage('${docSnap.id}')">삭제</button>
