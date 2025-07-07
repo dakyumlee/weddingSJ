@@ -1,4 +1,3 @@
-<!-- 수지 모바일 청첩장: slide.html (슬라이드형 + QR + 사진 자리) -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -8,10 +7,7 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="mobile.css">
   <style>
-    html, body {
-      margin: 0;
-      overflow: hidden;
-    }
+    html, body { margin: 0; overflow: hidden; }
     .slides {
       display: flex;
       width: 500vw;
@@ -19,33 +15,20 @@
       transition: transform 0.5s ease;
     }
     .slide {
-        background-color: #fffefb;
-        border-left: 1px solid #eee;
-        border-right: 1px solid #eee;
-      }
-      .slide h2 {
-        font-size: 1.5rem;
-        color: #c4a04a;
-      }
-      .slide p, .slide li {
-        font-size: 1rem;
-        color: #444;
-      }
-      
-      .toggle-btn {
-        background-color: transparent;
-        border: 1px solid #c4a04a;
-        color: #c4a04a;
-        padding: 0.4rem 0.8rem;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 0.95rem;
-      }
-      .toggle-btn:hover {
-        background-color: #c4a04a;
-        color: #fff;
-      }
-      
+      flex: 0 0 100vw;
+      height: 100vh;
+      padding: 2rem;
+      box-sizing: border-box;
+      background-color: #fffefb;
+      border-left: 1px solid #eee;
+      border-right: 1px solid #eee;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .slide h2 { font-size: 1.5rem; color: #c4a04a; }
+    .slide p, .slide li { font-size: 1rem; color: #444; }
     .nav-btns {
       position: fixed;
       top: 50%;
@@ -63,29 +46,53 @@
       cursor: pointer;
       color: #c4a04a;
     }
-
-    <!-- .photo-gallery {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      .photo-gallery img {
-        max-width: 90%;
-        border-radius: 12px;
-        margin: 1rem 0;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      }
-      
-    .photo-gallery img {
-      max-width: 90%;
-      max-height: 70vh;
-      border-radius: 12px;
-      margin: 1rem 0;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    } -->
-    .qr img {
-      width: 200px;
+    input, select, textarea {
+      background-color: #fff;
+      color: #222;
+    }
+    .toggle-btn {
+      background-color: transparent;
+      border: 1px solid #c4a04a;
+      color: #c4a04a;
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+    .toggle-btn:hover {
+      background-color: #c4a04a;
+      color: #fff;
+    }
+    .accordion-btn {
+      background-color: #fffefb;
+      border: 1px solid #c4a04a;
+      color: #c4a04a;
+      padding: 0.6rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
       margin-top: 1rem;
+    }
+    .accordion-content {
+      display: none;
+      margin: 1rem auto;
+      padding: 1rem;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      background-color: #fffefb;
+      max-width: 400px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+    .accordion-content a {
+      display: inline-block;
+      margin: 0.5rem 0;
+      color: #c4a04a;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .accordion-content a:hover {
+      text-decoration: underline;
     }
   </style>
   <script type="module" src="slide.js" defer></script>
@@ -103,39 +110,42 @@
       <div class="d-day">D-DAY: <span id="dday"></span></div>
     </section>
 
-    <<section class="slide">
-        <h2>결혼식 안내</h2>
-        <p>2025년 9월 13일 토요일 오전 11시</p>
-        <p>W시티 컨벤션 웨딩<br>울산광역시 북구 진장17길 7<br>별관 7층 하우스가든홀</p>
-      
-        <button class="toggle-btn" onclick="toggleDetails()">🚌 대중교통 & 주차 안내 보기</button>
-      
-        <div id="transport-details" style="display: none; margin-top: 1rem;">
-          <p><strong>버스 이용 안내:</strong></p>
-          <ul style="list-style:none; padding:0;">
-            <li>● 104, 122, 126, 133, 401번</li>
-            <li>▶ 진장시장 정류장 하차 → 도보 약 5분</li>
-          </ul>
-          <p style="font-size: 0.9rem; color: #777;">* 주차: 하우스가든홀 건물 내 지하주차장 이용 가능</p>
-        </div>
-      
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3245.638349084956!2d129.35368171142778!3d35.56263293636567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3567cdeb50debba7%3A0x10980ca679fc2b13!2zV-yLnO2LsCDsu6jrsqTshZgg7Juo65Sp7ZmA!5e0!3m2!1sko!2skr!4v1751851963762!5m2!1sko!2skr"
-          width="100%" height="300" style="border:0; margin-top: 1rem;" allowfullscreen="" loading="lazy"></iframe>
-      </section>      
-      
-
     <section class="slide">
-      <h2>photos(데모)</h2>
-      <!-- <div class="photo-gallery">
-        <img src="photo1.jpg" alt="사진1">
-        <img src="photo2.jpg" alt="사진2">
-      </div> -->
+      <h2>결혼식 안내</h2>
+      <p>2025년 9월 13일 토요일 오전 11시</p>
+      <p>W시티 컨벤션 웨딩<br>울산광역시 북구 진장17길 7<br>별관 7층 하우스가든홀</p>
+      <button class="toggle-btn" onclick="toggleDetails()">🚌 대중교통 & 주차 안내 보기</button>
+      <div id="transport-details" style="display: none; margin-top: 1rem;">
+        <p><strong>버스 이용 안내:</strong></p>
+        <ul style="list-style:none; padding:0;">
+          <li>● 104, 122, 126, 133, 401번</li>
+          <li>▶ 진장시장 정류장 하차 → 도보 약 5분</li>
+        </ul>
+        <p style="font-size: 0.9rem; color: #777;">* 주차: 하우스가든홀 건물 내 지하주차장 이용 가능</p>
+      </div>
+      <button class="accordion-btn" onclick="toggleAccordion('mapAccordion')">🗺️ 길찾기 안내</button>
+      <div id="mapAccordion" class="accordion-content">
+        <p>원하시는 앱으로 장소를 열어보세요:</p>
+        <a href="https://tmap.tmap.co.kr/tmap2/mobile/route.do?endX=129.3537&endY=35.5626&name=W시티컨벤션" target="_blank">📍 Tmap</a><br>
+        <a href="https://map.naver.com/p/search/W시티%20컨벤션%20웨딩/place/11559083" target="_blank">📍 네이버지도</a><br>
+        <a href="https://map.kakao.com/link/search/W시티컨벤션웨딩" target="_blank">📍 카카오지도</a>
+      </div>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3245.638349084956!2d129.35368171142778!3d35.56263293636567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3567cdeb50debba7%3A0x10980ca679fc2b13!2zV-yLnO2LsCDsu6jrsqTshZgg7Juo65Sp7ZmA!5e0!3m2!1sko!2skr!4v1751856630644!5m2!1sko!2skr" width="300" height="150" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </section>
 
     <section class="slide">
       <h2>마음 전하실 곳</h2>
-      <p><strong>신랑</strong><br>우리은행 1002549859637<br><button onclick="copyText('1002549859637')">복사</button></p>
-      <p><strong>신부</strong><br>저축은행 06601211393753<br><button onclick="copyText('06601211393753')">복사</button></p>
+      <button class="accordion-btn" onclick="toggleAccordion('accountAccordion')">📬 계좌 안내 & 간편송금</button>
+      <div id="accountAccordion" class="accordion-content">
+        <h3>신랑 박현동</h3>
+        <p>우리은행 1002549859637</p>
+        <button onclick="copyText('1002549859637')">복사하기</button><br>
+        <a href="https://qr.kakaopay.com/FTyLU8G3j" target="_blank">💳 카카오페이 송금</a>
+        <h3>신부 박수지</h3>
+        <p>저축은행 06601211393753</p>
+        <button onclick="copyText('06601211393753')">복사하기</button><br>
+        <a href="https://qr.kakaopay.com/FJKLY2h7u" target="_blank">💳 카카오페이 송금</a>
+      </div>
     </section>
 
     <section class="slide">
@@ -155,11 +165,13 @@
     </section>
 
     <section class="slide">
-      <div class="qr">
-        <p style="margin-top:2rem; font-size: 0.9rem; color: #777;">모바일 청첩장 QR 코드</p>
-        <img src="suji_wedding_qr.png" alt="QR코드">
-      </div>
-    </section>
+        <div class="qr">
+          <p style="margin-top:2rem; font-size: 0.9rem; color: #777;">모바일 청첩장 QR 코드</p>
+          <img src="suji_wedding_qr.png" alt="QR코드">
+        </div>
+      </section>
+    </div>
+
   </div>
 
   <script>
@@ -177,24 +189,24 @@
       currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
       updateSlide();
     });
-
-    function toggleDetails() {
-        const section = document.getElementById('transport-details');
-        section.style.display = section.style.display === 'none' ? 'block' : 'none';
-      }
-
     document.getElementById('next').addEventListener('click', () => {
       currentSlide = (currentSlide + 1) % totalSlides;
       updateSlide();
     });
-
     function updateSlide() {
       slides.style.transform = `translateX(-${currentSlide * 100}vw)`;
     }
-
     function copyText(text) {
       navigator.clipboard.writeText(text);
       alert("복사되었습니다");
+    }
+    function toggleDetails() {
+      const section = document.getElementById('transport-details');
+      section.style.display = section.style.display === 'none' ? 'block' : 'none';
+    }
+    function toggleAccordion(id) {
+      const el = document.getElementById(id);
+      el.style.display = el.style.display === 'block' ? 'none' : 'block';
     }
   </script>
 </body>
