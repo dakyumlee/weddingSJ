@@ -1,3 +1,4 @@
+<!-- 수지 모바일 청첩장: slide.html (슬라이드형 + QR + 사진 자리) -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -12,7 +13,7 @@
     }
     .slides {
       display: flex;
-      width: 400vw;
+      width: 500vw;
       height: 100vh;
       transition: transform 0.5s ease;
     }
@@ -43,6 +44,17 @@
       cursor: pointer;
       color: #c4a04a;
     }
+    <!-- .photo-gallery img {
+      max-width: 90%;
+      max-height: 70vh;
+      border-radius: 12px;
+      margin: 1rem 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    } -->
+    .qr img {
+      width: 200px;
+      margin-top: 1rem;
+    }
   </style>
   <script type="module" src="slide.js" defer></script>
 </head>
@@ -62,8 +74,16 @@
     <section class="slide">
       <h2>결혼식에 초대합니다</h2>
       <p>2025년 9월 13일 토요일 오전 11시</p>
-      <p>W시티 컨벤션 웨딩<br>울산광역시 북구 진장17길 7<br>별관 7층 하우스가든홀</p>
-      <button onclick="window.open('https://map.kakao.com/?q=W%EC%8B%9C%ED%8B%B0%20%EC%BB%A8%EB%B2%A4%EC%85%98%20%EC%9B%A8%EB%94%A9', '_blank')">지도 보기</button>
+      <p>W시티 컨벤션 웨딩<br>울산광역시 북구 진장17길 7<br>별관 7층 하우스가든홀</p><br>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3245.638349084956!2d129.35368171142778!3d35.56263293636567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3567cdeb50debba7%3A0x10980ca679fc2b13!2zV-yLnO2LsCDsu6jrsqTshZgg7Juo65Sp7ZmA!5e0!3m2!1sko!2skr!4v1751851963762!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+
+    <section class="slide">
+      <h2>photos(데모)</h2>
+      <!-- <div class="photo-gallery">
+        <img src="photo1.jpg" alt="사진1">
+        <img src="photo2.jpg" alt="사진2">
+      </div> -->
     </section>
 
     <section class="slide">
@@ -87,6 +107,13 @@
         <button type="submit">제출하기</button>
       </form>
     </section>
+
+    <section class="slide">
+      <div class="qr">
+        <p style="margin-top:2rem; font-size: 0.9rem; color: #777;">모바일 청첩장 QR 코드</p>
+        <img src="suji_wedding_qr.png" alt="QR코드">
+      </div>
+    </section>
   </div>
 
   <script>
@@ -94,7 +121,7 @@
     const today = new Date();
     const diffTime = weddingDate - today;
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    document.getElementById('dday').textContent = diffDays > 0 ? `${diffDays}일 남음` : '오늘입니다!';
+    document.getElementById('dday').textContent = diffDays > 0 ? `${diffDays}` : '오늘입니다!';
 
     let currentSlide = 0;
     const slides = document.querySelector('.slides');
