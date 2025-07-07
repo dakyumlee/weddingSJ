@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>청첩장 슬라이드</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    html, body {
+      margin: 0;
+      overflow: hidden;
+    }
+    .slides {
+      display: flex;
+      width: 400vw;
+      height: 100vh;
+      transition: transform 0.5s ease;
+    }
+    .slide {
+      flex: 0 0 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      box-sizing: border-box;
+    }
+    .nav-btns {
+      position: fixed;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      z-index: 1000;
+    }
+    .nav-btns button {
+      background-color: rgba(0,0,0,0.05);
+      border: none;
+      font-size: 2rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      color: #c4a04a;
+    }
+  </style>
+  <script type="module" src="slide.js" defer></script>
+</head>
+<body>
+  <div class="nav-btns">
+    <button id="prev">←</button>
+    <button id="next">→</button>
+  </div>
+
+  <div class="slides">
+    <section class="slide">
+      <h1>박현동 & 박수지</h1>
+      <p>저희 두 사람이 사랑으로 하나 되어 결혼합니다.<br>귀한 걸음 하시어 축복해주시면 감사하겠습니다.</p>
+      <div class="d-day">D-DAY: <span id="dday"></span></div>
+    </section>
+
+    <section class="slide">
+      <h2>결혼식에 초대합니다</h2>
+      <p>2025년 9월 13일 토요일 오전 11시</p>
+      <p>W시티 컨벤션 웨딩<br>울산광역시 북구 진장17길 7<br>별관 7층 하우스가든홀</p>
+      <button onclick="window.open('https://map.kakao.com/?q=W%EC%8B%9C%ED%8B%B0%20%EC%BB%A8%EB%B2%A4%EC%85%98%20%EC%9B%A8%EB%94%A9', '_blank')">지도 보기</button>
+    </section>
+
+    <section class="slide">
+      <h2>마음 전하실 곳</h2>
+      <p><strong>신랑</strong><br>우리은행 1002549859637<br><button onclick="copyText('1002549859637')">복사</button></p>
+      <p><strong>신부</strong><br>저축은행 06601211393753<br><button onclick="copyText('06601211393753')">복사</button></p>
+    </section>
+
+    <section class="slide">
+      <h2>참석 여부 & 메시지</h2>
+      <form class="rsvp-form">
+        <input type="text" placeholder="이름" required>
+        <select required>
+          <option value="">참석 여부</option>
+          <option value="참석">참석</option>
+          <option value="불참">불참</option>
+          <option value="미정">미정</option>
+        </select>
+        <textarea placeholder="축하 메시지" required></textarea>
+        <input type="password" placeholder="비밀번호 (수정/삭제용)" required>
+        <button type="submit">제출하기</button>
+      </form>
+    </section>
+  </div>
+
+  <script>
+    const weddingDate = new Date('2025-09-13T11:00:00+09:00');
+    const today = new Date();
+    const diffTime = weddingDate - today;
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    document.getElementById('dday').textContent = diffDays > 0 ? `${diffDays}일 남음` : '오늘입니다!';
+
+    let currentSlide = 0;
+    const slides = document.querySelector('.slides');
+    const totalSlides = document.querySelectorAll('.slide').length;
+
+    document.getElementById('prev').addEventListener('click', () => {
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      updateSlide();
+    });
+
+    document.getElementById('next').addEventListener('click', () => {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      updateSlide();
+    });
+
+    function updateSlide() {
+      slides.style.transform = `translateX(-${currentSlide * 100}vw)`;
+    }
+
+    function copyText(text) {
+      navigator.clipboard.writeText(text);
+      alert("복사되었습니다");
+    }
+  </script>
+</body>
+</html>
