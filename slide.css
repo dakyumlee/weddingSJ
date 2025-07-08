@@ -1,0 +1,119 @@
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Nanum Myeongjo', serif;
+  background-color: #ffffff;
+  color: #222;
+  overflow-x: hidden;
+}
+
+.slider {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  scroll-snap-type: x mandatory;
+}
+
+.slide {
+  flex: 0 0 100vw;
+  max-width: 100vw;
+  height: 100vh;
+  padding: 3rem 2rem;
+  box-sizing: border-box;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  text-align: center;
+}
+
+.slide h1, .slide h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.slide p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0.5rem 0;
+}
+
+.slide ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.slide ul li {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.d-day {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #b4975a;
+}
+
+iframe {
+  margin-top: 1.5rem;
+  border-radius: 10px;
+  border: none;
+}
+
+.rsvp-form input,
+.rsvp-form select,
+.rsvp-form textarea {
+  width: 90%;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  background: #f9f9f9;
+}
+
+.rsvp-form button {
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  background-color: #b4975a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.slide img {
+  max-width: 250px;
+  height: auto;
+  margin-top: 1rem;
+  border-radius: 8px;
+}
+
+a {
+  color: #b4975a;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .slide h1, .slide h2 {
+    font-size: 1.5rem;
+  }
+  .slide p, .slide ul li {
+    font-size: 0.95rem;
+  }
+  .rsvp-form input,
+  .rsvp-form select,
+  .rsvp-form textarea {
+    font-size: 0.95rem;
+  }
+}

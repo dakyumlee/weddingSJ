@@ -1,104 +1,110 @@
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Noto Serif KR', 'Nanum Myeongjo', serif;
-    background-color: #fdfdfd;
-    color: #222;
-    line-height: 1.6;
-    text-align: center;
-  }
-  
-  h1, h2 {
-    color: #c4a04a;
-    margin-bottom: 0.5rem;
-  }
-  
-  p {
-    margin: 0.5rem 0;
-    font-size: 1rem;
-  }
-  
-  button {
-    background: transparent;
-    border: 1px solid #c4a04a;
-    color: #c4a04a;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    margin-top: 1rem;
-  }
-  
-  button:hover {
-    background-color: #c4a04a;
-    color: #fff;
-  }
-  
-  .cover {
-    padding: 3rem 1rem;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
-  .d-day {
-    margin: 1rem 0;
-    font-weight: bold;
-    color: #a08948;
-  }
-  
-  .slider section {
-    padding: 2rem 1rem;
-    max-width: 600px;
-    margin: 0 auto;
-    border-bottom: 1px solid #eee;
-  }
-  
-  input, select, textarea {
-    width: 90%;
-    padding: 0.5rem;
-    margin: 0.5rem 0;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-family: inherit;
-  }
-  
-  .rsvp-form button {
-    margin-top: 1rem;
-  }
-  
-  #guestbook > div {
-    border: 1px solid #eee;
-    padding: 1rem;
-    margin: 1rem auto;
-    max-width: 600px;
-    border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-  }
-  
-  #toggleMusic {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    border: none;
-    background: #c4a04a;
-    color: #fff;
-    font-size: 1.2rem;
-    padding: 0.4rem 0.6rem;
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 100;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  }
-  
-  .admin-container, .login-container {
-    max-width: 600px;
-    margin: 3rem auto;
-    padding: 2rem;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.05);
-  }
-  
+.slider {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+.slide {
+  min-width: 100%;
+  height: 100vh;
+  padding: 2rem;
+  box-sizing: border-box;
+  background-color: #fffefb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+h1, h2, p {
+  margin: 0.5rem 0;
+  color: #222;
+}
+.d-day {
+  margin-top: 1rem;
+  font-weight: bold;
+  color: #c4a04a;
+}
+.map-links a {
+  margin: 0.3rem;
+  color: #c4a04a;
+  text-decoration: none;
+  font-weight: bold;
+}
+.map-links a:hover {
+  text-decoration: underline;
+}
+details {
+  width: 90%;
+  max-width: 400px;
+  margin: 0.5rem 0;
+  padding: 0.8rem;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  background-color: #fffefb;
+  text-align: left;
+}
+details summary {
+  cursor: pointer;
+  font-weight: bold;
+  color: #c4a04a;
+  list-style: none;
+}
+details p, details a {
+  margin: 0.4rem 0;
+  color: #444;
+}
+.rsvp-form input,
+.rsvp-form select,
+.rsvp-form textarea {
+  width: 90%;
+  max-width: 400px;
+  margin: 0.5rem 0;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #222;
+}
+.rsvp-form button {
+  margin-top: 1rem;
+  background-color: #c4a04a;
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+}
+.rsvp-form button:hover {
+  background-color: #a78537;
+}
+#guestbook-list .gb-item,
+#guestbook-list .rsvp-item {
+  width: 90%;
+  max-width: 400px;
+  margin: 0.5rem auto;
+  padding: 0.8rem;
+  border-bottom: 1px solid #eee;
+}
+#rsvp-chart p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  color: #444;
+}
+.slider-nav {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+}
+.slider-nav button {
+  background-color: rgba(0,0,0,0.05);
+  border: none;
+  font-size: 2rem;
+  padding: 0.5rem;
+  color: #c4a04a;
+  cursor: pointer;
+}

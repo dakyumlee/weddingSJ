@@ -4,43 +4,458 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>관리자 페이지</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="mobile.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: sans-serif; padding: 2rem; background: #fdfdfd; }
-    .admin-container { display: none; }
-    .login-container input { padding: 0.5rem; margin-right: 0.5rem; }
-    .login-container button { padding: 0.5rem 1rem; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Noto Serif KR', serif;
+      background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+      min-height: 100vh;
+      color: #2c2c2c;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .header h1 {
+      font-size: 32px;
+      color: #4a4a4a;
+      margin-bottom: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+    }
+
+    .header p {
+      color: #666;
+      font-size: 16px;
+    }
+
+    .login-container, .admin-container {
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      padding: 40px;
+      margin-bottom: 30px;
+    }
+
+    .admin-container {
+      display: none;
+    }
+
+    .login-title {
+      text-align: center;
+      font-size: 24px;
+      color: #4a4a4a;
+      margin-bottom: 30px;
+      font-weight: 600;
+    }
+
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .login-form input {
+      width: 100%;
+      max-width: 300px;
+      padding: 15px 20px;
+      border: 2px solid #f0f0f0;
+      border-radius: 15px;
+      font-size: 16px;
+      font-family: 'Noto Serif KR', serif;
+      background: #fafafa;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .login-form input:focus {
+      outline: none;
+      border-color: #888;
+      background: #fff;
+    }
+
+    .login-form button {
+      background: #666;
+      color: white;
+      border: none;
+      padding: 15px 40px;
+      border-radius: 25px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Noto Serif KR', serif;
+    }
+
+    .login-form button:hover {
+      background: #555;
+      transform: translateY(-2px);
+    }
+
+    #loginMessage {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .admin-title {
+      text-align: center;
+      font-size: 28px;
+      color: #4a4a4a;
+      margin-bottom: 30px;
+      font-weight: 600;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .stat-card {
+      background: #f8f8f8;
+      padding: 25px;
+      border-radius: 15px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .stat-number {
+      font-size: 32px;
+      font-weight: 600;
+      color: #4a4a4a;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 14px;
+      color: #666;
+      font-weight: 500;
+    }
+
+    .rsvp-list {
+      background: #f8f8f8;
+      border-radius: 15px;
+      padding: 30px;
+      max-height: 500px;
+      overflow-y: auto;
+    }
+
+    .rsvp-list h3 {
+      color: #4a4a4a;
+      margin-bottom: 20px;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .rsvp-item {
+      background: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      border-left: 4px solid #666;
+      transition: all 0.3s ease;
+    }
+
+    .rsvp-item:hover {
+      transform: translateX(5px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    .rsvp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .rsvp-name {
+      font-weight: 600;
+      color: #4a4a4a;
+      font-size: 18px;
+    }
+
+    .rsvp-status {
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .status-attend {
+      background: #e8f5e8;
+      color: #2d5a2d;
+    }
+
+    .status-absent {
+      background: #ffeaea;
+      color: #cc2d2d;
+    }
+
+    .status-pending {
+      background: #fff4e6;
+      color: #cc8800;
+    }
+
+    .rsvp-message {
+      color: #666;
+      font-style: italic;
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    .delete-btn {
+      background: #ff6b6b;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .delete-btn:hover {
+      background: #ff5252;
+      transform: scale(1.05);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 40px;
+      color: #999;
+    }
+
+    .empty-state svg {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 15px;
+      opacity: 0.5;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 10px;
+      }
+
+      .login-container, .admin-container {
+        padding: 30px 20px;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+      }
+
+      .rsvp-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header h1 {
+        font-size: 24px;
+      }
+
+      .login-container, .admin-container {
+        padding: 25px 15px;
+      }
+
+      .stat-card {
+        padding: 20px;
+      }
+
+      .stat-number {
+        font-size: 24px;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="login-container">
-    <h2>관리자 비밀번호 입력</h2>
-    <input type="password" id="adminPassword" placeholder="비밀번호 입력">
-    <button onclick="checkPassword()">확인</button>
-    <p id="loginMessage"></p>
+  <div class="container">
+    <div class="header">
+      <h1>관리자 페이지</h1>
+      <p>수지 & 현동의 결혼식 RSVP 관리</p>
+    </div>
+
+    <div class="login-container">
+      <h2 class="login-title">🔐 관리자 인증</h2>
+      <div class="login-form">
+        <input type="password" id="adminPassword" placeholder="비밀번호를 입력해주세요">
+        <button onclick="checkPassword()">로그인</button>
+      </div>
+      <p id="loginMessage"></p>
+    </div>
+
+    <div class="admin-container">
+      <h2 class="admin-title">📊 RSVP 현황</h2>
+      
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number" id="attendCount">0</div>
+          <div class="stat-label">참석</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="absentCount">0</div>
+          <div class="stat-label">불참</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="pendingCount">0</div>
+          <div class="stat-label">미정</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="totalCount">0</div>
+          <div class="stat-label">총 응답</div>
+        </div>
+      </div>
+
+      <div class="rsvp-list">
+        <h3>💌 받은 메시지</h3>
+        <div id="rsvp-list"></div>
+      </div>
+    </div>
   </div>
 
-  <div class="admin-container">
-    <h1>RSVP 관리</h1>
-    <div id="rsvp-list"></div>
-  </div>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+    import { getFirestore, collection, getDocs, deleteDoc, doc, query, orderBy } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
-  <script type="module" src="admin.js"></script>
-  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyAbaauVIvPWPT1O_h4kElc0nVkfPaiTbl4",
+      authDomain: "poetic-planet-462812-f5.firebaseapp.com",
+      projectId: "poetic-planet-462812-f5",
+      storageBucket: "poetic-planet-462812-f5.firebasestorage.app",
+      messagingSenderId: "375231510481",
+      appId: "1:375231510481:web:5c06868eac02b01e0352f0",
+      measurementId: "G-EC6J2HWNQ6"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
     const CORRECT_PASSWORD = '980624';
 
-    function checkPassword() {
+    window.checkPassword = function() {
       const input = document.getElementById('adminPassword').value;
       const message = document.getElementById('loginMessage');
+      
       if (input === CORRECT_PASSWORD) {
         document.querySelector('.login-container').style.display = 'none';
         document.querySelector('.admin-container').style.display = 'block';
+        loadRSVPs();
       } else {
-        message.textContent = '비밀번호가 틀렸습니다';
-        message.style.color = 'red';
+        message.textContent = '❌ 비밀번호가 틀렸습니다';
+        message.style.color = '#ff6b6b';
+        setTimeout(() => {
+          message.textContent = '';
+        }, 3000);
+      }
+    };
+
+    async function loadRSVPs() {
+      const rsvpList = document.getElementById("rsvp-list");
+      const q = query(collection(db, "rsvps"), orderBy("createdAt", "desc"));
+      
+      try {
+        const snapshot = await getDocs(q);
+        
+        if (snapshot.empty) {
+          rsvpList.innerHTML = `
+            <div class="empty-state">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20 6L9 17l-5-5"/>
+              </svg>
+              <p>아직 받은 응답이 없습니다</p>
+            </div>
+          `;
+          return;
+        }
+
+        let attendCount = 0, absentCount = 0, pendingCount = 0;
+        rsvpList.innerHTML = "";
+
+        snapshot.forEach((docSnap) => {
+          const data = docSnap.data();
+          const status = data.status;
+          
+          if (status === "참석") attendCount++;
+          else if (status === "불참") absentCount++;
+          else pendingCount++;
+
+          const statusClass = 
+            status === "참석" ? "status-attend" :
+            status === "불참" ? "status-absent" : "status-pending";
+
+          const div = document.createElement("div");
+          div.className = "rsvp-item";
+          div.innerHTML = `
+            <div class="rsvp-header">
+              <div class="rsvp-name">${data.name}</div>
+              <div class="rsvp-status ${statusClass}">${status}</div>
+            </div>
+            <div class="rsvp-message">"${data.message}"</div>
+            <button class="delete-btn" onclick="deleteRSVP('${docSnap.id}')">삭제</button>
+          `;
+          rsvpList.appendChild(div);
+        });
+
+        document.getElementById('attendCount').textContent = attendCount;
+        document.getElementById('absentCount').textContent = absentCount;
+        document.getElementById('pendingCount').textContent = pendingCount;
+        document.getElementById('totalCount').textContent = attendCount + absentCount + pendingCount;
+
+      } catch (error) {
+        console.error("Error loading RSVPs:", error);
+        rsvpList.innerHTML = `
+          <div class="empty-state">
+            <p style="color: #ff6b6b;">데이터를 불러오는 중 오류가 발생했습니다</p>
+          </div>
+        `;
       }
     }
+
+    window.deleteRSVP = async function(id) {
+      if (confirm("정말 삭제하시겠습니까?")) {
+        try {
+          await deleteDoc(doc(db, "rsvps", id));
+          alert("삭제되었습니다");
+          loadRSVPs();
+        } catch (error) {
+          console.error("Error deleting:", error);
+          alert("삭제 중 오류가 발생했습니다");
+        }
+      }
+    };
+
+    document.getElementById('adminPassword').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        checkPassword();
+      }
+    });
   </script>
 </body>
 </html>

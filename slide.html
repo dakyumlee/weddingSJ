@@ -3,252 +3,737 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>청첩장 슬라이드</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="mobile.css">
+  <title>수지 & 현동의 결혼식 초대장</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    html, body { margin: 0; overflow: hidden; }
-    .slides {
-      display: flex;
-      width: 500vw;
-      height: 100vh;
-      transition: transform 0.5s ease;
-    }
-    .slide {
-      flex: 0 0 100vw;
-      height: 100vh;
-      padding: 2rem;
+    * {
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
-      background-color: #fffefb;
-      border-left: 1px solid #eee;
-      border-right: 1px solid #eee;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Noto Serif KR', serif;
+      background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+      min-height: 100vh;
+      color: #2c2c2c;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .card-stack {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .card {
+      position: absolute;
+      width: 350px;
+      height: 600px;
+      left: 50%;
+      top: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      padding: 40px 30px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      text-align: center;
+      backface-visibility: hidden;
+      transition: all 0.6s ease;
     }
-    .slide h2 { font-size: 1.5rem; color: #c4a04a; }
-    .slide p, .slide li { font-size: 1rem; color: #444; }
-    .nav-btns {
-      position: fixed;
-      top: 50%;
+
+    .card.active {
+      z-index: 10;
+      transform: translateX(-50%) translateY(-50%) scale(1);
+    }
+
+    .card.prev {
+      z-index: 5;
+      transform: translateX(-50%) translateY(-50%) scale(0.95) rotateY(-15deg) translateZ(-50px);
+      opacity: 0.7;
+    }
+
+    .card.next {
+      z-index: 5;
+      transform: translateX(-50%) translateY(-50%) scale(0.95) rotateY(15deg) translateZ(-50px);
+      opacity: 0.7;
+    }
+
+    .card.hidden {
+      z-index: 1;
+      transform: translateX(-50%) translateY(-50%) scale(0.8) translateZ(-100px);
+      opacity: 0;
+    }
+
+    h1 {
+      font-size: 32px;
+      color: #4a4a4a;
+      margin-bottom: 20px;
+      font-weight: 600;
+      letter-spacing: 2px;
+    }
+
+    h2 {
+      font-size: 24px;
+      color: #4a4a4a;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    h3 {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 15px;
+      font-weight: 400;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 15px;
+      color: #444;
+    }
+
+    .main-photo {
+      width: 280px;
+      height: 200px;
+      background: linear-gradient(45deg, #f0f0f0, #e8e8e8);
+      border-radius: 15px;
+      margin: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-size: 14px;
+      border: 2px dashed #ccc;
+    }
+
+    .date-info {
+      background: #f8f8f8;
+      padding: 20px;
+      border-radius: 15px;
+      margin: 20px 0;
+      width: 100%;
+    }
+
+    .d-day {
+      font-size: 20px;
+      font-weight: 600;
+      color: #5a5a5a;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #fff;
+      border-radius: 25px;
+      border: 2px solid #ddd;
+    }
+
+    .location-info {
+      text-align: left;
+      width: 100%;
+      background: #f8f8f8;
+      padding: 20px;
+      border-radius: 15px;
+      margin: 20px 0;
+    }
+
+    .location-info p {
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+
+    .map-container {
+      width: 100%;
+      height: 200px;
+      border-radius: 15px;
+      overflow: hidden;
+      margin: 20px 0;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .transport-list {
+      list-style: none;
+      text-align: left;
+      width: 100%;
+    }
+
+    .transport-list li {
+      margin-bottom: 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .transport-list a {
+      color: #666;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid #eee;
+    }
+
+    .transport-list a:hover {
+      border-bottom: 1px solid #999;
+    }
+
+    .account-info {
+      background: #f8f8f8;
+      padding: 20px;
+      border-radius: 15px;
+      margin: 20px 0;
+      width: 100%;
+      text-align: left;
+    }
+
+    .account-item {
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #e8e8e8;
+    }
+
+    .account-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    .account-name {
+      font-weight: 600;
+      color: #5a5a5a;
+      margin-bottom: 5px;
+    }
+
+    .account-number {
+      font-family: 'Courier New', monospace;
+      font-size: 15px;
+      color: #666;
+    }
+
+    .rsvp-form {
       width: 100%;
       display: flex;
-      justify-content: space-between;
-      transform: translateY(-50%);
-      z-index: 1000;
+      flex-direction: column;
+      gap: 15px;
     }
-    .nav-btns button {
-      background-color: rgba(0,0,0,0.05);
+
+    .rsvp-form input,
+    .rsvp-form select,
+    .rsvp-form textarea {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid #f0f0f0;
+      border-radius: 10px;
+      font-size: 16px;
+      font-family: 'Noto Serif KR', serif;
+      background: #fafafa;
+      transition: border-color 0.3s ease;
+    }
+
+    .rsvp-form input:focus,
+    .rsvp-form select:focus,
+    .rsvp-form textarea:focus {
+      outline: none;
+      border-color: #888;
+      background: #fff;
+    }
+
+    .rsvp-form textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .rsvp-form button {
+      background: #666;
+      color: white;
       border: none;
-      font-size: 2rem;
-      padding: 0.5rem 1rem;
+      padding: 15px 30px;
+      border-radius: 25px;
+      font-size: 16px;
+      font-weight: 600;
       cursor: pointer;
-      color: #c4a04a;
+      transition: all 0.3s ease;
     }
-    input, select, textarea {
-      background-color: #fff;
-      color: #222;
+
+    .rsvp-form button:hover {
+      background: #555;
+      transform: translateY(-2px);
     }
-    .toggle-btn {
-      background-color: transparent;
-      border: 1px solid #c4a04a;
-      color: #c4a04a;
-      padding: 0.4rem 0.8rem;
-      border-radius: 5px;
+
+    .qr-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .qr-code {
+      width: 200px;
+      height: 200px;
+      background: #f0f0f0;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      border: 2px dashed #ccc;
+      overflow: hidden;
+    }
+
+    .qr-code img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 13px;
+    }
+
+    .navigation {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 60px;
+      z-index: 100;
+    }
+
+    .nav-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(102, 102, 102, 0.8);
+      color: white;
+      font-size: 16px;
       cursor: pointer;
-      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
     }
-    .toggle-btn:hover {
-      background-color: #c4a04a;
-      color: #fff;
+
+    .nav-btn:hover {
+      background: rgba(85, 85, 85, 1);
+      transform: scale(1.05);
     }
-    .accordion-btn {
-      background-color: #fffefb;
-      border: 1px solid #c4a04a;
-      color: #c4a04a;
-      padding: 0.6rem 1rem;
-      border-radius: 5px;
+
+    .music-player {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 200;
       cursor: pointer;
-      font-size: 1rem;
-      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
-    .accordion-content {
-      display: none;
-      margin: 1rem auto;
-      padding: 1rem;
-      border: 1px solid #eee;
-      border-radius: 8px;
-      background-color: #fffefb;
-      max-width: 400px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-      text-align: center;
+
+    .music-icon {
+      width: 20px;
+      height: 20px;
+      color: #666;
+      transition: color 0.3s ease;
+      opacity: 0.7;
     }
-    .accordion-content a {
-      display: inline-block;
-      margin: 0.5rem 0;
-      color: #c4a04a;
-      text-decoration: none;
-      font-weight: bold;
+
+    .music-player.playing .music-icon {
+      color: #4a4a4a;
+      opacity: 1;
     }
-    .accordion-content a:hover {
-      text-decoration: underline;
+
+    .wave-container {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      height: 20px;
+    }
+
+    .wave-bar {
+      width: 3px;
+      background: rgba(102, 102, 102, 0.3);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .wave-bar:nth-child(1) { height: 8px; }
+    .wave-bar:nth-child(2) { height: 12px; }
+    .wave-bar:nth-child(3) { height: 16px; }
+    .wave-bar:nth-child(4) { height: 10px; }
+    .wave-bar:nth-child(5) { height: 14px; }
+    .wave-bar:nth-child(6) { height: 8px; }
+
+    .music-player.playing .wave-bar {
+      background: rgba(102, 102, 102, 0.8);
+      animation: wave 1.2s ease-in-out infinite;
+    }
+
+    .music-player.playing .wave-bar:nth-child(1) { animation-delay: 0s; }
+    .music-player.playing .wave-bar:nth-child(2) { animation-delay: 0.1s; }
+    .music-player.playing .wave-bar:nth-child(3) { animation-delay: 0.2s; }
+    .music-player.playing .wave-bar:nth-child(4) { animation-delay: 0.3s; }
+    .music-player.playing .wave-bar:nth-child(5) { animation-delay: 0.4s; }
+    .music-player.playing .wave-bar:nth-child(6) { animation-delay: 0.5s; }
+
+    @keyframes wave {
+      0%, 100% { transform: scaleY(1); }
+      50% { transform: scaleY(1.5); }
+    }
+
+    .card-indicator {
+      position: fixed;
+      bottom: 90px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 100;
+    }
+
+    .indicator-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(102, 102, 102, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .indicator-dot.active {
+      background: #666;
+      transform: scale(1.2);
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        max-width: 100%;
+        padding: 0 10px;
+      }
+
+      .card {
+        width: 320px;
+        height: 580px;
+        padding: 30px 25px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      h2 {
+        font-size: 22px;
+      }
+
+      .main-photo {
+        width: 250px;
+        height: 180px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .card {
+        width: 300px;
+        height: 560px;
+        padding: 25px 20px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .main-photo {
+        width: 220px;
+        height: 160px;
+      }
     }
   </style>
-  <script type="module" src="slide.js" defer></script>
 </head>
 <body>
-  <div class="nav-btns">
-    <button id="prev">←</button>
-    <button id="next">→</button>
-  </div>
-
-  <div class="slides">
-    <section class="slide">
-      <h1>박현동 & 박수지</h1>
-      <p>저희 두 사람이 사랑으로 하나 되어 결혼합니다.<br>귀한 걸음 하시어 축복해주시면 감사하겠습니다.</p>
-      <div class="d-day">D-DAY: <span id="dday"></span></div>
-    </section>
-
-    <section class="slide">
-      <h2>결혼식 안내</h2>
-      <p>2025년 9월 13일 토요일 오전 11시</p>
-      <p>W시티 컨벤션 웨딩<br>울산광역시 북구 진장17길 7<br>별관 7층 하우스가든홀</p>
-      <button class="toggle-btn" onclick="toggleDetails()">🚌 대중교통 & 주차 안내 보기</button>
-      <div id="transport-details" style="display: none; margin-top: 1rem;">
-        <p><strong>버스 이용 안내:</strong></p>
-        <ul style="list-style:none; padding:0;">
-          <li>● 104, 122, 126, 133, 401번</li>
-          <li>▶ 진장시장 정류장 하차 → 도보 약 5분</li>
-        </ul>
-        <p style="font-size: 0.9rem; color: #777;">* 주차: 하우스가든홀 건물 내 지하주차장 이용 가능</p>
+  <div class="container">
+    <div class="music-player" id="musicPlayer">
+      <svg class="music-icon" viewBox="0 0 24 24" fill="currentColor">
+        <path d="12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+      </svg>
+      <div class="wave-container">
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
       </div>
-      <button class="accordion-btn" onclick="toggleAccordion('mapAccordion')">🗺️ 길찾기 안내</button>
-      <div id="mapAccordion" class="accordion-content">
-        <p>원하시는 앱으로 장소를 열어보세요:</p>
-        <a href="tmap://route?goalx=129.3537&goaly=35.5626&goalname=W시티컨벤션웨딩" target="_blank">📍 Tmap</a><br>
-        <a href="https://map.naver.com/v5/search/W시티%20컨벤션%20웨딩" target="_blank">📍 네이버지도</a><br>
-        <a href="https://map.kakao.com/?q=W시티 컨벤션 웨딩" target="_blank">📍 카카오지도</a>
-      </div>
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3245.638349084956!2d129.35368171142778!3d35.56263293636567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3567cdeb50debba7%3A0x10980ca679fc2b13!2zV-yLnO2LsCDsu6jrsqTshZgg7Juo65Sp7ZmA!5e0!3m2!1sko!2skr!4v1751851963762!5m2!1sko!2skr" width="100%" height="300" style="border:0; margin-top: 1rem;" allowfullscreen loading="lazy"></iframe>
-    </section>
-
-    <section class="slide">
-      <h2>마음 전하실 곳</h2>
-      <button class="accordion-btn" onclick="toggleAccordion('accountAccordion')">📬 계좌 안내 & 간편송금</button>
-      <div id="accountAccordion" class="accordion-content">
-        <h3>신랑 박현동</h3>
-        <p>우리은행 1002549859637</p>
-        <button onclick="copyText('1002549859637')">복사하기</button><br>
-        <a href="https://qr.kakaopay.com/FTyLU8G3j" target="_blank">💳 카카오페이 송금</a>
-        <h3>신부 박수지</h3>
-        <p>저축은행 06601211393753</p>
-        <button onclick="copyText('06601211393753')">복사하기</button><br>
-        <a href="https://qr.kakaopay.com/FJKLY2h7u" target="_blank">💳 카카오페이 송금</a>
-      </div>
-    </section>
-
-    <section class="slide">
-      <h2>참석 여부 & 메시지</h2>
-      <form class="rsvp-form">
-        <input type="text" placeholder="이름" required>
-        <select required>
-          <option value="">참석 여부</option>
-          <option value="참석">참석</option>
-          <option value="불참">불참</option>
-          <option value="미정">미정</option>
-        </select>
-        <textarea placeholder="축하 메시지" required></textarea>
-        <input type="password" placeholder="비밀번호 (수정/삭제용)" required>
-        <button type="submit">제출하기</button>
-      </form>
-    </section>
-    <section class="slide">
-        <div class="qr">
-          <p style="margin-top:2rem; font-size: 0.9rem; color: #777;">모바일 청첩장 QR 코드</p>
-          <img src="suji_wedding_qr.png" alt="QR코드">
-        </div>
-      </section>
     </div>
 
+    <audio id="bgMusic" loop>
+      <source src="/Users/mac/Desktop/작업/SJ/Gareth Donkin - Falling For You (Official Audio).mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="card-indicator">
+      <div class="indicator-dot active"></div>
+      <div class="indicator-dot"></div>
+      <div class="indicator-dot"></div>
+      <div class="indicator-dot"></div>
+      <div class="indicator-dot"></div>
+      <div class="indicator-dot"></div>
+    </div>
+
+    <div class="card-stack">
+      <div class="card active">
+        <h1>박현동 & 박수지</h1>
+        <div class="main-photo">웨딩 사진</div>
+        <p>저희 두 사람이 사랑으로 하나 되어<br>결혼합니다</p>
+        <p>귀한 걸음 하시어 축복해주시면<br>감사하겠습니다</p>
+        <div class="d-day">
+          <span id="dday">D-DAY</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>예식 안내</h2>
+        <div class="date-info">
+          <h3>2025년 9월 13일 (토)</h3>
+          <h3>오전 11시</h3>
+        </div>
+        <div class="location-info">
+          <p><strong>W시티 컨벤션 웨딩</strong></p>
+          <p>별관 7층 하우스가든홀</p>
+          <p style="margin-top: 15px; color: #666;">울산광역시 북구 진장17길 7</p>
+        </div>
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3245.638349084956!2d129.35368171142778!3d35.56263293636567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3567cdeb50debba7%3A0x10980ca679fc2b13!2zV-yLnO2LsCDsu6jrsqTshZgg7Jeo65Sp7ZmA!5e0!3m2!1sko!2skr!4v1751851963762!5m2!1sko!2skr" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>오시는 길</h2>
+        <ul class="transport-list">
+          <li><strong>지하철/버스</strong><br>104, 122, 126, 133, 401번<br>진장시장 정류장 하차 후 도보 5분</li>
+          <li><strong>주차안내</strong><br>하우스가든홀 건물 내 지하주차장 이용</li>
+          <li><a href="https://map.kakao.com/link/to/하우스가든홀,35.56263293636567,129.35368171142778">카카오맵으로 보기</a></li>
+          <li><a href="https://naver.me/FnMF3AJm">네이버지도로 보기</a></li>
+          <li><a href="tmap://route?goalname=하우스가든홀&goalx=129.35368171142778&goaly=35.56263293636567">티맵으로 길찾기</a></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>마음 전하실 곳</h2>
+        <div class="account-info">
+          <div class="account-item">
+            <div class="account-name">신랑 박현동</div>
+            <div class="account-number">우리은행 1002549859637</div>
+          </div>
+          <div class="account-item">
+            <div class="account-name">신부 박수지</div>
+            <div class="account-number">저축은행 06601211393753</div>
+          </div>
+        </div>
+        <p style="margin-top: 20px;">
+          <a href="https://qr.kakaopay.com/FTGG36235u" target="_blank" style="color: #666; text-decoration: none; font-weight: 600; border-bottom: 1px solid #eee;">💳 카카오페이로 간편 송금하기</a>
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>참석 여부 & 축하 메시지</h2>
+        <form class="rsvp-form">
+          <input type="text" placeholder="이름을 입력해주세요" required>
+          <select required>
+            <option value="">참석 여부를 선택해주세요</option>
+            <option value="참석">참석</option>
+            <option value="불참">불참</option>
+            <option value="미정">미정</option>
+          </select>
+          <textarea placeholder="축하 메시지를 남겨주세요" required></textarea>
+          <input type="password" placeholder="비밀번호 (수정/삭제용)" required>
+          <button type="submit">마음 전하기</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>모바일 청첩장</h2>
+        <div class="qr-container">
+          <div class="qr-code">
+            <img src="suji_wedding_qr.png" alt="청첩장 QR코드">
+          </div>
+          <p>QR코드를 스캔하시면<br>모바일 청첩장을 보실 수 있습니다</p>
+          <p style="font-size: 14px; color: #888;">친구들에게 공유해주세요 💕</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="navigation">
+      <button class="nav-btn" id="prevBtn">‹</button>
+      <button class="nav-btn" id="nextBtn">›</button>
+    </div>
   </div>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-analytics.js";
-  
     import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
-  
+
     const firebaseConfig = {
       apiKey: "AIzaSyAbaauVIvPWPT1O_h4kElc0nVkfPaiTbl4",
       authDomain: "poetic-planet-462812-f5.firebaseapp.com",
       projectId: "poetic-planet-462812-f5",
-      storageBucket: "poetic-planet-462812-f5.firebasestorage.app",
+      storageBucket: "poetic-planet-462812-f5.appspot.com",
       messagingSenderId: "375231510481",
       appId: "1:375231510481:web:5c06868eac02b01e0352f0",
       measurementId: "G-EC6J2HWNQ6"
     };
-  
+
     const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
     const db = getFirestore(app);
-  
-    const rsvpForm = document.querySelector(".rsvp-form");
-  
-    if (rsvpForm) {
-      rsvpForm.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        const name = rsvpForm.querySelector("input[type='text']").value;
-        const status = rsvpForm.querySelector("select").value;
-        const message = rsvpForm.querySelector("textarea").value;
-        const password = rsvpForm.querySelector("input[type='password']").value;
-  
-        await addDoc(collection(db, "rsvps"), {
-          name,
-          status,
-          message,
-          password,
-          createdAt: serverTimestamp()
-        });
-  
-        alert("참석 여부가 제출되었습니다!");
-        rsvpForm.reset();
+
+    const bgMusic = document.getElementById('bgMusic');
+    const musicPlayer = document.getElementById('musicPlayer');
+    let isPlaying = false;
+
+    function toggleMusic() {
+      if (isPlaying) {
+        bgMusic.pause();
+        musicPlayer.classList.remove('playing');
+        isPlaying = false;
+      } else {
+        bgMusic.play().catch(e => console.log('음악 재생 실패:', e));
+        musicPlayer.classList.add('playing');
+        isPlaying = true;
+      }
+    }
+
+    function startMusic() {
+      bgMusic.play().catch(e => {
+        console.log('자동재생 실패:', e);
+      });
+      musicPlayer.classList.add('playing');
+      isPlaying = true;
+    }
+
+    musicPlayer.addEventListener('click', toggleMusic);
+
+    document.addEventListener('click', () => {
+      if (!isPlaying) {
+        startMusic();
+      }
+    }, { once: true });
+
+    setTimeout(startMusic, 1000);
+
+    const cards = document.querySelectorAll('.card');
+    const indicators = document.querySelectorAll('.indicator-dot');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let currentIndex = 0;
+
+    function updateCards() {
+      cards.forEach((card, index) => {
+        card.classList.remove('active', 'prev', 'next', 'hidden');
+        indicators[index].classList.remove('active');
+        
+        if (index === currentIndex) {
+          card.classList.add('active');
+          indicators[index].classList.add('active');
+        } else if (index === currentIndex - 1) {
+          card.classList.add('prev');
+        } else if (index === currentIndex + 1) {
+          card.classList.add('next');
+        } else {
+          card.classList.add('hidden');
+        }
       });
     }
-  
+
+    function nextCard() {
+      currentIndex = (currentIndex + 1) % cards.length;
+      updateCards();
+    }
+
+    function prevCard() {
+      currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+      updateCards();
+    }
+
+    prevBtn.addEventListener('click', prevCard);
+    nextBtn.addEventListener('click', nextCard);
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    document.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+
+    document.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    });
+
+    function handleSwipe() {
+      const swipeDistance = Math.abs(touchEndX - touchStartX);
+      if (swipeDistance > 50) {
+        if (touchEndX < touchStartX) {
+          nextCard();
+        } else {
+          prevCard();
+        }
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') nextCard();
+      if (e.key === 'ArrowLeft') prevCard();
+    });
+
     const weddingDate = new Date('2025-09-13T11:00:00+09:00');
     const today = new Date();
     const diffTime = weddingDate - today;
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    document.getElementById('dday').textContent = diffDays > 0 ? `${diffDays}` : '오늘입니다!';
+    document.getElementById('dday').textContent = diffDays > 0 ? `D-${diffDays}` : '오늘입니다!';
 
-    let currentSlide = 0;
-    const slides = document.querySelector('.slides');
-    const totalSlides = document.querySelectorAll('.slide').length;
+    const rsvpForm = document.querySelector('.rsvp-form');
+    if (rsvpForm) {
+      rsvpForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const name = rsvpForm.querySelector('input[type="text"]').value;
+        const status = rsvpForm.querySelector('select').value;
+        const message = rsvpForm.querySelector('textarea').value;
+        const password = rsvpForm.querySelector('input[type="password"]').value;
 
-    document.getElementById('prev').addEventListener('click', () => {
-      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-      updateSlide();
-    });
-    document.getElementById('next').addEventListener('click', () => {
-      currentSlide = (currentSlide + 1) % totalSlides;
-      updateSlide();
-    });
-    function updateSlide() {
-      slides.style.transform = `translateX(-${currentSlide * 100}vw)`;
+        try {
+          await addDoc(collection(db, "rsvps"), {
+            name,
+            status,
+            message,
+            password,
+            createdAt: serverTimestamp()
+          });
+
+          alert("마음이 전달되었습니다! 감사합니다 💕");
+          rsvpForm.reset();
+        } catch (error) {
+          console.error("Error:", error);
+          alert("전송 중 오류가 발생했습니다. 다시 시도해주세요.");
+        }
+      });
     }
-    function copyText(text) {
-      navigator.clipboard.writeText(text);
-      alert("복사되었습니다");
-    }
-    function toggleDetails() {
-      const section = document.getElementById('transport-details');
-      section.style.display = section.style.display === 'none' ? 'block' : 'none';
-    }
-    function toggleAccordion(id) {
-      const el = document.getElementById(id);
-      el.style.display = el.style.display === 'block' ? 'none' : 'block';
-    }
+
+    updateCards();
   </script>
 </body>
 </html>
