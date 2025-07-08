@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>초대합니다</title>
+  <title>김민준 ♥ 이서연</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     * {
@@ -15,13 +15,60 @@
 
     body {
       font-family: 'Noto Serif KR', serif;
-      background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
       min-height: 100vh;
       color: #2c2c2c;
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
+    }
+
+    .background-decoration {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .circle-decoration {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.1;
+    }
+
+    .circle-1 {
+      width: 300px;
+      height: 300px;
+      background: linear-gradient(45deg, #e3f2fd, #bbdefb);
+      top: -100px;
+      right: -100px;
+    }
+
+    .circle-2 {
+      width: 200px;
+      height: 200px;
+      background: linear-gradient(45deg, #f3e5f5, #e1bee7);
+      bottom: -50px;
+      left: -50px;
+    }
+
+    .circle-3 {
+      width: 150px;
+      height: 150px;
+      background: linear-gradient(45deg, #e8f5e8, #c8e6c9);
+      top: 30%;
+      left: 10%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
     }
 
     .admin-btn {
@@ -49,130 +96,228 @@
       transform: scale(1.05);
     }
 
-    .cover {
-      text-align: center;
+    .container {
       background: #ffffff;
-      padding: 60px 40px;
-      border-radius: 20px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      border-radius: 30px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.15);
       max-width: 400px;
       width: 90%;
-      transform: translateY(-20px);
-      animation: fadeInUp 1s ease-out;
+      padding: 50px 40px;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+      animation: slideUp 1s ease-out;
     }
 
-    @keyframes fadeInUp {
+    @keyframes slideUp {
       from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(50px);
       }
       to {
         opacity: 1;
-        transform: translateY(-20px);
+        transform: translateY(0);
       }
     }
 
-    h1 {
-      font-size: 36px;
-      color: #4a4a4a;
-      margin-bottom: 15px;
-      font-weight: 600;
-      letter-spacing: 3px;
-      line-height: 1.3;
-    }
-
-    .subtitle {
-      font-size: 18px;
-      color: #666;
+    .photo-container {
+      position: relative;
       margin-bottom: 40px;
-      font-weight: 400;
-      letter-spacing: 1px;
     }
 
-    .cover-photo {
+    .main-circle {
       width: 200px;
-      height: 150px;
+      height: 200px;
+      border-radius: 50%;
       background: linear-gradient(45deg, #f0f0f0, #e8e8e8);
-      border-radius: 15px;
-      margin: 30px auto;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      border: 4px solid #fff;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    }
+
+    .main-circle::before {
+      content: '';
+      position: absolute;
+      top: -3px;
+      left: -3px;
+      right: -3px;
+      bottom: -3px;
+      background: linear-gradient(45deg, #e3f2fd, #f3e5f5, #e8f5e8, #fff3e0);
+      border-radius: 50%;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .main-circle:hover::before {
+      opacity: 1;
+    }
+
+    .main-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .photo-placeholder {
       display: flex;
       align-items: center;
       justify-content: center;
+      width: 100%;
+      height: 100%;
       color: #999;
       font-size: 14px;
-      border: 2px dashed #ccc;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    .accent-circle {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #e3f2fd, #bbdefb);
+      top: -10px;
+      right: 20px;
+      opacity: 0.8;
+      z-index: -1;
+    }
+
+    .names {
+      margin-bottom: 35px;
+    }
+
+    .groom-name {
+      font-size: 24px;
+      font-weight: 600;
+      color: #4a4a4a;
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+    }
+
+    .bride-name {
+      font-size: 24px;
+      font-weight: 600;
+      color: #4a4a4a;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+
+    .wedding-info {
+      background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f5 100%);
+      padding: 25px 20px;
+      border-radius: 20px;
+      margin-bottom: 35px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .wedding-info::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #e3f2fd, transparent);
     }
 
     .wedding-date {
-      background: #f8f8f8;
-      padding: 20px;
-      border-radius: 15px;
-      margin: 30px 0;
-    }
-
-    .wedding-date h3 {
-      color: #4a4a4a;
-      font-size: 20px;
-      margin-bottom: 10px;
-      font-weight: 600;
-    }
-
-    .wedding-date p {
-      color: #666;
       font-size: 16px;
-      line-height: 1.6;
+      color: #666;
+      margin-bottom: 8px;
+      font-weight: 500;
     }
 
-    #enter {
-      background: #666;
+    .wedding-venue {
+      font-size: 14px;
+      color: #888;
+      line-height: 1.5;
+    }
+
+    .divider {
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #ddd, transparent);
+      margin: 30px auto;
+    }
+
+    .invitation-text {
+      font-size: 12px;
+      color: #aaa;
+      font-style: italic;
+      letter-spacing: 2px;
+      margin-bottom: 35px;
+      text-transform: uppercase;
+    }
+
+    .enter-btn {
+      background: linear-gradient(135deg, #666 0%, #555 100%);
       color: white;
       border: none;
-      padding: 18px 40px;
+      padding: 18px 45px;
       border-radius: 30px;
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.4s ease;
       font-family: 'Noto Serif KR', serif;
       letter-spacing: 1px;
-      margin-top: 20px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(102, 102, 102, 0.3);
     }
 
-    #enter:hover {
-      background: #555;
+    .enter-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .enter-btn:hover::before {
+      left: 100%;
+    }
+
+    .enter-btn:hover {
+      background: linear-gradient(135deg, #555 0%, #444 100%);
       transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      box-shadow: 0 12px 35px rgba(102, 102, 102, 0.4);
     }
 
-    #enter:active {
+    .enter-btn:active {
       transform: translateY(-1px);
     }
 
-    .floating-hearts {
-      position: fixed;
+    .floating-elements {
+      position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       pointer-events: none;
-      z-index: -1;
+      z-index: 1;
     }
 
-    .heart {
+    .floating-heart {
       position: absolute;
-      color: rgba(102, 102, 102, 0.1);
-      font-size: 20px;
-      animation: float 6s ease-in-out infinite;
+      color: rgba(224, 176, 118, 0.3);
+      font-size: 16px;
+      animation: floatHeart 8s linear infinite;
     }
 
-    .heart:nth-child(1) { left: 10%; animation-delay: 0s; }
-    .heart:nth-child(2) { left: 20%; animation-delay: 1s; }
-    .heart:nth-child(3) { left: 30%; animation-delay: 2s; }
-    .heart:nth-child(4) { left: 70%; animation-delay: 3s; }
-    .heart:nth-child(5) { left: 80%; animation-delay: 4s; }
-    .heart:nth-child(6) { left: 90%; animation-delay: 5s; }
+    .floating-heart:nth-child(1) { left: 20%; animation-delay: 0s; }
+    .floating-heart:nth-child(2) { left: 50%; animation-delay: 2s; }
+    .floating-heart:nth-child(3) { left: 80%; animation-delay: 4s; }
 
-    @keyframes float {
+    @keyframes floatHeart {
       0% {
         transform: translateY(100vh) rotate(0deg);
         opacity: 0;
@@ -184,92 +329,127 @@
         opacity: 1;
       }
       100% {
-        transform: translateY(-100px) rotate(360deg);
+        transform: translateY(-50px) rotate(360deg);
         opacity: 0;
       }
     }
 
     @media (max-width: 480px) {
-      .cover {
+      .container {
         padding: 40px 30px;
         width: 95%;
+        border-radius: 25px;
       }
 
-      h1 {
-        font-size: 28px;
-        letter-spacing: 2px;
+      .main-circle {
+        width: 160px;
+        height: 160px;
       }
 
-      .subtitle {
-        font-size: 16px;
+      .groom-name,
+      .bride-name {
+        font-size: 20px;
       }
 
-      .cover-photo {
-        width: 180px;
-        height: 130px;
+      .wedding-date {
+        font-size: 15px;
       }
 
-      #enter {
-        padding: 15px 35px;
-        font-size: 16px;
+      .wedding-venue {
+        font-size: 13px;
+      }
+
+      .enter-btn {
+        padding: 16px 40px;
+        font-size: 15px;
       }
     }
 
     @media (max-width: 360px) {
-      .cover {
+      .container {
         padding: 35px 25px;
       }
 
-      h1 {
-        font-size: 24px;
+      .main-circle {
+        width: 140px;
+        height: 140px;
       }
 
-      .cover-photo {
-        width: 160px;
-        height: 120px;
+      .groom-name,
+      .bride-name {
+        font-size: 18px;
       }
     }
   </style>
 </head>
 <body>
-  <button class="admin-btn" id="adminBtn" onclick="window.open('admin.html', '_blank')">
+  <button class="admin-btn" onclick="window.open('admin.html', '_blank')">
     <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
       <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 4V6L13 4V2H11V4L9 6V4L3 7V9L9 6V10C9 11.1 9.9 12 11 12H13C14.1 12 15 11.1 15 10V6L21 9ZM11 13V15H7V17H11V19H7V21H17V19H13V17H17V15H13V13H17V11H7V13H11Z"/>
     </svg>
   </button>
 
-  <div class="floating-hearts">
-    <div class="heart">♡</div>
-    <div class="heart">♡</div>
-    <div class="heart">♡</div>
-    <div class="heart">♡</div>
-    <div class="heart">♡</div>
-    <div class="heart">♡</div>
+  <div class="background-decoration">
+    <div class="circle-decoration circle-1"></div>
+    <div class="circle-decoration circle-2"></div>
+    <div class="circle-decoration circle-3"></div>
   </div>
 
-  <div class="cover">
-    <h1>박현동 & 박수지</h1>
-    <p class="subtitle">결혼합니다</p>
-    
-    <div class="cover-photo">웨딩 사진</div>
-    
-    <div class="wedding-date">
-      <h3>2025년 9월 13일 (토)</h3>
-      <p>오전 11시<br>W시티 컨벤션 웨딩</p>
+  <div class="floating-elements">
+    <div class="floating-heart">♡</div>
+    <div class="floating-heart">♡</div>
+    <div class="floating-heart">♡</div>
+  </div>
+
+  <div class="container">
+    <div class="photo-container">
+      <div class="accent-circle"></div>
+      <div class="main-circle">
+        <div class="photo-placeholder">
+          웨딩 사진이<br>들어갈 자리
+        </div>
+      </div>
     </div>
-    
-    <button id="enter">초대장 보기</button>
+
+    <div class="names">
+      <div class="groom-name">박현동</div>
+      <div class="bride-name">박수지</div>
+    </div>
+
+    <div class="wedding-info">
+      <div class="wedding-date">2025년 09월 13일, 토요일 낮 11시</div>
+      <div class="wedding-venue">W시티 컨벤션 웨딩홀 
+        별관 7층 하우스가든홀</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="invitation-text">Wedding Invitation</div>
+
+    <button class="enter-btn" onclick="enterInvitation()">초대장 보기</button>
   </div>
 
   <script>
+    function enterInvitation() {
+      const btn = document.querySelector('.enter-btn');
+      btn.style.transform = 'scale(0.95)';
+      btn.style.background = 'linear-gradient(135deg, #4a4a4a 0%, #333 100%)';
+      
+      setTimeout(() => {
+        window.location.href = 'slide.html';
+      }, 200);
+    }
+
     window.addEventListener('DOMContentLoaded', () => {
-      const btn = document.querySelector('#enter');
-      btn.addEventListener('click', () => {
-        btn.style.transform = 'scale(0.95)';
-        setTimeout(() => {
-          window.location.href = 'slide.html';
-        }, 150);
-      });
+      const container = document.querySelector('.container');
+      container.style.opacity = '0';
+      container.style.transform = 'translateY(50px)';
+      
+      setTimeout(() => {
+        container.style.transition = 'all 1s ease-out';
+        container.style.opacity = '1';
+        container.style.transform = 'translateY(0)';
+      }, 100);
     });
   </script>
 </body>
