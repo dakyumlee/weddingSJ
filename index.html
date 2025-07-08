@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>수지 & 현동의 결혼식 초대장</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -15,441 +16,1518 @@
 
     body {
       font-family: 'Noto Serif KR', serif;
-      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 50%, #ffffff 100%);
       min-height: 100vh;
-      color: #2c2c2c;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-
-    .background-decoration {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      z-index: 0;
-    }
-
-    .circle-decoration {
-      position: absolute;
-      border-radius: 50%;
-      opacity: 0.1;
-    }
-
-    .circle-1 {
-      width: 300px;
-      height: 300px;
-      background: linear-gradient(45deg, #e3f2fd, #bbdefb);
-      top: -100px;
-      right: -100px;
-    }
-
-    .circle-2 {
-      width: 200px;
-      height: 200px;
-      background: linear-gradient(45deg, #f3e5f5, #e1bee7);
-      bottom: -50px;
-      left: -50px;
-    }
-
-    .circle-3 {
-      width: 150px;
-      height: 150px;
-      background: linear-gradient(45deg, #e8f5e8, #c8e6c9);
-      top: 30%;
-      left: 10%;
-      animation: float 6s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
-    }
-
-    .admin-btn {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
-      border: none;
-      background: rgba(102, 102, 102, 0.6);
-      color: white;
-      font-size: 14px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 200;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-    }
-
-    .admin-btn:hover {
-      background: rgba(85, 85, 85, 0.8);
-      transform: scale(1.05);
+      color: #374151;
+      overflow-x: hidden;
+      overflow-y: auto;
     }
 
     .container {
-      background: #ffffff;
-      border-radius: 30px;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.15);
       max-width: 400px;
-      width: 90%;
-      padding: 50px 40px;
-      text-align: center;
-      position: relative;
-      z-index: 10;
-      animation: slideUp 1s ease-out;
-    }
-
-    @keyframes slideUp {
-      from {
-        opacity: 0;
-        transform: translateY(50px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .photo-container {
-      position: relative;
-      margin-bottom: 40px;
-    }
-
-    .main-circle {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      background: linear-gradient(45deg, #f0f0f0, #e8e8e8);
       margin: 0 auto;
       position: relative;
-      overflow: hidden;
-      border: 4px solid #fff;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
     }
 
-    .main-circle::before {
+    .card-stack {
+      position: relative;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card {
+      width: 350px;
+      min-height: 100vh;
+      margin: 0 auto 20px;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(236, 72, 153, 0.15);
+      padding: 40px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      transition: all 0.6s ease;
+      scroll-snap-align: start;
+      border: 1px solid #fce7f3;
+    }
+
+    html {
+      scroll-snap-type: y mandatory;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: #ec4899;
+      margin-bottom: 20px;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    h2 {
+      font-size: 24px;
+      color: #be185d;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    h3 {
+      font-size: 18px;
+      color: #ec4899;
+      margin-bottom: 15px;
+      font-weight: 400;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 15px;
+      color: #6b7280;
+    }
+
+    .main-photo {
+      width: 280px;
+      height: 350px;
+      background: linear-gradient(45deg, #fdf2f8, #fce7f3);
+      border-radius: 15px;
+      margin: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ec4899;
+      font-size: 14px;
+      border: 2px dashed #f9a8d4;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .main-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 13px;
+    }
+
+    .wedding-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: 42px;
+      color: #ec4899;
+      margin: 30px 0;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 4px rgba(236, 72, 153, 0.1);
+      transform: rotate(-2deg);
+      position: relative;
+      animation: writeEffect 3s ease-in-out;
+    }
+
+    @keyframes writeEffect {
+      0% {
+        opacity: 0;
+        transform: rotate(-2deg) translateX(-20px);
+      }
+      50% {
+        opacity: 0.7;
+        transform: rotate(-2deg) translateX(0);
+      }
+      100% {
+        opacity: 1;
+        transform: rotate(-2deg);
+      }
+    }
+
+    .wedding-title::after {
       content: '';
       position: absolute;
-      top: -3px;
-      left: -3px;
-      right: -3px;
-      bottom: -3px;
-      background: linear-gradient(45deg, #e3f2fd, #f3e5f5, #e8f5e8, #fff3e0);
-      border-radius: 50%;
+      bottom: -5px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #f9a8d4, transparent);
+      border-radius: 2px;
+    }
+
+    .invitation-text {
+      text-align: center;
+      line-height: 2;
+      font-size: 16px;
+      color: #6b7280;
+      margin: 30px 0;
+      word-break: keep-all;
+    }
+
+    .invitation-main {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 25px;
+      color: #ec4899;
+    }
+
+    .invitation-content {
+      font-size: 16px;
+      line-height: 2;
+      color: #6b7280;
+      margin-bottom: 30px;
+      word-break: keep-all;
+    }
+
+    .contact-info {
+      background: #fdf2f8;
+      padding: 25px 20px;
+      border-radius: 15px;
+      margin: 30px 0;
+      line-height: 1.8;
+      width: 100%;
+      border: 1px solid #fce7f3;
+    }
+
+    .contact-info p {
+      margin-bottom: 12px;
+      font-size: 15px;
+      text-align: center;
+      color: #6b7280;
+    }
+
+    .contact-info strong {
+      color: #be185d;
+    }
+
+    .date-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: #be185d;
+      margin-bottom: 30px;
+      letter-spacing: 2px;
+      position: relative;
+    }
+
+    .date-title::before,
+    .date-title::after {
+      content: '♡';
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 20px;
+      color: #f9a8d4;
+    }
+
+    .date-title::before {
+      left: -30px;
+    }
+
+    .date-title::after {
+      right: -30px;
+    }
+
+    .calendar-container {
+      background: #fdf2f8;
+      padding: 30px 20px;
+      border-radius: 15px;
+      margin: 20px 0;
+      width: 100%;
+      border: 1px solid #fce7f3;
+    }
+
+    .calendar-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .calendar-month {
+      font-size: 20px;
+      font-weight: 600;
+      color: #be185d;
+      margin-bottom: 5px;
+    }
+
+    .calendar-year {
+      font-size: 14px;
+      color: #ec4899;
+    }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .calendar-day-header {
+      padding: 8px 4px;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 600;
+      color: #be185d;
+    }
+
+    .calendar-day {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      color: #6b7280;
+    }
+
+    .calendar-day.other-month {
+      color: #d1d5db;
+    }
+
+    .calendar-day.wedding-day {
+      background: none;
+      color: #ec4899;
+      font-weight: 600;
+      transform: scale(1.1);
+      position: relative;
+      border: none;
+    }
+
+    .calendar-day.wedding-day::before {
+      content: '♡';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+      color: #ec4899;
+    }
+
+    .calendar-day.saturday {
+      background: none;
+      color: #6b7280;
+    }
+
+    .calendar-day.today {
+      background: #fce7f3;
+      color: #be185d;
+      font-weight: 600;
+    }
+
+    .d-day {
+      font-size: 24px;
+      font-weight: 700;
+      color: #be185d;
+      margin-top: 30px;
+      padding: 15px 25px;
+      background: #fff;
+      border-radius: 25px;
+      border: 2px solid #f9a8d4;
+    }
+
+    .venue-info {
+      text-align: center;
+      width: 100%;
+      background: #fdf2f8;
+      padding: 25px 20px;
+      border-radius: 15px;
+      margin: 20px 0;
+      border: 1px solid #fce7f3;
+    }
+
+    .venue-name {
+      font-size: 22px;
+      font-weight: 600;
+      color: #be185d;
+      margin-bottom: 8px;
+    }
+
+    .venue-hall {
+      font-size: 18px;
+      color: #ec4899;
+      margin-bottom: 15px;
+    }
+
+    .venue-address {
+      font-size: 16px;
+      color: #9ca3af;
+    }
+
+    .map-container {
+      width: 100%;
+      height: 200px;
+      border-radius: 15px;
+      overflow: hidden;
+      margin: 20px 0;
+      box-shadow: 0 4px 15px rgba(236, 72, 153, 0.1);
+      border: 2px solid #fce7f3;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .transport-section {
+      width: 100%;
+      margin: 20px 0;
+    }
+
+    .accordion {
+      background: #fdf2f8;
+      border-radius: 15px;
+      margin-bottom: 15px;
+      overflow: hidden;
+      border: 1px solid #fce7f3;
+    }
+
+    .accordion-header {
+      padding: 18px 20px;
+      background: #fce7f3;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      color: #be185d;
+      transition: background 0.3s ease;
+    }
+
+    .accordion-header:hover {
+      background: #fbcfe8;
+    }
+
+    .accordion-header::after {
+      content: '+';
+      font-size: 20px;
+      transition: transform 0.3s ease;
+      color: #ec4899;
+    }
+
+    .accordion-header.active::after {
+      transform: rotate(45deg);
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      background: #fdf2f8;
+    }
+
+    .accordion-content.active {
+      max-height: 400px;
+    }
+
+    .accordion-body {
+      padding: 20px;
+    }
+
+    .transport-info {
+      margin-bottom: 15px;
+    }
+
+    .transport-info h4 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #be185d;
+      margin-bottom: 8px;
+    }
+
+    .transport-info p {
+      font-size: 14px;
+      color: #6b7280;
+      margin-bottom: 5px;
+      line-height: 1.5;
+    }
+
+    .map-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .map-link {
+      display: inline-block;
+      padding: 12px 20px;
+      text-decoration: none;
+      border-radius: 25px;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center;
+      transition: all 0.3s ease;
+      color: white;
+    }
+
+    .map-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .map-link.kakao {
+      background: #fee500;
+      color: #3c1e1e;
+    }
+
+    .map-link.naver {
+      background: #03c75a;
+    }
+
+    .map-link.tmap {
+      background: #ff6b35;
+    }
+
+    .account-intro {
+      font-size: 15px;
+      line-height: 1.8;
+      color: #6b7280;
+      margin: 20px 0 30px;
+      text-align: center;
+      word-break: keep-all;
+    }
+
+    .account-info {
+      background: #fdf2f8;
+      padding: 25px 20px;
+      border-radius: 15px;
+      margin: 20px 0;
+      width: 100%;
+      text-align: left;
+      border: 1px solid #fce7f3;
+    }
+
+    .account-item {
+      margin-bottom: 20px;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(236, 72, 153, 0.05);
+      border: 1px solid #fce7f3;
+    }
+
+    .account-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .account-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .account-name {
+      font-weight: 600;
+      color: #be185d;
+      font-size: 16px;
+    }
+
+    .copy-btn {
+      background: #ec4899;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 15px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .copy-btn:hover {
+      background: #be185d;
+      transform: scale(1.05);
+    }
+
+    .account-details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .account-number {
+      font-family: 'Courier New', monospace;
+      font-size: 15px;
+      color: #6b7280;
+      letter-spacing: 1px;
+    }
+
+    .account-hidden {
+      font-size: 15px;
+      color: #9ca3af;
+      font-style: italic;
+    }
+
+    .kakaopay-link {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 15px 25px;
+      background: #fee500;
+      color: #3c1e1e;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .kakaopay-link:hover {
+      background: #fdd835;
+      transform: translateY(-2px);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      width: 100%;
+      margin: 20px 0;
+    }
+
+    .gallery-item {
+      aspect-ratio: 1;
+      background: linear-gradient(45deg, #fdf2f8, #fce7f3);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ec4899;
+      font-size: 12px;
+      border: 2px dashed #f9a8d4;
+      overflow: hidden;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 13px;
+    }
+
+    .gallery-item.large {
+      grid-column: span 2;
+    }
+
+    .qr-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 25px;
+      width: 100%;
+    }
+
+    .qr-code {
+      width: 220px;
+      height: 220px;
+      background: linear-gradient(45deg, #fff, #fdf2f8);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 3px solid #fce7f3;
+      overflow: hidden;
+      margin: 20px 0;
+      box-shadow: 0 8px 25px rgba(236, 72, 153, 0.1);
+      position: relative;
+    }
+
+    .qr-code::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, #ec4899, #f9a8d4, #fce7f3, #ec4899);
+      border-radius: 22px;
       z-index: -1;
       opacity: 0;
       transition: opacity 0.3s ease;
     }
 
-    .main-circle:hover::before {
+    .qr-code:hover::before {
       opacity: 1;
     }
 
-    .main-circle img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
+    .qr-code img {
+      width: 85%;
+      height: 85%;
+      object-fit: contain;
+      border-radius: 10px;
     }
 
-    .photo-placeholder {
+    .qr-description {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .qr-main-text {
+      font-size: 18px;
+      font-weight: 600;
+      color: #be185d;
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    .qr-sub-text {
+      font-size: 14px;
+      color: #9ca3af;
+      margin-bottom: 15px;
+    }
+
+    .qr-guide {
+      background: #fdf2f8;
+      padding: 15px 20px;
+      border-radius: 15px;
+      margin: 20px 0;
+      font-size: 13px;
+      color: #6b7280;
+      line-height: 1.5;
+      border: 1px solid #fce7f3;
+    }
+
+    .share-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 25px;
+      width: 100%;
+      max-width: 280px;
+    }
+
+    .share-btn {
+      padding: 16px 24px;
+      border: none;
+      border-radius: 30px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Noto Serif KR', serif;
+      position: relative;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 100%;
-      height: 100%;
-      color: #999;
-      font-size: 14px;
-      text-align: center;
-      line-height: 1.4;
+      gap: 8px;
+      box-shadow: 0 4px 15px rgba(236, 72, 153, 0.1);
     }
 
-    .accent-circle {
-      position: absolute;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: linear-gradient(45deg, #e3f2fd, #bbdefb);
-      top: -10px;
-      right: 20px;
-      opacity: 0.8;
-      z-index: -1;
-    }
-
-    .names {
-      margin-bottom: 35px;
-    }
-
-    .groom-name {
-      font-size: 24px;
-      font-weight: 600;
-      color: #4a4a4a;
-      margin-bottom: 8px;
-      letter-spacing: 1px;
-    }
-
-    .bride-name {
-      font-size: 24px;
-      font-weight: 600;
-      color: #4a4a4a;
-      margin-bottom: 20px;
-      letter-spacing: 1px;
-    }
-
-    .wedding-info {
-      background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f5 100%);
-      padding: 25px 20px;
-      border-radius: 20px;
-      margin-bottom: 35px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .wedding-info::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, #e3f2fd, transparent);
-    }
-
-    .wedding-date {
-      font-size: 16px;
-      color: #666;
-      margin-bottom: 8px;
-      font-weight: 500;
-    }
-
-    .wedding-venue {
-      font-size: 14px;
-      color: #888;
-      line-height: 1.5;
-    }
-
-    .divider {
-      width: 80px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, #ddd, transparent);
-      margin: 30px auto;
-    }
-
-    .invitation-text {
-      font-size: 12px;
-      color: #aaa;
-      font-style: italic;
-      letter-spacing: 2px;
-      margin-bottom: 35px;
-      text-transform: uppercase;
-    }
-
-    .enter-btn {
-      background: linear-gradient(135deg, #666 0%, #555 100%);
-      color: white;
-      border: none;
-      padding: 18px 45px;
-      border-radius: 30px;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.4s ease;
-      font-family: 'Noto Serif KR', serif;
-      letter-spacing: 1px;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 8px 25px rgba(102, 102, 102, 0.3);
-    }
-
-    .enter-btn::before {
+    .share-btn::before {
       content: '';
       position: absolute;
       top: 0;
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
       transition: left 0.5s ease;
     }
 
-    .enter-btn:hover::before {
+    .share-btn:hover::before {
       left: 100%;
     }
 
-    .enter-btn:hover {
-      background: linear-gradient(135deg, #555 0%, #444 100%);
+    .share-btn.kakao {
+      background: linear-gradient(135deg, #fee500 0%, #fdd835 100%);
+      color: #3c1e1e;
+      border: 2px solid #f9d71c;
+    }
+
+    .share-btn.kakao:hover {
+      background: linear-gradient(135deg, #fdd835 0%, #fbc02d 100%);
       transform: translateY(-3px);
-      box-shadow: 0 12px 35px rgba(102, 102, 102, 0.4);
+      box-shadow: 0 8px 25px rgba(254, 229, 0, 0.3);
     }
 
-    .enter-btn:active {
-      transform: translateY(-1px);
+    .share-btn.link {
+      background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+      color: white;
+      border: 2px solid #f9a8d4;
     }
 
-    .floating-elements {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1;
+    .share-btn.link:hover {
+      background: linear-gradient(135deg, #be185d 0%, #9d174d 100%);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(236, 72, 153, 0.3);
     }
 
-    .floating-heart {
-      position: absolute;
-      color: rgba(224, 176, 118, 0.3);
+    .btn-icon {
+      font-size: 18px;
+    }
+
+    .share-section-title {
       font-size: 16px;
-      animation: floatHeart 8s linear infinite;
+      font-weight: 600;
+      color: #be185d;
+      margin: 25px 0 15px;
+      text-align: center;
     }
 
-    .floating-heart:nth-child(1) { left: 20%; animation-delay: 0s; }
-    .floating-heart:nth-child(2) { left: 50%; animation-delay: 2s; }
-    .floating-heart:nth-child(3) { left: 80%; animation-delay: 4s; }
+    .decoration-hearts {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+      opacity: 0.6;
+    }
 
-    @keyframes floatHeart {
-      0% {
-        transform: translateY(100vh) rotate(0deg);
-        opacity: 0;
-      }
-      10% {
-        opacity: 1;
-      }
-      90% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-50px) rotate(360deg);
-        opacity: 0;
-      }
+    .decoration-hearts span {
+      color: #f9a8d4;
+      font-size: 20px;
+      animation: heartbeat 2s ease-in-out infinite;
+    }
+
+    .decoration-hearts span:nth-child(2) {
+      animation-delay: 0.3s;
+    }
+
+    .decoration-hearts span:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    .rsvp-form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .rsvp-form input,
+    .rsvp-form select,
+    .rsvp-form textarea {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid #fce7f3;
+      border-radius: 10px;
+      font-size: 16px;
+      font-family: 'Noto Serif KR', serif;
+      background: #fdf2f8;
+      transition: border-color 0.3s ease;
+    }
+
+    .rsvp-form input:focus,
+    .rsvp-form select:focus,
+    .rsvp-form textarea:focus {
+      outline: none;
+      border-color: #ec4899;
+      background: #fff;
+    }
+
+    .rsvp-form textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .rsvp-form button {
+      background: #ec4899;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 25px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .rsvp-form button:hover {
+      background: #be185d;
+      transform: translateY(-2px);
+    }
+
+    .rsvp-info {
+      background: #fdf2f8;
+      padding: 20px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      color: #6b7280;
+      text-align: left;
+      border: 1px solid #fce7f3;
+    }
+
+    .music-player {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 200;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .music-icon {
+      width: 20px;
+      height: 20px;
+      color: #ec4899;
+      transition: color 0.3s ease;
+      opacity: 0.7;
+    }
+
+    .music-player.playing .music-icon {
+      color: #be185d;
+      opacity: 1;
+    }
+
+    .wave-container {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      height: 20px;
+    }
+
+    .wave-bar {
+      width: 3px;
+      background: rgba(236, 72, 153, 0.3);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .wave-bar:nth-child(1) { height: 8px; }
+    .wave-bar:nth-child(2) { height: 12px; }
+    .wave-bar:nth-child(3) { height: 16px; }
+    .wave-bar:nth-child(4) { height: 10px; }
+    .wave-bar:nth-child(5) { height: 14px; }
+    .wave-bar:nth-child(6) { height: 8px; }
+
+    .music-player.playing .wave-bar {
+      background: rgba(236, 72, 153, 0.8);
+      animation: wave 1.2s ease-in-out infinite;
+    }
+
+    .music-player.playing .wave-bar:nth-child(1) { animation-delay: 0s; }
+    .music-player.playing .wave-bar:nth-child(2) { animation-delay: 0.1s; }
+    .music-player.playing .wave-bar:nth-child(3) { animation-delay: 0.2s; }
+    .music-player.playing .wave-bar:nth-child(4) { animation-delay: 0.3s; }
+    .music-player.playing .wave-bar:nth-child(5) { animation-delay: 0.4s; }
+    .music-player.playing .wave-bar:nth-child(6) { animation-delay: 0.5s; }
+
+    @keyframes wave {
+      0%, 100% { transform: scaleY(1); }
+      50% { transform: scaleY(1.5); }
+    }
+
+    .scroll-indicator {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(236, 72, 153, 0.6);
+      font-size: 12px;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+      40% { transform: translateX(-50%) translateY(-10px); }
+      60% { transform: translateX(-50%) translateY(-5px); }
     }
 
     @media (max-width: 480px) {
       .container {
-        padding: 40px 30px;
-        width: 95%;
-        border-radius: 25px;
+        max-width: 100%;
+        padding: 0 10px;
       }
 
-      .main-circle {
-        width: 160px;
-        height: 160px;
+      .card {
+        width: 320px;
+        min-height: 100vh;
+        padding: 30px 25px;
       }
 
-      .groom-name,
-      .bride-name {
-        font-size: 20px;
+      h1 {
+        font-size: 24px;
       }
 
-      .wedding-date {
-        font-size: 15px;
+      h2 {
+        font-size: 22px;
       }
 
-      .wedding-venue {
-        font-size: 13px;
+      .main-photo {
+        width: 250px;
+        height: 300px;
       }
 
-      .enter-btn {
-        padding: 16px 40px;
-        font-size: 15px;
+      .wedding-title {
+        font-size: 36px;
+      }
+
+      .date-title {
+        font-size: 24px;
+      }
+
+      .date-title::before,
+      .date-title::after {
+        display: none;
+      }
+
+      .calendar-grid {
+        gap: 6px;
+      }
+
+      .calendar-day {
+        font-size: 12px;
+      }
+
+      .share-buttons {
+        flex-direction: column;
+        width: 100%;
+        max-width: 250px;
+      }
+
+      .share-btn {
+        width: 100%;
+        font-size: 14px;
+        padding: 14px 20px;
+      }
+
+      .qr-code {
+        width: 180px;
+        height: 180px;
+      }
+
+      .qr-main-text {
+        font-size: 16px;
       }
     }
 
     @media (max-width: 360px) {
-      .container {
-        padding: 35px 25px;
+      .card {
+        width: 300px;
+        min-height: 100vh;
+        padding: 25px 20px;
       }
 
-      .main-circle {
-        width: 140px;
-        height: 140px;
+      h1 {
+        font-size: 20px;
       }
 
-      .groom-name,
-      .bride-name {
-        font-size: 18px;
+      .main-photo {
+        width: 220px;
+        height: 280px;
+      }
+
+      .wedding-title {
+        font-size: 32px;
+      }
+
+      .date-title {
+        font-size: 22px;
       }
     }
   </style>
 </head>
 <body>
-  <button class="admin-btn" onclick="window.open('admin.html', '_blank')">
-    <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
-      <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 4V6L13 4V2H11V4L9 6V4L3 7V9L9 6V10C9 11.1 9.9 12 11 12H13C14.1 12 15 11.1 15 10V6L21 9ZM11 13V15H7V17H11V19H7V21H17V19H13V17H17V15H13V13H17V11H7V13H11Z"/>
-    </svg>
-  </button>
-
-  <div class="background-decoration">
-    <div class="circle-decoration circle-1"></div>
-    <div class="circle-decoration circle-2"></div>
-    <div class="circle-decoration circle-3"></div>
-  </div>
-
-  <div class="floating-elements">
-    <div class="floating-heart">♡</div>
-    <div class="floating-heart">♡</div>
-    <div class="floating-heart">♡</div>
-  </div>
-
   <div class="container">
-    <div class="photo-container">
-      <div class="accent-circle"></div>
-      <div class="main-circle">
-        <div class="photo-placeholder">
-          웨딩 사진이<br>들어갈 자리
-        </div>
+    <div class="music-player" id="musicPlayer">
+      <svg class="music-icon" viewBox="0 0 24 24" fill="currentColor">
+        <path d="12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+      </svg>
+      <div class="wave-container">
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
       </div>
     </div>
 
-    <div class="names">
-      <div class="groom-name">박현동</div>
-      <div class="bride-name">박수지</div>
+    <audio id="bgMusic" loop>
+      <source src="Gareth Donkin - Falling For You (Official Audio).mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="scroll-indicator">스크롤해서 초대장을 확인하세요 ↓</div>
+
+      <div class="card">
+        <div class="main-photo" style="width: 100%; height: 60vh; margin: 0;">
+          <span>웨딩 사진이 여기에 가득 차게</span>
+        </div>
+        <div class="wedding-title">Our Wedding Day</div>
+        <div class="invitation-main">소중한 분들을 초대합니다</div>
+        <div class="invitation-content">
+          저희 두 사람이 사랑으로<br>
+          하나 되어 결혼합니다.<br><br>
+          귀한 걸음으로 축하하여 주시면<br>
+          더 없는 기쁨으로 간직하겠습니다.
+        </div>
+        <div class="contact-info">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+            <div style="text-align: left;">
+              <div style="font-size: 14px; color: #9ca3af; margin-bottom: 5px;">신랑</div>
+              <div style="font-weight: 600; color: #be185d;">박현동 📞</div>
+            </div>
+            <div style="text-align: right;">
+              <div style="font-size: 14px; color: #9ca3af; margin-bottom: 5px;">신부</div>
+              <div style="font-weight: 600; color: #be185d;">박수지 📞</div>
+            </div>
+          </div>
+          
+          <div style="display: flex; justify-content: space-between; margin-top: 20px; padding-top: 20px; border-top: 1px solid #fce7f3;">
+            <div style="text-align: left; font-size: 11px; line-height: 1.6;">
+              <div style="color: #6b7280;">(고)박순권, 고기숙의 아들</div>
+            </div>
+            <div style="text-align: right; font-size: 11px; line-height: 1.6;">
+              <div style="color: #6b7280;">박현관, 이혜은의 딸</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="date-title">9월의 열세번째 날</div>
+        <div class="calendar-container">
+          <div class="calendar-header">
+            <div class="calendar-month">9월</div>
+            <div class="calendar-year">2025</div>
+          </div>
+          <div class="calendar-grid">
+            <div class="calendar-day-header">일</div>
+            <div class="calendar-day-header">월</div>
+            <div class="calendar-day-header">화</div>
+            <div class="calendar-day-header">수</div>
+            <div class="calendar-day-header">목</div>
+            <div class="calendar-day-header">금</div>
+            <div class="calendar-day-header">토</div>
+            
+            <div class="calendar-day other-month">31</div>
+            <div class="calendar-day">1</div>
+            <div class="calendar-day">2</div>
+            <div class="calendar-day">3</div>
+            <div class="calendar-day">4</div>
+            <div class="calendar-day">5</div>
+            <div class="calendar-day">6</div>
+            
+            <div class="calendar-day">7</div>
+            <div class="calendar-day">8</div>
+            <div class="calendar-day">9</div>
+            <div class="calendar-day">10</div>
+            <div class="calendar-day">11</div>
+            <div class="calendar-day">12</div>
+            <div class="calendar-day wedding-day">13</div>
+            
+            <div class="calendar-day">14</div>
+            <div class="calendar-day">15</div>
+            <div class="calendar-day">16</div>
+            <div class="calendar-day">17</div>
+            <div class="calendar-day">18</div>
+            <div class="calendar-day">19</div>
+            <div class="calendar-day">20</div>
+            
+            <div class="calendar-day">21</div>
+            <div class="calendar-day">22</div>
+            <div class="calendar-day">23</div>
+            <div class="calendar-day">24</div>
+            <div class="calendar-day">25</div>
+            <div class="calendar-day">26</div>
+            <div class="calendar-day">27</div>
+            
+            <div class="calendar-day">28</div>
+            <div class="calendar-day">29</div>
+            <div class="calendar-day">30</div>
+            <div class="calendar-day other-month">1</div>
+            <div class="calendar-day other-month">2</div>
+            <div class="calendar-day other-month">3</div>
+            <div class="calendar-day other-month">4</div>
+          </div>
+        </div>
+        <div class="d-day">
+          <span id="dday">D-67</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>예식장 안내 & 오시는 길</h2>
+        <div class="venue-info">
+          <div class="venue-name">W시티 컨벤션 웨딩홀</div>
+          <div class="venue-hall">별관 7층 하우스가든홀</div>
+          <div class="venue-address">울산광역시 북구 진장17길 7</div>
+        </div>
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3245.638349084956!2d129.35368171142778!3d35.56263293636567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3567cdeb50debba7%3A0x10980ca679fc2b13!2zV-yLnO2LsCDsu6jrsqTshZgg7Jeo65Sp7ZmA!5e0!3m2!1sko!2skr!4v1751851963762!5m2!1sko!2skr" allowfullscreen loading="lazy"></iframe>
+        </div>
+
+        <div class="transport-section">
+          <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+              🚌 대중교통
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-body">
+                <div class="transport-info">
+                  <h4>🚌 버스 이용시</h4>
+                  <p>104, 122, 126, 133, 401번</p>
+                  <p>진장시장 정류장 하차 후 도보 5분</p>
+                </div>
+                <div class="map-links">
+                  <a href="https://map.kakao.com/link/to/W시티컨벤션웨딩홀,35.56263293636567,129.35368171142778" class="map-link kakao" target="_blank">🥕 카카오맵으로 길찾기</a>
+                  <a href="https://naver.me/FnMF3AJm" class="map-link naver" target="_blank">🟢 네이버지도로 길찾기</a>
+                  <a href="tmap://route?goalname=W시티컨벤션웨딩홀&goalx=129.35368171142778&goaly=35.56263293636567" class="map-link tmap">🧭 티맵으로 길찾기</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+              🚗 주차안내
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-body">
+                <div class="transport-info">
+                  <h4>🚗 주차 정보</h4>
+                  <p>웨딩홀 건물 내 지하주차장 이용</p>
+                  <p>주차비 무료 (당일 4시간)</p>
+                  <p>주차공간: 120대 수용 가능</p>
+                </div>
+                <div class="transport-info">
+                  <h4>🛣️ 길찾기</h4>
+                  <p>경부고속도로 → 울산IC → 진장동 방면</p>
+                  <p>약 15분 소요</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>마음 전하실 곳</h2>
+        <div class="account-intro">
+          저희의 새 출발을 함께해주시는 모든 분들의 마음이 소중합니다.<br>
+          정성스러운 축복을 보내주시고 싶은 분들을 위해 안내해드립니다.
+        </div>
+        <div class="account-info">
+          <div class="account-item">
+            <div class="account-header">
+              <div class="account-name">신랑 박현동</div>
+              <button class="copy-btn" onclick="copyAccount('1002549859637', '우리은행', 'groom')">계좌 보기</button>
+            </div>
+            <div class="account-details">
+              <div class="account-number" id="groom-account" style="display: none;">우리은행 1002549859637</div>
+              <div class="account-hidden" id="groom-hidden">버튼을 눌러 계좌번호를 확인하세요</div>
+            </div>
+          </div>
+          <div class="account-item">
+            <div class="account-header">
+              <div class="account-name">신부 박수지</div>
+              <button class="copy-btn" onclick="copyAccount('06601211393753', '저축은행', 'bride')">계좌 보기</button>
+            </div>
+            <div class="account-details">
+              <div class="account-number" id="bride-account" style="display: none;">저축은행 06601211393753</div>
+              <div class="account-hidden" id="bride-hidden">버튼을 눌러 계좌번호를 확인하세요</div>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: center;">
+          <a href="https://qr.kakaopay.com/FTGG36235u" target="_blank" class="kakaopay-link">
+            💳 카카오페이로 간편 송금하기
+          </a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>갤러리</h2>
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            사진 1
+          </div>
+          <div class="gallery-item">
+            사진 2
+          </div>
+          <div class="gallery-item large">
+            메인 사진
+          </div>
+          <div class="gallery-item">
+            사진 3
+          </div>
+          <div class="gallery-item">
+            사진 4
+          </div>
+        </div>
+        <div class="gallery-description">
+          소중한 순간들을 담은 사진들입니다.<br>
+          함께한 시간들이 아름다운 추억이 되었으면 좋겠습니다.
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>참석 여부 & 축하 메시지</h2>
+        <div class="rsvp-info">
+          <strong>📝 참석 여부 안내</strong><br>
+          • 참석 여부는 9월 1일까지 남겨주시면 감사하겠습니다.<br>
+          • 동반 가족이 있으시면 메시지에 함께 적어주세요.<br>
+          • 식사 준비를 위해 정확한 인원수가 필요합니다.<br>
+          • 문의사항은 신랑·신부에게 연락주세요.
+        </div>
+        <form class="rsvp-form">
+          <input type="text" placeholder="이름을 입력해주세요" required>
+          <select required>
+            <option value="">참석 여부를 선택해주세요</option>
+            <option value="참석">참석</option>
+            <option value="불참">불참</option>
+            <option value="미정">미정</option>
+          </select>
+          <textarea placeholder="축하 메시지와 동반 인원수를 남겨주세요&#10;(예: 가족 4명 함께 참석)" required></textarea>
+          <input type="password" placeholder="비밀번호 (수정/삭제용, 4자리 이상)" required>
+          <button type="submit">마음 전하기 💕</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>모바일 청첩장</h2>
+        <div class="qr-container">
+          <div class="qr-description">
+            <div class="qr-main-text">
+              모바일로 간편하게 확인하세요<br>
+              QR코드를 스캔하면 청첩장이 열립니다
+            </div>
+            <div class="qr-sub-text">
+              스마트폰 카메라로 아래 QR코드를 비춰보세요
+            </div>
+          </div>
+          
+          <div class="qr-code">
+            <img src="suji_wedding_qr.png" alt="청첩장 QR코드">
+          </div>
+          
+          <div class="qr-guide">
+            📱 <strong>사용방법</strong><br>
+            1. 스마트폰 카메라 앱을 실행하세요<br>
+            2. QR코드에 카메라를 가져다 대세요<br>
+            3. 자동으로 나타나는 링크를 터치하세요
+          </div>
+
+          <div class="decoration-hearts">
+            <span>♡</span>
+            <span>♡</span>
+            <span>♡</span>
+          </div>
+
+          <div class="share-section-title">소중한 분들에게 공유해주세요</div>
+          
+          <div class="share-buttons">
+            <button class="share-btn kakao" onclick="shareKakao()">
+              <span class="btn-icon">💬</span>
+              카카오톡으로 공유하기
+            </button>
+            <button class="share-btn link" onclick="copyLink()">
+              <span class="btn-icon">🔗</span>
+              링크 주소 복사하기
+            </button>
+          </div>
+
+          <p style="font-size: 13px; color: #9ca3af; margin-top: 20px; text-align: center; line-height: 1.6;">
+            청첩장을 받으신 분들께서도<br>
+            가족, 친구들에게 자유롭게 공유해 주세요 💕
+          </p>
+        </div>
+      </div>
     </div>
-
-    <div class="wedding-info">
-      <div class="wedding-date">2025년 09월 13일, 토요일 낮 11시</div>
-      <div class="wedding-venue">W시티 컨벤션 웨딩홀 
-        별관 7층 하우스가든홀</div>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="invitation-text">Wedding Invitation</div>
-
-    <button class="enter-btn" onclick="enterInvitation()">초대장 보기</button>
   </div>
 
-  <script>
-    function enterInvitation() {
-      const btn = document.querySelector('.enter-btn');
-      btn.style.transform = 'scale(0.95)';
-      btn.style.background = 'linear-gradient(135deg, #4a4a4a 0%, #333 100%)';
-      
-      setTimeout(() => {
-        window.location.href = 'slide.html';
-      }, 200);
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAbaauVIvPWPT1O_h4kElc0nVkfPaiTbl4",
+      authDomain: "poetic-planet-462812-f5.firebaseapp.com",
+      projectId: "poetic-planet-462812-f5",
+      storageBucket: "poetic-planet-462812-f5.appspot.com",
+      messagingSenderId: "375231510481",
+      appId: "1:375231510481:web:5c06868eac02b01e0352f0",
+      measurementId: "G-EC6J2HWNQ6"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const bgMusic = document.getElementById('bgMusic');
+    const musicPlayer = document.getElementById('musicPlayer');
+    let isPlaying = false;
+
+    function toggleMusic() {
+      if (isPlaying) {
+        bgMusic.pause();
+        musicPlayer.classList.remove('playing');
+        isPlaying = false;
+      } else {
+        bgMusic.play().catch(e => console.log('음악 재생 실패:', e));
+        musicPlayer.classList.add('playing');
+        isPlaying = true;
+      }
     }
 
-    window.addEventListener('DOMContentLoaded', () => {
-      const container = document.querySelector('.container');
-      container.style.opacity = '0';
-      container.style.transform = 'translateY(50px)';
+    function startMusic() {
+      bgMusic.play().catch(e => {
+        console.log('자동재생 실패:', e);
+      });
+      musicPlayer.classList.add('playing');
+      isPlaying = true;
+    }
+
+    musicPlayer.addEventListener('click', toggleMusic);
+
+    document.addEventListener('click', () => {
+      if (!isPlaying) {
+        startMusic();
+      }
+    }, { once: true });
+
+    setTimeout(startMusic, 1000);
+
+    const weddingDate = new Date('2025-09-13T11:00:00+09:00');
+    const today = new Date();
+    const diffTime = weddingDate - today;
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    document.getElementById('dday').textContent = diffDays > 0 ? `D-${diffDays}` : '오늘입니다!';
+
+    window.toggleAccordion = function(header) {
+      const content = header.nextElementSibling;
+      const isActive = header.classList.contains('active');
+      
+      document.querySelectorAll('.accordion-header').forEach(h => {
+        h.classList.remove('active');
+        h.nextElementSibling.classList.remove('active');
+      });
+      
+      if (!isActive) {
+        header.classList.add('active');
+        content.classList.add('active');
+      }
+    };
+
+    window.copyAccount = function(accountNumber, bankName, type) {
+      const accountElement = document.getElementById(type + '-account');
+      const hiddenElement = document.getElementById(type + '-hidden');
+      const button = event.target;
+      
+      if (accountElement.style.display === 'none') {
+        accountElement.style.display = 'block';
+        hiddenElement.style.display = 'none';
+        button.textContent = '복사하기';
+      } else {
+        const fullAccount = bankName + ' ' + accountNumber;
+        navigator.clipboard.writeText(fullAccount).then(() => {
+          button.textContent = '복사됨!';
+          button.style.background = '#4CAF50';
+          setTimeout(() => {
+            button.textContent = '복사하기';
+            button.style.background = '#ec4899';
+          }, 2000);
+        }).catch(() => {
+          alert('계좌번호: ' + fullAccount);
+        });
+      }
+    };
+
+    window.shareKakao = function() {
+      const button = event.target.closest('.share-btn');
+      const originalText = button.innerHTML;
+      
+      button.innerHTML = '<span class="btn-icon">⏳</span>준비 중...';
+      button.style.pointerEvents = 'none';
       
       setTimeout(() => {
-        container.style.transition = 'all 1s ease-out';
-        container.style.opacity = '1';
-        container.style.transform = 'translateY(0)';
-      }, 100);
+        if (typeof Kakao !== 'undefined') {
+          Kakao.Link.sendDefault({
+            objectType: 'feed',
+            content: {
+              title: '💒 박현동♥박수지 결혼식 초대장',
+              description: '2025년 9월 13일 토요일 오전 11시\nW시티 컨벤션 웨딩홀에서 만나요 💕',
+              imageUrl: 'https://example.com/wedding-image.jpg',
+              link: {
+                mobileWebUrl: window.location.href,
+                webUrl: window.location.href,
+              },
+            },
+          });
+          button.innerHTML = '<span class="btn-icon">✅</span>공유완료!';
+          button.style.background = 'linear-gradient(135deg, #4CAF50 0%, #45a049 100%)';
+        } else {
+          button.innerHTML = '<span class="btn-icon">📱</span>카카오톡 앱에서 열어주세요';
+          button.style.background = 'linear-gradient(135deg, #ff9800 0%, #f57c00 100%)';
+        }
+        
+        setTimeout(() => {
+          button.innerHTML = originalText;
+          button.style.background = '';
+          button.style.pointerEvents = '';
+        }, 3000);
+      }, 500);
+    };
+
+    window.copyLink = function() {
+      const button = event.target.closest('.share-btn');
+      const originalText = button.innerHTML;
+      
+      button.innerHTML = '<span class="btn-icon">📋</span>복사 중...';
+      button.style.pointerEvents = 'none';
+      
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        button.innerHTML = '<span class="btn-icon">✅</span>복사완료!';
+        button.style.background = 'linear-gradient(135deg, #4CAF50 0%, #45a049 100%)';
+        setTimeout(() => {
+          button.innerHTML = originalText;
+          button.style.background = '';
+          button.style.pointerEvents = '';
+        }, 3000);
+      }).catch(() => {
+        button.innerHTML = '<span class="btn-icon">❌</span>복사 실패';
+        button.style.background = 'linear-gradient(135deg, #f44336 0%, #d32f2f 100%)';
+        alert('링크 주소: ' + window.location.href);
+        setTimeout(() => {
+          button.innerHTML = originalText;
+          button.style.background = '';
+          button.style.pointerEvents = '';
+        }, 3000);
+      });
+    };
+
+    const rsvpForm = document.querySelector('.rsvp-form');
+    if (rsvpForm) {
+      rsvpForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const name = rsvpForm.querySelector('input[type="text"]').value;
+        const status = rsvpForm.querySelector('select').value;
+        const message = rsvpForm.querySelector('textarea').value;
+        const password = rsvpForm.querySelector('input[type="password"]').value;
+
+        if (password.length < 4) {
+          alert('비밀번호는 4자리 이상 입력해주세요.');
+          return;
+        }
+
+        try {
+          await addDoc(collection(db, "rsvps"), {
+            name,
+            status,
+            message,
+            password,
+            createdAt: serverTimestamp()
+          });
+
+          alert("마음이 전달되었습니다! 감사합니다 💕");
+          rsvpForm.reset();
+        } catch (error) {
+          console.error("Error:", error);
+          alert("전송 중 오류가 발생했습니다. 다시 시도해주세요.");
+        }
+      });
+    }
+
+    let scrollTimer;
+    window.addEventListener('scroll', () => {
+      const indicator = document.querySelector('.scroll-indicator');
+      if (indicator && window.scrollY > 100) {
+        indicator.style.opacity = '0';
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(() => {
+          indicator.style.display = 'none';
+        }, 300);
+      }
     });
   </script>
 </body>

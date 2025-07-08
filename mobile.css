@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&display=swap');
-
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
@@ -15,20 +14,20 @@ html {
   overflow-x: hidden;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Noto Serif KR', 'Nanum Myeongjo', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
-  background-color: #fdfdfd;
-  color: #222;
-  line-height: 1.6;
-  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Noto Serif KR', serif;
+  background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 50%, #ffffff 100%);
   min-height: 100vh;
   min-height: -webkit-fill-available;
+  color: #374151;
   overflow-x: hidden;
+  overflow-y: auto;
   position: relative;
+  -webkit-overflow-scrolling: touch;
 }
 
 input, textarea, p, h1, h2, h3 {
@@ -36,374 +35,712 @@ input, textarea, p, h1, h2, h3 {
   user-select: text;
 }
 
-h1, h2, h3 {
-  color: #c4a04a;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-  word-break: keep-all;
-  line-height: 1.4;
-  font-family: 'Noto Serif KR', 'Nanum Myeongjo', serif;
-}
-
-h1 {
-  font-size: 1.8rem;
-}
-
-h2 {
-  font-size: 1.5rem;
-}
-
-p {
-  margin: 0.5rem 0;
-  font-size: 1rem;
-  word-break: keep-all;
-  line-height: 1.6;
-  font-family: 'Noto Serif KR', 'Nanum Myeongjo', serif;
-}
-
-button {
-  background: transparent;
-  border: 1px solid #c4a04a;
-  color: #c4a04a;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-  margin: 0.5rem;
-  transition: all 0.3s ease;
-  -webkit-appearance: none;
-  appearance: none;
-  min-height: 44px;
-  touch-action: manipulation;
-  user-select: none;
-  font-family: 'Noto Serif KR', 'Nanum Myeongjo', serif;
-}
-
-button:hover, button:active {
-  background-color: #c4a04a;
-  color: #fff;
-  transform: translateY(-1px);
-}
-
-button:active {
-  transform: translateY(0);
-}
-
-.cover {
-  padding: 2rem 1rem;
-  max-width: 100%;
+.container {
+  max-width: 100vw;
   margin: 0 auto;
+  position: relative;
+  padding: 0;
+}
+
+.card-stack {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  width: 100vw;
   min-height: 100vh;
   min-height: -webkit-fill-available;
+  margin: 0;
+  background: #ffffff;
+  border-radius: 0;
+  box-shadow: none;
+  padding: env(safe-area-inset-top, 20px) 20px env(safe-area-inset-bottom, 20px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.d-day {
-  margin: 1.5rem 0;
-  font-weight: bold;
-  color: #a08948;
-  font-size: 1.1rem;
-  padding: 0.5rem 1rem;
-  border: 1px solid #c4a04a;
-  border-radius: 20px;
-  display: inline-block;
-  font-family: 'Noto Serif KR', 'Nanum Myeongjo', serif;
-}
-
-.slides {
-  display: flex;
-  width: 600vw;
-  height: 100vh;
-  height: -webkit-fill-available;
-  transition: transform 0.5s ease;
+  text-align: center;
+  scroll-snap-align: start;
+  border: none;
   position: relative;
-}
-
-.slide {
-  flex: 0 0 100vw;
-  height: 100vh;
-  height: -webkit-fill-available;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  box-sizing: border-box;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
 
-.nav-btns {
-  position: fixed;
-  top: 50%;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  transform: translateY(-50%);
-  z-index: 1000;
-  pointer-events: none;
+h1 {
+  font-size: clamp(20px, 5vw, 24px);
+  color: #ec4899;
+  margin-bottom: 20px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  line-height: 1.2;
 }
 
-.nav-btns button {
-  background-color: rgba(196, 160, 74, 0.2);
-  border: none;
-  font-size: 2rem;
-  padding: 1rem;
-  cursor: pointer;
-  color: #c4a04a;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
+h2 {
+  font-size: clamp(18px, 4.5vw, 22px);
+  color: #be185d;
+  margin-bottom: 20px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+h3 {
+  font-size: clamp(16px, 4vw, 18px);
+  color: #ec4899;
+  margin-bottom: 15px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+p {
+  font-size: clamp(14px, 3.5vw, 16px);
+  line-height: 1.8;
+  margin-bottom: 15px;
+  color: #6b7280;
+  word-break: keep-all;
+}
+
+.main-photo {
+  width: min(280px, 80vw);
+  height: min(350px, 45vh);
+  background: linear-gradient(45deg, #fdf2f8, #fce7f3);
+  border-radius: 15px;
+  margin: 20px 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  pointer-events: auto;
-  margin: 0.5rem;
+  color: #ec4899;
+  font-size: 14px;
+  border: 2px dashed #f9a8d4;
+  position: relative;
+  overflow: hidden;
 }
 
-.nav-btns button:active {
-  background-color: rgba(196, 160, 74, 0.4);
+.card:nth-child(2) .main-photo {
+  width: 100%;
+  height: 50vh;
+  margin: 0 0 20px 0;
+  border-radius: 20px;
 }
 
-input, select, textarea {
+.main-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 13px;
+}
+
+.wedding-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(32px, 8vw, 42px);
+  color: #ec4899;
+  margin: 20px 0;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(236, 72, 153, 0.1);
+  transform: rotate(-2deg);
+  position: relative;
+  animation: writeEffect 3s ease-in-out;
+  line-height: 1.2;
+}
+
+.invitation-main {
+  font-size: clamp(18px, 5vw, 22px);
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #ec4899;
+  line-height: 1.3;
+}
+
+.invitation-content {
+  font-size: clamp(14px, 3.5vw, 16px);
+  line-height: 2;
+  color: #6b7280;
+  margin-bottom: 25px;
+  word-break: keep-all;
+  padding: 0 10px;
+}
+
+.contact-info {
+  background: #fdf2f8;
+  padding: 20px 15px;
+  border-radius: 15px;
+  margin: 25px 0;
+  line-height: 1.8;
   width: 100%;
   max-width: 350px;
-  padding: 0.75rem;
-  margin: 0.5rem 0;
-  font-size: 1rem;
-  border: 1px solid #ddd;
+  border: 1px solid #fce7f3;
+}
+
+.contact-info p {
+  margin-bottom: 12px;
+  font-size: clamp(13px, 3.5vw, 15px);
+  text-align: center;
+  color: #6b7280;
+}
+
+.date-title {
+  font-size: clamp(24px, 6vw, 28px);
+  font-weight: 700;
+  color: #be185d;
+  margin-bottom: 25px;
+  letter-spacing: 1px;
+  position: relative;
+  line-height: 1.2;
+}
+
+.calendar-container {
+  background: #fdf2f8;
+  padding: 25px 15px;
+  border-radius: 15px;
+  margin: 20px 0;
+  width: 100%;
+  max-width: 350px;
+  border: 1px solid #fce7f3;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: clamp(4px, 1.5vw, 8px);
+  margin-bottom: 20px;
+}
+
+.calendar-day-header {
+  padding: 8px 2px;
+  text-align: center;
+  font-size: clamp(10px, 2.5vw, 12px);
+  font-weight: 600;
+  color: #be185d;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(12px, 3vw, 14px);
   border-radius: 8px;
-  font-family: 'Noto Serif KR', 'Nanum Myeongjo', serif;
-  -webkit-appearance: none;
-  appearance: none;
-  background-color: #fff;
-  box-sizing: border-box;
+  transition: all 0.3s ease;
+  color: #6b7280;
+  min-height: 35px;
 }
 
-textarea {
-  min-height: 100px;
-  resize: vertical;
+.calendar-day.wedding-day::before {
+  font-size: clamp(18px, 5vw, 24px);
 }
 
-select {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23666' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 0.75rem center;
-  background-size: 12px;
-  padding-right: 2.5rem;
+.d-day {
+  font-size: clamp(20px, 5vw, 24px);
+  font-weight: 700;
+  color: #be185d;
+  margin-top: 25px;
+  padding: 12px 20px;
+  background: #fff;
+  border-radius: 25px;
+  border: 2px solid #f9a8d4;
 }
 
-.rsvp-form {
+.venue-info {
+  text-align: center;
+  width: 100%;
+  max-width: 350px;
+  background: #fdf2f8;
+  padding: 20px 15px;
+  border-radius: 15px;
+  margin: 20px 0;
+  border: 1px solid #fce7f3;
+}
+
+.venue-name {
+  font-size: clamp(18px, 4.5vw, 22px);
+  font-weight: 600;
+  color: #be185d;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.venue-hall {
+  font-size: clamp(16px, 4vw, 18px);
+  color: #ec4899;
+  margin-bottom: 15px;
+  line-height: 1.3;
+}
+
+.venue-address {
+  font-size: clamp(14px, 3.5vw, 16px);
+  color: #9ca3af;
+  line-height: 1.4;
+}
+
+.map-container {
+  width: 100%;
+  max-width: 350px;
+  height: clamp(180px, 40vw, 200px);
+  border-radius: 15px;
+  overflow: hidden;
+  margin: 20px 0;
+  border: 2px solid #fce7f3;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.accordion {
+  background: #fdf2f8;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  overflow: hidden;
+  border: 1px solid #fce7f3;
+  width: 100%;
+  max-width: 350px;
+}
+
+.accordion-header {
+  padding: 16px 18px;
+  background: #fce7f3;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  color: #be185d;
+  transition: background 0.3s ease;
+  font-size: clamp(14px, 3.5vw, 16px);
+  min-height: 50px;
+  -webkit-tap-highlight-color: rgba(236, 72, 153, 0.1);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  background: #fdf2f8;
+}
+
+.accordion-content.active {
+  max-height: 500px;
+}
+
+.accordion-body {
+  padding: 18px;
+}
+
+.transport-info h4 {
+  font-size: clamp(14px, 3.5vw, 16px);
+  font-weight: 600;
+  color: #be185d;
+  margin-bottom: 8px;
+}
+
+.transport-info p {
+  font-size: clamp(12px, 3vw, 14px);
+  color: #6b7280;
+  margin-bottom: 5px;
+  line-height: 1.5;
+}
+
+.map-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.map-link {
+  display: block;
+  padding: 12px 16px;
+  text-decoration: none;
+  border-radius: 25px;
+  font-size: clamp(12px, 3vw, 14px);
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.3s ease;
+  color: white;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.account-intro {
+  font-size: clamp(13px, 3.5vw, 15px);
+  line-height: 1.8;
+  color: #6b7280;
+  margin: 20px 0 25px;
+  text-align: center;
+  word-break: keep-all;
+  padding: 0 15px;
+}
+
+.account-info {
+  background: #fdf2f8;
+  padding: 20px 15px;
+  border-radius: 15px;
+  margin: 20px 0;
+  width: 100%;
+  max-width: 350px;
+  text-align: left;
+  border: 1px solid #fce7f3;
+}
+
+.account-item {
+  margin-bottom: 15px;
+  padding: 16px;
+  background: white;
+  border-radius: 10px;
+  border: 1px solid #fce7f3;
+}
+
+.account-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.account-name {
+  font-weight: 600;
+  color: #be185d;
+  font-size: clamp(14px, 3.5vw, 16px);
+}
+
+.copy-btn {
+  background: #ec4899;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 15px;
+  font-size: clamp(11px, 2.5vw, 12px);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: 32px;
+  min-width: 70px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.account-number {
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+  font-size: clamp(12px, 3vw, 15px);
+  color: #6b7280;
+  letter-spacing: 0.5px;
+  word-break: break-all;
+}
+
+.kakaopay-link {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 14px 20px;
+  background: #fee500;
+  color: #3c1e1e;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: clamp(13px, 3.5vw, 15px);
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  width: 100%;
+  max-width: 350px;
+  margin: 20px 0;
+}
+
+.gallery-item {
+  aspect-ratio: 1;
+  background: linear-gradient(45deg, #fdf2f8, #fce7f3);
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ec4899;
+  font-size: clamp(10px, 2.5vw, 12px);
+  border: 2px dashed #f9a8d4;
+  overflow: hidden;
+  min-height: 120px;
+}
+
+.qr-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  padding: 1rem;
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-.rsvp-form button {
-  margin-top: 1rem;
+  gap: 20px;
   width: 100%;
-  max-width: 200px;
-}
-
-#guestbook > div {
-  border: 1px solid #eee;
-  padding: 1rem;
-  margin: 1rem auto;
   max-width: 350px;
-  border-radius: 12px;
-  background-color: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  text-align: left;
 }
 
-#guestbook button {
-  font-size: 0.9rem;
-  padding: 0.5rem 1rem;
-  margin: 0.25rem;
-}
-
-#toggleMusic {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  border: none;
-  background: #c4a04a;
-  color: #fff;
-  font-size: 1.5rem;
-  padding: 0.75rem;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 1000;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  width: 50px;
-  height: 50px;
+.qr-code {
+  width: min(200px, 60vw);
+  height: min(200px, 60vw);
+  background: linear-gradient(45deg, #fff, #fdf2f8);
+  border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  touch-action: manipulation;
+  border: 3px solid #fce7f3;
+  overflow: hidden;
+  margin: 20px 0;
+  position: relative;
 }
 
-#toggleMusic:active {
-  transform: scale(0.95);
+.qr-main-text {
+  font-size: clamp(16px, 4vw, 18px);
+  font-weight: 600;
+  color: #be185d;
+  margin-bottom: 10px;
+  line-height: 1.6;
+  text-align: center;
 }
 
-.admin-container, .login-container {
-  max-width: 90%;
-  margin: 2rem auto;
-  padding: 1.5rem;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+.qr-guide {
+  background: #fdf2f8;
+  padding: 15px;
+  border-radius: 15px;
+  margin: 20px 0;
+  font-size: clamp(11px, 3vw, 13px);
+  color: #6b7280;
+  line-height: 1.5;
+  border: 1px solid #fce7f3;
+  width: 100%;
+  max-width: 300px;
 }
 
-iframe {
+.share-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 280px;
+}
+
+.share-btn {
+  padding: 14px 20px;
+  border: none;
+  border-radius: 30px;
+  font-size: clamp(13px, 3.5vw, 15px);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.rsvp-info {
+  background: #fdf2f8;
+  padding: 16px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  font-size: clamp(12px, 3vw, 14px);
+  color: #6b7280;
+  text-align: left;
+  border: 1px solid #fce7f3;
   width: 100%;
   max-width: 350px;
-  height: 250px;
-  border: 0;
-  border-radius: 8px;
-  margin: 1rem 0;
+  line-height: 1.6;
 }
 
-.qr img {
-  width: 200px;
-  max-width: 80vw;
-  height: auto;
-  margin-top: 1rem;
-  border-radius: 8px;
+.rsvp-form {
+  width: 100%;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-button[onclick*="copyText"] {
-  font-size: 0.9rem;
-  padding: 0.4rem 0.8rem;
-  margin-left: 0.5rem;
-  display: inline-block;
+.rsvp-form input,
+.rsvp-form select,
+.rsvp-form textarea {
+  width: 100%;
+  padding: 14px;
+  border: 2px solid #fce7f3;
+  border-radius: 10px;
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Noto Serif KR', serif;
+  background: #fdf2f8;
+  transition: border-color 0.3s ease;
+  min-height: 48px;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
-@media screen and (max-width: 480px) {
-  .slide {
-    padding: 0.5rem;
-  }
-  
-  h1 {
-    font-size: 1.6rem;
-  }
-  
-  h2 {
-    font-size: 1.3rem;
-  }
-  
-  p {
-    font-size: 0.95rem;
-  }
-  
-  button {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.95rem;
-  }
-  
-  .nav-btns button {
-    font-size: 1.5rem;
-    width: 45px;
-    height: 45px;
-  }
-  
-  input, select, textarea {
-    font-size: 16px;
-    max-width: 280px;
-  }
-  
-  iframe {
-    height: 200px;
-    max-width: 280px;
-  }
-  
-  .qr img {
-    width: 180px;
-  }
+.rsvp-form input:focus,
+.rsvp-form select:focus,
+.rsvp-form textarea:focus {
+  outline: none;
+  border-color: #ec4899;
+  background: #fff;
+  transform: none;
 }
 
-@media screen and (max-width: 360px) {
-  .cover {
-    padding: 1rem 0.5rem;
-  }
-  
-  .slide {
-    padding: 0.5rem;
-  }
-  
-  h1 {
-    font-size: 1.4rem;
-  }
-  
-  h2 {
-    font-size: 1.2rem;
-  }
-  
-  input, select, textarea {
-    max-width: 260px;
-  }
-  
-  iframe {
-    max-width: 260px;
-    height: 180px;
-  }
-  
-  .admin-container, .login-container {
-    margin: 1rem auto;
-    padding: 1rem;
+.rsvp-form textarea {
+  min-height: 100px;
+  resize: vertical;
+  font-family: -apple-system, BlinkMacSystemFont, 'Noto Serif KR', serif;
+}
+
+.rsvp-form button {
+  background: #ec4899;
+  color: white;
+  border: none;
+  padding: 16px 30px;
+  border-radius: 25px;
+  font-size: clamp(14px, 3.5vw, 16px);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: 50px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.music-player {
+  position: fixed;
+  top: env(safe-area-inset-top, 20px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.music-icon {
+  width: 18px;
+  height: 18px;
+  color: #ec4899;
+  opacity: 0.8;
+}
+
+.scroll-indicator {
+  position: fixed;
+  bottom: env(safe-area-inset-bottom, 20px);
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(236, 72, 153, 0.6);
+  font-size: 11px;
+  animation: bounce 2s infinite;
+  text-align: center;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+@supports (padding: max(0px)) {
+  .card {
+    padding-top: max(20px, env(safe-area-inset-top));
+    padding-bottom: max(20px, env(safe-area-inset-bottom));
+    padding-left: max(20px, env(safe-area-inset-left));
+    padding-right: max(20px, env(safe-area-inset-right));
   }
 }
 
 @media screen and (orientation: landscape) and (max-height: 500px) {
-  .slide {
-    padding: 0.5rem;
-    justify-content: flex-start;
-    padding-top: 1rem;
-  }
-  
-  .cover {
+  .card {
     min-height: auto;
-    padding: 1rem;
+    padding: 15px 20px;
+    justify-content: flex-start;
   }
   
-  h1 {
-    font-size: 1.4rem;
-    margin-bottom: 0.5rem;
+  .main-photo {
+    height: 30vh;
   }
   
-  h2 {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
+  .card:nth-child(2) .main-photo {
+    height: 35vh;
   }
   
-  .d-day {
-    margin: 1rem 0;
+  .wedding-title {
+    margin: 15px 0;
   }
   
-  iframe {
-    height: 150px;
+  .calendar-container {
+    padding: 20px 15px;
+  }
+  
+  .scroll-indicator {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 375px) and (max-height: 667px) {
+  .card {
+    padding: 15px;
+  }
+  
+  .main-photo {
+    width: min(250px, 75vw);
+    height: min(300px, 40vh);
+  }
+  
+  .card:nth-child(2) .main-photo {
+    height: 45vh;
+  }
+  
+  .wedding-title {
+    font-size: clamp(28px, 7vw, 36px);
+  }
+  
+  .calendar-grid {
+    gap: 3px;
+  }
+  
+  .calendar-day {
+    min-height: 30px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .card {
+    padding: 12px;
+  }
+  
+  .main-photo {
+    width: min(220px, 70vw);
+    height: min(280px, 35vh);
+  }
+  
+  .contact-info,
+  .calendar-container,
+  .venue-info,
+  .account-info,
+  .accordion {
+    max-width: 320px;
   }
 }
 
 @supports (-webkit-touch-callout: none) {
-  .slides {
-    height: 100vh;
-    height: -webkit-fill-available;
-  }
-  
-  .slide {
-    height: 100vh;
+  html {
+    height: 100%;
     height: -webkit-fill-available;
   }
   
@@ -412,55 +749,43 @@ button[onclick*="copyText"] {
     min-height: -webkit-fill-available;
   }
   
+  .card {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+  
   input[type="text"],
   input[type="password"],
   textarea,
   select {
-    font-size: 16px;
+    font-size: 16px !important;
   }
 }
 
 @media (prefers-color-scheme: dark) {
   body {
-    background-color: #1a1a1a;
-    color: #e0e0e0;
-  }
-  
-  input, select, textarea {
-    background-color: #2a2a2a;
-    border-color: #444;
-    color: #e0e0e0;
-  }
-  
-  #guestbook > div {
-    background-color: #2a2a2a;
-    border-color: #444;
-  }
-  
-  .admin-container, .login-container {
-    background-color: #2a2a2a;
-    border-color: #444;
+    color-scheme: light;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .slides {
-    transition: none;
-  }
-  
-  button {
-    transition: none;
-  }
-  
   * {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+  
+  .scroll-indicator {
+    animation: none;
+  }
+  
+  .wedding-title {
+    animation: none;
+  }
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  .qr img {
+  .qr-code img {
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
   }
