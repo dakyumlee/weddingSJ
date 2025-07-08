@@ -6,7 +6,6 @@
   <title>수지 & 현동의 결혼식 초대장</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="mobile.css">
   <style>
     * {
       margin: 0;
@@ -1054,8 +1053,25 @@
           더 없는 기쁨으로 간직하겠습니다.
         </div>
         <div class="contact-info">
-          <p><strong>신랑</strong> 박현동 📞 <strong>010-6626-2747</strong></p>
-          <p><strong>신부</strong> 박수지 📞 <strong>010-4166-6338</strong></p>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+            <div style="text-align: left;">
+              <div style="font-size: 14px; color: #9ca3af; margin-bottom: 5px;">신랑</div>
+              <div style="font-weight: 600; color: #be185d;">박현동 📞</div>
+            </div>
+            <div style="text-align: right;">
+              <div style="font-size: 14px; color: #9ca3af; margin-bottom: 5px;">신부</div>
+              <div style="font-weight: 600; color: #be185d;">박수지 📞</div>
+            </div>
+          </div>
+          
+          <div style="display: flex; justify-content: space-between; margin-top: 20px; padding-top: 20px; border-top: 1px solid #fce7f3;">
+            <div style="text-align: left; font-size: 11px; line-height: 1.6;">
+              <div style="color: #6b7280;">(고)박순권, 고기숙의 아들</div>
+            </div>
+            <div style="text-align: right; font-size: 11px; line-height: 1.6;">
+              <div style="color: #6b7280;">박현관, 이혜은의 딸</div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -1081,7 +1097,7 @@
             <div class="calendar-day">3</div>
             <div class="calendar-day">4</div>
             <div class="calendar-day">5</div>
-            <div class="calendar-day saturday">6</div>
+            <div class="calendar-day">6</div>
             
             <div class="calendar-day">7</div>
             <div class="calendar-day">8</div>
@@ -1097,7 +1113,7 @@
             <div class="calendar-day">17</div>
             <div class="calendar-day">18</div>
             <div class="calendar-day">19</div>
-            <div class="calendar-day saturday">20</div>
+            <div class="calendar-day">20</div>
             
             <div class="calendar-day">21</div>
             <div class="calendar-day">22</div>
@@ -1105,7 +1121,7 @@
             <div class="calendar-day">24</div>
             <div class="calendar-day">25</div>
             <div class="calendar-day">26</div>
-            <div class="calendar-day saturday">27</div>
+            <div class="calendar-day">27</div>
             
             <div class="calendar-day">28</div>
             <div class="calendar-day">29</div>
@@ -1122,7 +1138,7 @@
       </div>
 
       <div class="card">
-        <h2>예식장 안내</h2>
+        <h2>예식장 안내 & 오시는 길</h2>
         <div class="venue-info">
           <div class="venue-name">W시티 컨벤션 웨딩홀</div>
           <div class="venue-hall">별관 7층 하우스가든홀</div>
@@ -1131,10 +1147,7 @@
         <div class="map-container">
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3245.638349084956!2d129.35368171142778!3d35.56263293636567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3567cdeb50debba7%3A0x10980ca679fc2b13!2zV-yLnO2LsCDsu6jrsqTshZgg7Jeo65Sp7ZmA!5e0!3m2!1sko!2skr!4v1751851963762!5m2!1sko!2skr" allowfullscreen loading="lazy"></iframe>
         </div>
-      </div>
 
-      <div class="card">
-        <h2>오시는 길</h2>
         <div class="transport-section">
           <div class="accordion">
             <div class="accordion-header" onclick="toggleAccordion(this)">
@@ -1182,8 +1195,8 @@
       <div class="card">
         <h2>마음 전하실 곳</h2>
         <div class="account-intro">
-          멀리서도 축하의 마음을 전하고 싶으신 분들을 위해 계좌번호를 안내드립니다.<br>
-          소중한 축하를 보내주셔서 감사드리며, 따뜻한 마음에 깊이 감사드립니다.
+          저희의 새 출발을 함께해주시는 모든 분들의 마음이 소중합니다.<br>
+          정성스러운 축복을 보내주시고 싶은 분들을 위해 안내해드립니다.
         </div>
         <div class="account-info">
           <div class="account-item">
@@ -1234,7 +1247,7 @@
           </div>
         </div>
         <div class="gallery-description">
-          저희의 소중한 순간들을 담은 사진들입니다.<br>
+          소중한 순간들을 담은 사진들입니다.<br>
           함께한 시간들이 아름다운 추억이 되었으면 좋겠습니다.
         </div>
       </div>
@@ -1331,7 +1344,6 @@
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
-    // 음악 플레이어 기능
     const bgMusic = document.getElementById('bgMusic');
     const musicPlayer = document.getElementById('musicPlayer');
     let isPlaying = false;
@@ -1366,14 +1378,12 @@
 
     setTimeout(startMusic, 1000);
 
-    // D-Day 계산 (9월 13일로 수정)
     const weddingDate = new Date('2025-09-13T11:00:00+09:00');
     const today = new Date();
     const diffTime = weddingDate - today;
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     document.getElementById('dday').textContent = diffDays > 0 ? `D-${diffDays}` : '오늘입니다!';
 
-    // 아코디언 토글 기능
     window.toggleAccordion = function(header) {
       const content = header.nextElementSibling;
       const isActive = header.classList.contains('active');
@@ -1389,7 +1399,6 @@
       }
     };
 
-    // 계좌번호 복사 기능
     window.copyAccount = function(accountNumber, bankName, type) {
       const accountElement = document.getElementById(type + '-account');
       const hiddenElement = document.getElementById(type + '-hidden');
@@ -1414,7 +1423,6 @@
       }
     };
 
-    // 카카오톡 공유 기능
     window.shareKakao = function() {
       const button = event.target.closest('.share-btn');
       const originalText = button.innerHTML;
@@ -1451,7 +1459,6 @@
       }, 500);
     };
 
-    // 링크 복사 기능
     window.copyLink = function() {
       const button = event.target.closest('.share-btn');
       const originalText = button.innerHTML;
@@ -1479,7 +1486,6 @@
       });
     };
 
-    // RSVP 폼 처리 (Firebase 연동)
     const rsvpForm = document.querySelector('.rsvp-form');
     if (rsvpForm) {
       rsvpForm.addEventListener('submit', async (e) => {
@@ -1512,7 +1518,6 @@
       });
     }
 
-    // 스크롤 인디케이터 숨기기
     let scrollTimer;
     window.addEventListener('scroll', () => {
       const indicator = document.querySelector('.scroll-indicator');
