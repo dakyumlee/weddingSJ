@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>박현동&박수지 청첩장</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="mobile.css">
   <style>
     * {
       margin: 0;
@@ -15,9 +16,9 @@
 
     body {
       font-family: 'Noto Serif KR', serif;
-      background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
+      background: #ffffff;
       min-height: 100vh;
-      color: #374151;
+      color: #333333;
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -38,13 +39,13 @@
     .circle-decoration {
       position: absolute;
       border-radius: 50%;
-      opacity: 0.15;
+      opacity: 0.1;
     }
 
     .circle-1 {
       width: 300px;
       height: 300px;
-      background: linear-gradient(45deg, #fce7f3, #f9a8d4);
+      background: linear-gradient(45deg, #f8bbd9, #fce7f3);
       top: -100px;
       right: -100px;
     }
@@ -52,7 +53,7 @@
     .circle-2 {
       width: 200px;
       height: 200px;
-      background: linear-gradient(45deg, #fdf2f8, #fce7f3);
+      background: linear-gradient(45deg, #fdf2f8, #f8bbd9);
       bottom: -50px;
       left: -50px;
     }
@@ -60,7 +61,7 @@
     .circle-3 {
       width: 150px;
       height: 150px;
-      background: linear-gradient(45deg, #fce7f3, #f9a8d4);
+      background: linear-gradient(45deg, #f8bbd9, #fce7f3);
       top: 30%;
       left: 10%;
       animation: float 6s ease-in-out infinite;
@@ -79,7 +80,7 @@
       height: 35px;
       border-radius: 50%;
       border: none;
-      background: #ec4899;
+      background: #f8bbd9;
       color: white;
       font-size: 14px;
       cursor: pointer;
@@ -89,19 +90,19 @@
       z-index: 200;
       transition: all 0.3s ease;
       backdrop-filter: blur(10px);
-      box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+      box-shadow: 0 4px 15px rgba(248, 187, 217, 0.3);
     }
 
     .admin-btn:hover {
-      background: #be185d;
+      background: #f5a6d3;
       transform: scale(1.05);
-      box-shadow: 0 6px 20px rgba(236, 72, 153, 0.4);
+      box-shadow: 0 6px 20px rgba(248, 187, 217, 0.4);
     }
 
     .container {
       background: #ffffff;
       border-radius: 30px;
-      box-shadow: 0 30px 60px rgba(236, 72, 153, 0.15);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
       max-width: 400px;
       width: 90%;
       padding: 50px 40px;
@@ -109,7 +110,7 @@
       position: relative;
       z-index: 10;
       animation: slideUp 1s ease-out;
-      border: 2px solid #fce7f3;
+      border: 1px solid #f0f0f0;
     }
 
     @keyframes slideUp {
@@ -132,12 +133,12 @@
       width: 200px;
       height: 200px;
       border-radius: 50%;
-      background: linear-gradient(45deg, #fdf2f8, #fce7f3);
+      background: #f8f9fa;
       margin: 0 auto;
       position: relative;
       overflow: hidden;
       border: 4px solid #fff;
-      box-shadow: 0 15px 35px rgba(236, 72, 153, 0.1);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
     }
 
     .main-circle::before {
@@ -147,7 +148,7 @@
       left: -3px;
       right: -3px;
       bottom: -3px;
-      background: linear-gradient(45deg, #ec4899, #f9a8d4, #fce7f3, #fdf2f8);
+      background: linear-gradient(45deg, #f8bbd9, #fce7f3, #f8f9fa, #ffffff);
       border-radius: 50%;
       z-index: -1;
       opacity: 0;
@@ -171,7 +172,7 @@
       justify-content: center;
       width: 100%;
       height: 100%;
-      color: #ec4899;
+      color: #999999;
       font-size: 14px;
       text-align: center;
       line-height: 1.4;
@@ -182,10 +183,10 @@
       width: 60px;
       height: 60px;
       border-radius: 50%;
-      background: linear-gradient(45deg, #fce7f3, #f9a8d4);
+      background: linear-gradient(45deg, #f8bbd9, #fce7f3);
       top: -10px;
       right: 20px;
-      opacity: 0.8;
+      opacity: 0.6;
       z-index: -1;
     }
 
@@ -196,7 +197,7 @@
     .groom-name {
       font-size: 24px;
       font-weight: 600;
-      color: #be185d;
+      color: #333333;
       margin-bottom: 8px;
       letter-spacing: 1px;
     }
@@ -204,19 +205,19 @@
     .bride-name {
       font-size: 24px;
       font-weight: 600;
-      color: #be185d;
+      color: #333333;
       margin-bottom: 20px;
       letter-spacing: 1px;
     }
 
     .wedding-info {
-      background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
+      background: #f8f9fa;
       padding: 25px 20px;
       border-radius: 20px;
       margin-bottom: 35px;
       position: relative;
       overflow: hidden;
-      border: 1px solid #fce7f3;
+      border: 1px solid #e9ecef;
     }
 
     .wedding-info::before {
@@ -226,32 +227,32 @@
       left: 0;
       width: 100%;
       height: 2px;
-      background: linear-gradient(90deg, transparent, #ec4899, transparent);
+      background: linear-gradient(90deg, transparent, #f8bbd9, transparent);
     }
 
     .wedding-date {
       font-size: 16px;
-      color: #ec4899;
+      color: #333333;
       margin-bottom: 8px;
       font-weight: 500;
     }
 
     .wedding-venue {
       font-size: 14px;
-      color: #6b7280;
+      color: #666666;
       line-height: 1.5;
     }
 
     .divider {
       width: 80px;
       height: 1px;
-      background: linear-gradient(90deg, transparent, #f9a8d4, transparent);
+      background: linear-gradient(90deg, transparent, #f8bbd9, transparent);
       margin: 30px auto;
     }
 
     .invitation-text {
       font-size: 12px;
-      color: #ec4899;
+      color: #f8bbd9;
       font-style: italic;
       letter-spacing: 2px;
       margin-bottom: 35px;
@@ -260,7 +261,7 @@
     }
 
     .enter-btn {
-      background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+      background: linear-gradient(135deg, #f8bbd9 0%, #f5a6d3 100%);
       color: white;
       border: none;
       padding: 18px 45px;
@@ -273,7 +274,7 @@
       letter-spacing: 1px;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 8px 25px rgba(236, 72, 153, 0.3);
+      box-shadow: 0 8px 25px rgba(248, 187, 217, 0.3);
     }
 
     .enter-btn::before {
@@ -292,9 +293,9 @@
     }
 
     .enter-btn:hover {
-      background: linear-gradient(135deg, #be185d 0%, #9d174d 100%);
+      background: linear-gradient(135deg, #f5a6d3 0%, #f291c7 100%);
       transform: translateY(-3px);
-      box-shadow: 0 12px 35px rgba(236, 72, 153, 0.4);
+      box-shadow: 0 12px 35px rgba(248, 187, 217, 0.4);
     }
 
     .enter-btn:active {
@@ -313,7 +314,7 @@
 
     .floating-heart {
       position: absolute;
-      color: rgba(249, 168, 212, 0.4);
+      color: rgba(248, 187, 217, 0.4);
       font-size: 16px;
       animation: floatHeart 8s linear infinite;
     }
@@ -386,7 +387,6 @@
       }
     }
 
-    /* iOS Safari 대응 */
     @supports (-webkit-touch-callout: none) {
       body {
         min-height: 100vh;
@@ -394,14 +394,12 @@
       }
     }
 
-    /* 다크모드에서도 라이트 모드 유지 */
     @media (prefers-color-scheme: dark) {
       body {
         color-scheme: light;
       }
     }
 
-    /* 모션 줄이기 설정 */
     @media (prefers-reduced-motion: reduce) {
       * {
         animation-duration: 0.01ms !important;
@@ -465,7 +463,7 @@
     function enterInvitation() {
       const btn = document.querySelector('.enter-btn');
       btn.style.transform = 'scale(0.95)';
-      btn.style.background = 'linear-gradient(135deg, #9d174d 0%, #831843 100%)';
+      btn.style.background = 'linear-gradient(135deg, #f291c7 0%, #ef7fb3 100%)';
       
       setTimeout(() => {
         window.location.href = 'slide.html';

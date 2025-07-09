@@ -16,9 +16,9 @@
 
     body {
       font-family: 'Noto Serif KR', serif;
-      background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 50%, #ffffff 100%);
+      background: #ffffff;
       min-height: 100vh;
-      color: #374151;
+      color: #333333;
       padding: 20px;
       line-height: 1.6;
     }
@@ -34,20 +34,20 @@
       padding: 20px;
       background: #ffffff;
       border-radius: 20px;
-      box-shadow: 0 8px 25px rgba(236, 72, 153, 0.1);
-      border: 1px solid #fce7f3;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+      border: 1px solid #f0f0f0;
     }
 
     .header h1 {
       font-size: clamp(24px, 6vw, 32px);
-      color: #ec4899;
+      color: #333333;
       margin-bottom: 10px;
       font-weight: 600;
       letter-spacing: 2px;
     }
 
     .header p {
-      color: #be185d;
+      color: #666666;
       font-size: clamp(14px, 3.5vw, 16px);
       font-weight: 500;
     }
@@ -55,10 +55,10 @@
     .login-container, .admin-container {
       background: #ffffff;
       border-radius: 20px;
-      box-shadow: 0 20px 40px rgba(236, 72, 153, 0.15);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
       padding: clamp(30px, 6vw, 40px);
       margin-bottom: 30px;
-      border: 2px solid #fce7f3;
+      border: 1px solid #f0f0f0;
       position: relative;
       overflow: hidden;
     }
@@ -71,7 +71,7 @@
       left: 0;
       right: 0;
       height: 3px;
-      background: linear-gradient(90deg, #ec4899, #f9a8d4, #ec4899);
+      background: linear-gradient(90deg, #f8bbd9, #fce7f3, #f8bbd9);
     }
 
     .admin-container {
@@ -81,7 +81,7 @@
     .login-title {
       text-align: center;
       font-size: clamp(20px, 5vw, 24px);
-      color: #be185d;
+      color: #333333;
       margin-bottom: 30px;
       font-weight: 600;
     }
@@ -97,30 +97,30 @@
       width: 100%;
       max-width: 320px;
       padding: 16px 20px;
-      border: 2px solid #fce7f3;
+      border: 1px solid #e9ecef;
       border-radius: 15px;
       font-size: 16px;
       font-family: 'Noto Serif KR', serif;
-      background: #fdf2f8;
+      background: #f8f9fa;
       transition: all 0.3s ease;
       text-align: center;
-      color: #374151;
+      color: #333333;
     }
 
     .login-form input:focus {
       outline: none;
-      border-color: #ec4899;
+      border-color: #f8bbd9;
       background: #fff;
       transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(236, 72, 153, 0.2);
+      box-shadow: 0 8px 25px rgba(248, 187, 217, 0.2);
     }
 
     .login-form input::placeholder {
-      color: #9ca3af;
+      color: #999999;
     }
 
     .login-form button {
-      background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+      background: linear-gradient(135deg, #f8bbd9 0%, #f5a6d3 100%);
       color: white;
       border: none;
       padding: 16px 40px;
@@ -130,7 +130,7 @@
       cursor: pointer;
       transition: all 0.3s ease;
       font-family: 'Noto Serif KR', serif;
-      box-shadow: 0 8px 25px rgba(236, 72, 153, 0.3);
+      box-shadow: 0 8px 25px rgba(248, 187, 217, 0.3);
       position: relative;
       overflow: hidden;
       min-height: 50px;
@@ -152,9 +152,9 @@
     }
 
     .login-form button:hover {
-      background: linear-gradient(135deg, #be185d 0%, #9d174d 100%);
+      background: linear-gradient(135deg, #f5a6d3 0%, #f291c7 100%);
       transform: translateY(-3px);
-      box-shadow: 0 12px 35px rgba(236, 72, 153, 0.4);
+      box-shadow: 0 12px 35px rgba(248, 187, 217, 0.4);
     }
 
     #loginMessage {
@@ -167,7 +167,7 @@
     .admin-title {
       text-align: center;
       font-size: clamp(22px, 5.5vw, 28px);
-      color: #be185d;
+      color: #333333;
       margin-bottom: 30px;
       font-weight: 600;
     }
@@ -180,12 +180,12 @@
     }
 
     .stat-card {
-      background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
+      background: #f8f9fa;
       padding: 25px;
       border-radius: 20px;
       text-align: center;
       transition: all 0.3s ease;
-      border: 1px solid #fce7f3;
+      border: 1px solid #e9ecef;
       position: relative;
       overflow: hidden;
     }
@@ -197,37 +197,37 @@
       left: 0;
       right: 0;
       height: 2px;
-      background: linear-gradient(90deg, #ec4899, #f9a8d4);
+      background: linear-gradient(90deg, #f8bbd9, #fce7f3);
     }
 
     .stat-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(236, 72, 153, 0.2);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
     }
 
     .stat-number {
       font-size: clamp(24px, 6vw, 32px);
       font-weight: 600;
-      color: #ec4899;
+      color: #f8bbd9;
       margin-bottom: 8px;
     }
 
     .stat-label {
       font-size: clamp(12px, 3vw, 14px);
-      color: #be185d;
+      color: #666666;
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
 
     .rsvp-list {
-      background: #fdf2f8;
+      background: #f8f9fa;
       border-radius: 20px;
       padding: 30px;
       max-height: 600px;
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
-      border: 1px solid #fce7f3;
+      border: 1px solid #e9ecef;
       position: relative;
     }
 
@@ -238,12 +238,12 @@
       left: 0;
       right: 0;
       height: 3px;
-      background: linear-gradient(90deg, #ec4899, #f9a8d4, #ec4899);
+      background: linear-gradient(90deg, #f8bbd9, #fce7f3, #f8bbd9);
       border-radius: 20px 20px 0 0;
     }
 
     .rsvp-list h3 {
-      color: #be185d;
+      color: #333333;
       margin-bottom: 25px;
       font-size: clamp(18px, 4.5vw, 20px);
       font-weight: 600;
@@ -255,15 +255,15 @@
       padding: 20px;
       border-radius: 15px;
       margin-bottom: 15px;
-      box-shadow: 0 4px 15px rgba(236, 72, 153, 0.1);
-      border-left: 4px solid #ec4899;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      border-left: 4px solid #f8bbd9;
       transition: all 0.3s ease;
       position: relative;
     }
 
     .rsvp-item:hover {
       transform: translateX(5px);
-      box-shadow: 0 8px 25px rgba(236, 72, 153, 0.15);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
     }
 
     .rsvp-header {
@@ -277,7 +277,7 @@
 
     .rsvp-name {
       font-weight: 600;
-      color: #be185d;
+      color: #333333;
       font-size: clamp(16px, 4vw, 18px);
     }
 
@@ -309,15 +309,15 @@
     }
 
     .rsvp-message {
-      color: #6b7280;
+      color: #666666;
       font-style: italic;
       margin-bottom: 15px;
       line-height: 1.6;
       font-size: clamp(13px, 3.5vw, 15px);
-      background: #fdf2f8;
+      background: #f8f9fa;
       padding: 12px 15px;
       border-radius: 10px;
-      border-left: 3px solid #f9a8d4;
+      border-left: 3px solid #f8bbd9;
     }
 
     .delete-btn {
@@ -342,7 +342,7 @@
     .empty-state {
       text-align: center;
       padding: 60px 20px;
-      color: #9ca3af;
+      color: #999999;
     }
 
     .empty-state svg {
@@ -350,7 +350,7 @@
       height: 80px;
       margin-bottom: 20px;
       opacity: 0.5;
-      color: #f9a8d4;
+      color: #f8bbd9;
     }
 
     .empty-state p {
@@ -362,9 +362,9 @@
       display: inline-block;
       width: 20px;
       height: 20px;
-      border: 2px solid #f9a8d4;
+      border: 2px solid #fce7f3;
       border-radius: 50%;
-      border-top-color: #ec4899;
+      border-top-color: #f8bbd9;
       animation: spin 1s ease-in-out infinite;
     }
 
@@ -460,17 +460,17 @@
     }
 
     .rsvp-list::-webkit-scrollbar-track {
-      background: #fce7f3;
+      background: #e9ecef;
       border-radius: 10px;
     }
 
     .rsvp-list::-webkit-scrollbar-thumb {
-      background: #f9a8d4;
+      background: #f8bbd9;
       border-radius: 10px;
     }
 
     .rsvp-list::-webkit-scrollbar-thumb:hover {
-      background: #ec4899;
+      background: #f5a6d3;
     }
 
     @media (prefers-color-scheme: dark) {
