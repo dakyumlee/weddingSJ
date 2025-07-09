@@ -6,7 +6,6 @@
   <title>수지 & 현동의 결혼식 초대장</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="mobile.css">
   <style>
     * {
       margin: 0;
@@ -986,7 +985,7 @@
           <span>웨딩 사진이 여기에 가득 차게</span>
         </div>
         <div class="wedding-title">Our Wedding Day</div>
-        <div class="invitation-main" style="color:#f8bbd9;">소중한 분들을 초대합니다</div>
+        <div class="invitation-main">소중한 분들을 초대합니다</div>
         <div class="invitation-content">
           저희 두 사람이 사랑으로<br>
           하나 되어 결혼합니다.<br><br>
@@ -997,11 +996,11 @@
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
             <div style="text-align: left;">
               <div style="font-size: 13px; color: #888888; margin-bottom: 4px;">신랑</div>
-              <div style="font-weight: 600; color: #333333;">박현동 📞</div>
+              <div style="font-weight: 600; color: #333333;">박현동 <span style="cursor: pointer; color: #f8bbd9;" onclick="callPhone('010-6626-2747')">📞</span></div>
             </div>
             <div style="text-align: right;">
               <div style="font-size: 13px; color: #888888; margin-bottom: 4px;">신부</div>
-              <div style="font-weight: 600; color: #333333;">박수지 📞</div>
+              <div style="font-weight: 600; color: #333333;">박수지 <span style="cursor: pointer; color: #f8bbd9;" onclick="callPhone('010-4166-6338')">📞</span></div>
             </div>
           </div>
           
@@ -1118,7 +1117,7 @@
               <div class="accordion-body">
                 <div class="transport-info">
                   <h4>🚗 주차 정보</h4>
-                  <p>주차가 신선도원몰 별관 1~6층</p>
+                  <p>신선도원몰 별관 1~6층</p>
                 </div>
                 <div class="transport-info">
                   <h4>🛣️ 길찾기</h4>
@@ -1359,6 +1358,12 @@
         }).catch(() => {
           alert('계좌번호: ' + fullAccount);
         });
+      }
+    };
+
+    window.callPhone = function(phoneNumber) {
+      if (confirm(`${phoneNumber}로 전화를 걸까요?`)) {
+        window.location.href = `tel:${phoneNumber}`;
       }
     };
 
