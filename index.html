@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>박현동&박수지 청첩장</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>박현동♥박수지 Wedding Invitation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="mobile.css">
   <style>
     * {
@@ -16,9 +17,9 @@
 
     body {
       font-family: 'Noto Serif KR', serif;
-      background: #ffffff;
+      background: #000000cc;
       min-height: 100vh;
-      color: #333333;
+      color: #fff;
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -26,255 +27,164 @@
       position: relative;
     }
 
-    .background-decoration {
+    .background-container {
+      display: none;
+    }
+
+    .background-image {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      overflow: hidden;
+      background-image: url('photo16.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       z-index: 0;
+      opacity: 1;
     }
 
-    .circle-decoration {
+    .background-image::before {
+      content: '';
       position: absolute;
-      border-radius: 50%;
-      opacity: 0.1;
-    }
-
-    .circle-1 {
-      width: 300px;
-      height: 300px;
-      background: linear-gradient(45deg, #f8bbd9, #fce7f3);
-      top: -100px;
-      right: -100px;
-    }
-
-    .circle-2 {
-      width: 200px;
-      height: 200px;
-      background: linear-gradient(45deg, #fdf2f8, #f8bbd9);
-      bottom: -50px;
-      left: -50px;
-    }
-
-    .circle-3 {
-      width: 150px;
-      height: 150px;
-      background: linear-gradient(45deg, #f8bbd9, #fce7f3);
-      top: 30%;
-      left: 10%;
-      animation: float 6s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 1;
     }
 
     .admin-btn {
       position: fixed;
-      top: 20px;
-      right: 20px;
-      width: 35px;
-      height: 35px;
+      top: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
       border: none;
-      background: #f8bbd9;
+      background: rgba(209, 156, 151, 0.9);
       color: white;
-      font-size: 14px;
+      font-size: 18px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 200;
+      z-index: 1000;
       transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(209, 156, 151, 0.4);
       backdrop-filter: blur(10px);
-      box-shadow: 0 4px 15px rgba(248, 187, 217, 0.3);
     }
 
     .admin-btn:hover {
-      background: #f5a6d3;
-      transform: scale(1.05);
-      box-shadow: 0 6px 20px rgba(248, 187, 217, 0.4);
+      background: rgba(192, 139, 134, 1);
+      transform: scale(1.1);
+      box-shadow: 0 12px 35px rgba(209, 156, 151, 0.6);
     }
 
-    .container {
-      background: #ffffff;
-      border-radius: 30px;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
-      max-width: 400px;
-      width: 90%;
-      padding: 50px 40px;
-      text-align: center;
+    .main-container {
       position: relative;
       z-index: 10;
-      animation: slideUp 1s ease-out;
-      border: 1px solid #f0f0f0;
-    }
-
-    @keyframes slideUp {
-      from {
-        opacity: 0;
-        transform: translateY(50px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .photo-container {
-      position: relative;
-      margin-bottom: 40px;
-    }
-
-    .main-circle {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      background: #f8f9fa;
-      margin: 0 auto;
-      position: relative;
-      overflow: hidden;
-      border: 4px solid #fff;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
-    }
-
-    .main-circle::before {
-      content: '';
-      position: absolute;
-      top: -3px;
-      left: -3px;
-      right: -3px;
-      bottom: -3px;
-      background: linear-gradient(45deg, #f8bbd9, #fce7f3, #f8f9fa, #ffffff);
-      border-radius: 50%;
-      z-index: -1;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .main-circle:hover::before {
-      opacity: 1;
-    }
-
-    .main-circle img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-    }
-
-    .photo-placeholder {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      width: 100%;
-      height: 100%;
-      color: #999999;
-      font-size: 14px;
       text-align: center;
-      line-height: 1.4;
+      width: 100%;
+      height: 100vh;
+      padding: 50px 30px;
     }
 
-    .accent-circle {
-      position: absolute;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: linear-gradient(45deg, #f8bbd9, #fce7f3);
-      top: -10px;
-      right: 20px;
-      opacity: 0.6;
-      z-index: -1;
-    }
-
-    .names {
-      margin-bottom: 35px;
-    }
-
-    .groom-name {
-      font-size: 24px;
-      font-weight: 600;
-      color: #8b8b8b;
-      margin-bottom: 8px;
-      letter-spacing: 1px;
-    }
-
-    .bride-name {
-      font-size: 16px;
-      font-weight: 300;
-      color: #8f8f8f;
-      margin-bottom: 20px;
-      letter-spacing: 1px;
-    }
-
-    .wedding-info {
-      background: #f8f9fa;
-      padding: 25px 20px;
-      border-radius: 20px;
-      margin-bottom: 35px;
+    .invitation-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: 4.5rem;
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.7);
+      margin-bottom: 50px;
+      opacity: 0;
+      animation: writeText 4s ease-in-out forwards;
+      line-height: 1.2;
       position: relative;
-      overflow: hidden;
-      border: 1px solid #e9ecef;
     }
 
-    .wedding-info::before {
+    .invitation-title::after {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, #f8bbd9, transparent);
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #fff, transparent);
+      border-radius: 2px;
+      animation: underlineGrow 2s ease-out 2s forwards;
     }
 
-    .wedding-date {
-      font-size: 16px;
-      color: #333333;
-      margin-bottom: 8px;
-      font-weight: 500;
+    @keyframes writeText {
+      0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+      }
+      25% {
+        opacity: 0.3;
+        transform: translateY(15px) scale(0.95);
+      }
+      50% {
+        opacity: 0.6;
+        transform: translateY(0) scale(0.98);
+      }
+      75% {
+        opacity: 0.8;
+        transform: scale(1.02);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
-    .wedding-venue {
-      font-size: 14px;
-      color: #666666;
-      line-height: 1.5;
+    @keyframes underlineGrow {
+      0% {
+        width: 0;
+      }
+      100% {
+        width: 200px;
+      }
     }
 
-    .divider {
-      width: 80px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, #f8bbd9, transparent);
-      margin: 30px auto;
-    }
-
-    .invitation-text {
-      font-size: 12px;
-      color: #f8bbd9;
-      font-style: italic;
+    .subtitle {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 400;
       letter-spacing: 2px;
-      margin-bottom: 35px;
-      text-transform: uppercase;
-      opacity: 0.7;
+      margin-bottom: 80px;
+      opacity: 0;
+      animation: fadeInUp 1.5s ease-out 3s forwards;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
     }
 
     .enter-btn {
-      background: linear-gradient(135deg, #f8bbd9 0%, #f5a6d3 100%);
-      color: white;
-      border: none;
-      padding: 18px 45px;
-      border-radius: 30px;
-      font-size: 16px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.8) 100%);
+      color: #333;
+      border: 2px solid rgba(255, 255, 255, 0.8);
+      padding: 20px 50px;
+      border-radius: 35px;
+      font-size: 18px;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.4s ease;
       font-family: 'Noto Serif KR', serif;
-      letter-spacing: 1px;
+      letter-spacing: 2px;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 8px 25px rgba(248, 187, 217, 0.3);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      animation: fadeInUp 1.5s ease-out 4s forwards;
+      text-transform: uppercase;
+      backdrop-filter: blur(10px);
     }
 
     .enter-btn::before {
@@ -284,8 +194,8 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: left 0.5s ease;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      transition: left 0.6s ease;
     }
 
     .enter-btn:hover::before {
@@ -293,35 +203,69 @@
     }
 
     .enter-btn:hover {
-      background: linear-gradient(135deg, #f5a6d3 0%, #f291c7 100%);
-      transform: translateY(-3px);
-      box-shadow: 0 12px 35px rgba(248, 187, 217, 0.4);
+      background: linear-gradient(135deg, #C08B86 0%, #B07B76 100%);
+      transform: translateY(-5px);
+      box-shadow: 0 18px 45px rgba(209, 156, 151, 0.5);
     }
 
     .enter-btn:active {
-      transform: translateY(-1px);
+      transform: translateY(-2px);
     }
 
-    .floating-elements {
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .decorative-elements {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       pointer-events: none;
-      z-index: 1;
+      z-index: 5;
     }
 
     .floating-heart {
       position: absolute;
-      color: rgba(248, 187, 217, 0.4);
-      font-size: 16px;
-      animation: floatHeart 8s linear infinite;
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 20px;
+      animation: floatHeart 12s linear infinite;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
     }
 
-    .floating-heart:nth-child(1) { left: 20%; animation-delay: 0s; }
-    .floating-heart:nth-child(2) { left: 50%; animation-delay: 2s; }
-    .floating-heart:nth-child(3) { left: 80%; animation-delay: 4s; }
+    .floating-heart:nth-child(1) { 
+      left: 15%; 
+      animation-delay: 0s; 
+      font-size: 18px;
+    }
+    .floating-heart:nth-child(2) { 
+      left: 35%; 
+      animation-delay: 3s; 
+      font-size: 22px;
+    }
+    .floating-heart:nth-child(3) { 
+      left: 55%; 
+      animation-delay: 6s; 
+      font-size: 16px;
+    }
+    .floating-heart:nth-child(4) { 
+      left: 75%; 
+      animation-delay: 9s; 
+      font-size: 20px;
+    }
+    .floating-heart:nth-child(5) { 
+      left: 85%; 
+      animation-delay: 2s; 
+      font-size: 24px;
+    }
 
     @keyframes floatHeart {
       0% {
@@ -329,69 +273,141 @@
         opacity: 0;
       }
       10% {
-        opacity: 1;
+        opacity: 0.7;
       }
       90% {
-        opacity: 1;
+        opacity: 0.7;
       }
       100% {
-        transform: translateY(-50px) rotate(360deg);
+        transform: translateY(-100px) rotate(360deg);
         opacity: 0;
       }
     }
 
-    @media (max-width: 480px) {
-      .container {
-        padding: 40px 30px;
-        width: 95%;
-        border-radius: 25px;
+    .corner-decoration {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      border: 2px solid rgba(209, 156, 151, 0.2);
+      border-radius: 50%;
+      z-index: 5;
+    }
+
+    .corner-decoration.top-left {
+      top: -75px;
+      left: -75px;
+      animation: rotateClockwise 20s linear infinite;
+    }
+
+    .corner-decoration.bottom-right {
+      bottom: -75px;
+      right: -75px;
+      animation: rotateCounterClockwise 25s linear infinite;
+    }
+
+    @keyframes rotateClockwise {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes rotateCounterClockwise {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(-360deg); }
+    }
+
+    .couples-names {
+      font-size: 1.5rem;
+      color: #D19C97;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 30px;
+      opacity: 0;
+      animation: fadeInUp 1.5s ease-out 1.5s forwards;
+    }
+
+    .wedding-date {
+      font-size: 1.1rem;
+      color: #8B6F5C;
+      font-weight: 500;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeInUp 1.5s ease-out 2s forwards;
+    }
+
+    @media (max-width: 768px) {
+      .invitation-title {
+        font-size: 3.5rem;
+        margin-bottom: 40px;
       }
 
-      .main-circle {
-        width: 160px;
-        height: 160px;
-      }
-
-      .groom-name{
-        font-size: 20px;
-      }
-
-      .bride-name {
-        font-size: 14px;
+      .couples-names {
+        font-size: 1.3rem;
+        margin-bottom: 25px;
       }
 
       .wedding-date {
-        font-size: 15px;
+        font-size: 1rem;
+        margin-bottom: 15px;
       }
 
-      .wedding-venue {
-        font-size: 13px;
+      .subtitle {
+        font-size: 1rem;
+        margin-bottom: 60px;
       }
 
       .enter-btn {
-        padding: 16px 40px;
+        padding: 18px 40px;
+        font-size: 16px;
+      }
+
+      .main-container {
+        padding: 40px 25px;
+      }
+
+      .admin-btn {
+        top: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .invitation-title {
+        font-size: 3rem;
+        letter-spacing: 2px;
+      }
+
+      .couples-names {
+        font-size: 1.2rem;
+      }
+
+      .wedding-date {
+        font-size: 0.95rem;
+      }
+
+      .subtitle {
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+        margin-bottom: 50px;
+      }
+
+      .enter-btn {
+        padding: 16px 35px;
         font-size: 15px;
+        letter-spacing: 1px;
       }
     }
 
     @media (max-width: 360px) {
-      .container {
-        padding: 35px 25px;
+      .invitation-title {
+        font-size: 2.5rem;
       }
 
-      .main-circle {
-        width: 140px;
-        height: 140px;
+      .main-container {
+        padding: 30px 20px;
       }
-
-      .groom-name
-       {
-        font-size: 18px;
-      }
-    }
-
-    .bride-name {
-      font-size: 12px;
     }
 
     @supports (-webkit-touch-callout: none) {
@@ -414,79 +430,152 @@
         transition-duration: 0.01ms !important;
       }
       
-      .floating-elements {
+      .decorative-elements {
         display: none;
+      }
+
+      .invitation-title {
+        opacity: 1;
+        transform: none;
+      }
+
+      .couples-names,
+      .wedding-date,
+      .subtitle,
+      .enter-btn {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @media (orientation: landscape) and (max-height: 600px) {
+      .invitation-title {
+        font-size: 3rem;
+        margin-bottom: 20px;
+      }
+
+      .couples-names {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+      }
+
+      .wedding-date {
+        font-size: 1rem;
+        margin-bottom: 10px;
+      }
+
+      .subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 30px;
+      }
+
+      .enter-btn {
+        padding: 15px 35px;
+        font-size: 16px;
+      }
+
+      .main-container {
+        padding: 20px;
       }
     }
   </style>
 </head>
 <body>
-  <button class="admin-btn" onclick="window.open('admin.html', '_blank')">
-    <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+  <div class="background-image"></div>
+  <div class="background-container"></div>
+
+  <button class="admin-btn" onclick="window.open('admin.html', '_blank')" title="관리자 페이지">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
       <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 4V6L13 4V2H11V4L9 6V4L3 7V9L9 6V10C9 11.1 9.9 12 11 12H13C14.1 12 15 11.1 15 10V6L21 9ZM11 13V15H7V17H11V19H7V21H17V19H13V17H17V15H13V13H17V11H7V13H11Z"/>
     </svg>
   </button>
 
-  <div class="background-decoration">
-    <div class="circle-decoration circle-1"></div>
-    <div class="circle-decoration circle-2"></div>
-    <div class="circle-decoration circle-3"></div>
+  <div class="decorative-elements">
+    <div class="corner-decoration top-left"></div>
+    <div class="corner-decoration bottom-right"></div>
+    
+    <div class="floating-heart">♡</div>
+    <div class="floating-heart">♡</div>
+    <div class="floating-heart">♡</div>
+    <div class="floating-heart">♡</div>
+    <div class="floating-heart">♡</div>
   </div>
 
-  <div class="floating-elements">
-    <div class="floating-heart">♡</div>
-    <div class="floating-heart">♡</div>
-    <div class="floating-heart">♡</div>
-  </div>
-
-  <div class="container">
-    <div class="photo-container">
-      <div class="accent-circle"></div>
-      <div class="main-circle">
-        <div class="photo-placeholder">
-          웨딩 사진이<br>들어갈 자리
-        </div>
-      </div>
-    </div>
-
-    <div class="names">
-      <div class="groom-name">현동과 수지</div>
-      <div class="bride-name">September 13, 2025</div>
-    </div>
-
-    <div class="wedding-info">
-      <div class="wedding-date">2025년 09월 13일, 토요일 낮 11시</div>
-      <div class="wedding-venue">W시티 컨벤션 웨딩홀<br>별관 7층 하우스가든홀</div>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="invitation-text">Wedding Invitation</div>
-
+  <div class="main-container">
+    <div class="wedding-date">박현동 & 박수지 <br> 2025년 9월 13일 토요일 오전 11시</div>
+    
+    <h1 class="invitation-title">With Love, We Invite You</h1>
+    
+    <div class="subtitle">Wedding Invitation</div>
+    
     <button class="enter-btn" onclick="enterInvitation()">초대장 보기</button>
   </div>
 
   <script>
     function enterInvitation() {
       const btn = document.querySelector('.enter-btn');
-      btn.style.transform = 'scale(0.95)';
-      btn.style.background = 'linear-gradient(135deg, #f291c7 0%, #ef7fb3 100%)';
+      btn.style.transform = 'scale(0.95) translateY(-2px)';
+      btn.style.background = 'linear-gradient(135deg, #B07B76 0%, #A06A65 100%)';
       
       setTimeout(() => {
         window.location.href = 'slide.html';
       }, 200);
     }
 
-    window.addEventListener('DOMContentLoaded', () => {
-      const container = document.querySelector('.container');
-      container.style.opacity = '0';
-      container.style.transform = 'translateY(50px)';
+    document.addEventListener('DOMContentLoaded', () => {
+      const bgImage = document.querySelector('.background-image');
+      
+      bgImage.style.backgroundImage = "url('photo16.jpeg')";
+      bgImage.style.opacity = '0.4';
+      
+      const img = new Image();
+      img.onload = function() {
+        console.log('이미지 로드 성공');
+        bgImage.style.opacity = '0.5';
+      };
+      img.onerror = function() {
+        console.log('이미지 로드 실패 - 기본 배경 사용');
+        bgImage.style.background = 'linear-gradient(135deg, #F8F7F0 0%, #F1F0E2 50%, #F5F4EF 100%)';
+        bgImage.style.opacity = '0.6';
+      };
+      img.src = 'photo16.jpeg';
+    });
+
+    window.addEventListener('load', () => {
+      document.body.style.opacity = '0';
+      document.body.style.transition = 'opacity 0.8s ease-in-out';
       
       setTimeout(() => {
-        container.style.transition = 'all 1s ease-out';
-        container.style.opacity = '1';
-        container.style.transform = 'translateY(0)';
+        document.body.style.opacity = '1';
       }, 100);
+    });
+
+    let touchStartY = 0;
+    let touchEndY = 0;
+
+    document.addEventListener('touchstart', function(e) {
+      touchStartY = e.touches[0].clientY;
+    });
+
+    document.addEventListener('touchend', function(e) {
+      touchEndY = e.changedTouches[0].clientY;
+      handleSwipe();
+    });
+
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      const swipeDistance = touchStartY - touchEndY;
+      
+      if (swipeDistance > swipeThreshold) {
+        enterInvitation();
+      }
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        enterInvitation();
+      }
     });
   </script>
 </body>

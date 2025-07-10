@@ -16,9 +16,9 @@
 
     body {
       font-family: 'Noto Serif KR', serif;
-      background: #ffffff;
+      background: linear-gradient(135deg, #F1F0E2 0%, #F8F7F0 50%, #FFFFFF 100%);
       min-height: 100vh;
-      color: #333333;
+      color: #8B6F5C;
       padding: 20px;
       line-height: 1.6;
     }
@@ -31,34 +31,46 @@
     .header {
       text-align: center;
       margin-bottom: 40px;
-      padding: 20px;
-      background: #ffffff;
-      border-radius: 20px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
-      border: 1px solid #f0f0f0;
+      padding: 30px;
+      background: #FFFFFF;
+      border-radius: 25px;
+      box-shadow: 0 15px 35px rgba(209, 156, 151, 0.15);
+      border: 2px solid #D19C97;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #D19C97, #F1F0E2, #D19C97);
     }
 
     .header h1 {
-      font-size: clamp(24px, 6vw, 32px);
-      color: #333333;
-      margin-bottom: 10px;
-      font-weight: 600;
+      font-size: clamp(26px, 6vw, 36px);
+      color: #D19C97;
+      margin-bottom: 15px;
+      font-weight: 700;
       letter-spacing: 2px;
     }
 
     .header p {
-      color: #666666;
-      font-size: clamp(14px, 3.5vw, 16px);
+      color: #8B6F5C;
+      font-size: clamp(16px, 3.5vw, 18px);
       font-weight: 500;
     }
 
     .login-container, .admin-container {
-      background: #ffffff;
-      border-radius: 20px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-      padding: clamp(30px, 6vw, 40px);
+      background: #FFFFFF;
+      border-radius: 25px;
+      box-shadow: 0 20px 40px rgba(209, 156, 151, 0.15);
+      padding: clamp(35px, 6vw, 45px);
       margin-bottom: 30px;
-      border: 1px solid #f0f0f0;
+      border: 2px solid #D19C97;
       position: relative;
       overflow: hidden;
     }
@@ -70,8 +82,8 @@
       top: 0;
       left: 0;
       right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, #f8bbd9, #fce7f3, #f8bbd9);
+      height: 4px;
+      background: linear-gradient(90deg, #D19C97, #F1F0E2, #D19C97);
     }
 
     .admin-container {
@@ -80,60 +92,62 @@
 
     .login-title {
       text-align: center;
-      font-size: clamp(20px, 5vw, 24px);
-      color: #333333;
-      margin-bottom: 30px;
+      font-size: clamp(22px, 5vw, 28px);
+      color: #D19C97;
+      margin-bottom: 35px;
       font-weight: 600;
+      letter-spacing: 1px;
     }
 
     .login-form {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 20px;
+      gap: 25px;
     }
 
     .login-form input {
       width: 100%;
-      max-width: 320px;
-      padding: 16px 20px;
-      border: 1px solid #e9ecef;
-      border-radius: 15px;
+      max-width: 350px;
+      padding: 18px 25px;
+      border: 2px solid #D19C97;
+      border-radius: 20px;
       font-size: 16px;
       font-family: 'Noto Serif KR', serif;
-      background: #f8f9fa;
+      background: #F1F0E2;
       transition: all 0.3s ease;
       text-align: center;
-      color: #333333;
+      color: #8B6F5C;
     }
 
     .login-form input:focus {
       outline: none;
-      border-color: #f8bbd9;
+      border-color: #C08B86;
       background: #fff;
       transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(248, 187, 217, 0.2);
+      box-shadow: 0 8px 25px rgba(209, 156, 151, 0.2);
     }
 
     .login-form input::placeholder {
-      color: #999999;
+      color: #A08B7F;
     }
 
     .login-form button {
-      background: linear-gradient(135deg, #f8bbd9 0%, #f5a6d3 100%);
+      background: linear-gradient(135deg, #D19C97 0%, #C08B86 100%);
       color: white;
       border: none;
-      padding: 16px 40px;
-      border-radius: 25px;
-      font-size: 16px;
+      padding: 18px 45px;
+      border-radius: 30px;
+      font-size: 18px;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
       font-family: 'Noto Serif KR', serif;
-      box-shadow: 0 8px 25px rgba(248, 187, 217, 0.3);
+      box-shadow: 0 8px 25px rgba(209, 156, 151, 0.3);
       position: relative;
       overflow: hidden;
-      min-height: 50px;
+      min-height: 55px;
+      letter-spacing: 1px;
     }
 
     .login-form button::before {
@@ -152,42 +166,44 @@
     }
 
     .login-form button:hover {
-      background: linear-gradient(135deg, #f5a6d3 0%, #f291c7 100%);
+      background: linear-gradient(135deg, #C08B86 0%, #B07B76 100%);
       transform: translateY(-3px);
-      box-shadow: 0 12px 35px rgba(248, 187, 217, 0.4);
+      box-shadow: 0 12px 35px rgba(209, 156, 151, 0.4);
     }
 
     #loginMessage {
       text-align: center;
-      margin-top: 15px;
-      font-size: 14px;
+      margin-top: 20px;
+      font-size: 16px;
       font-weight: 500;
     }
 
     .admin-title {
       text-align: center;
-      font-size: clamp(22px, 5.5vw, 28px);
-      color: #333333;
-      margin-bottom: 30px;
+      font-size: clamp(24px, 5.5vw, 32px);
+      color: #D19C97;
+      margin-bottom: 35px;
       font-weight: 600;
+      letter-spacing: 1px;
     }
 
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 20px;
-      margin-bottom: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 25px;
+      margin-bottom: 45px;
     }
 
     .stat-card {
-      background: #f8f9fa;
-      padding: 25px;
+      background: linear-gradient(135deg, #F1F0E2 0%, #F8F7F0 100%);
+      padding: 30px;
       border-radius: 20px;
       text-align: center;
       transition: all 0.3s ease;
-      border: 1px solid #e9ecef;
+      border: 2px solid #D19C97;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 8px 25px rgba(209, 156, 151, 0.1);
     }
 
     .stat-card::before {
@@ -196,39 +212,40 @@
       top: 0;
       left: 0;
       right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, #f8bbd9, #fce7f3);
+      height: 3px;
+      background: linear-gradient(90deg, #D19C97, #F1F0E2);
     }
 
     .stat-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(209, 156, 151, 0.2);
     }
 
     .stat-number {
-      font-size: clamp(24px, 6vw, 32px);
-      font-weight: 600;
-      color: #f8bbd9;
-      margin-bottom: 8px;
+      font-size: clamp(28px, 6vw, 36px);
+      font-weight: 700;
+      color: #D19C97;
+      margin-bottom: 10px;
     }
 
     .stat-label {
-      font-size: clamp(12px, 3vw, 14px);
-      color: #666666;
+      font-size: clamp(14px, 3vw, 16px);
+      color: #8B6F5C;
       font-weight: 500;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 1px;
     }
 
     .rsvp-list {
-      background: #f8f9fa;
-      border-radius: 20px;
-      padding: 30px;
-      max-height: 600px;
+      background: #F1F0E2;
+      border-radius: 25px;
+      padding: 35px;
+      max-height: 650px;
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
-      border: 1px solid #e9ecef;
+      border: 2px solid #D19C97;
       position: relative;
+      box-shadow: 0 15px 35px rgba(209, 156, 151, 0.15);
     }
 
     .rsvp-list::before {
@@ -237,54 +254,66 @@
       top: 0;
       left: 0;
       right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, #f8bbd9, #fce7f3, #f8bbd9);
-      border-radius: 20px 20px 0 0;
+      height: 4px;
+      background: linear-gradient(90deg, #D19C97, #F1F0E2, #D19C97);
+      border-radius: 25px 25px 0 0;
     }
 
     .rsvp-list h3 {
-      color: #333333;
-      margin-bottom: 25px;
-      font-size: clamp(18px, 4.5vw, 20px);
+      color: #D19C97;
+      margin-bottom: 30px;
+      font-size: clamp(20px, 4.5vw, 24px);
       font-weight: 600;
       text-align: center;
+      letter-spacing: 1px;
     }
 
     .rsvp-item {
-      background: #ffffff;
-      padding: 20px;
-      border-radius: 15px;
-      margin-bottom: 15px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-      border-left: 4px solid #f8bbd9;
+      background: #FFFFFF;
+      padding: 25px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 25px rgba(209, 156, 151, 0.1);
+      border: 2px solid #D19C97;
       transition: all 0.3s ease;
       position: relative;
+      overflow: hidden;
+    }
+
+    .rsvp-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: #D19C97;
     }
 
     .rsvp-item:hover {
-      transform: translateX(5px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      transform: translateX(8px);
+      box-shadow: 0 12px 35px rgba(209, 156, 151, 0.2);
     }
 
     .rsvp-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 12px;
+      margin-bottom: 15px;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 15px;
     }
 
     .rsvp-name {
       font-weight: 600;
-      color: #333333;
-      font-size: clamp(16px, 4vw, 18px);
+      color: #D19C97;
+      font-size: clamp(18px, 4vw, 20px);
     }
 
     .rsvp-status {
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: clamp(11px, 2.5vw, 12px);
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: clamp(12px, 2.5vw, 14px);
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.5px;
@@ -293,44 +322,61 @@
     .status-attend {
       background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
       color: #15803d;
-      border: 1px solid #86efac;
+      border: 2px solid #86efac;
     }
 
     .status-absent {
       background: linear-gradient(135deg, #fef2f2 0%, #fecaca 100%);
       color: #dc2626;
-      border: 1px solid #fca5a5;
+      border: 2px solid #fca5a5;
     }
 
     .status-pending {
       background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
       color: #d97706;
-      border: 1px solid #fcd34d;
+      border: 2px solid #fcd34d;
     }
 
     .rsvp-message {
-      color: #666666;
+      color: #8B6F5C;
       font-style: italic;
-      margin-bottom: 15px;
-      line-height: 1.6;
-      font-size: clamp(13px, 3.5vw, 15px);
-      background: #f8f9fa;
-      padding: 12px 15px;
-      border-radius: 10px;
-      border-left: 3px solid #f8bbd9;
+      margin-bottom: 20px;
+      line-height: 1.8;
+      font-size: clamp(14px, 3.5vw, 16px);
+      background: #F1F0E2;
+      padding: 15px 20px;
+      border-radius: 15px;
+      border-left: 4px solid #D19C97;
     }
 
     .delete-btn {
       background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
       color: white;
       border: none;
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-size: clamp(11px, 2.5vw, 12px);
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-size: clamp(12px, 2.5vw, 14px);
       cursor: pointer;
       transition: all 0.3s ease;
       font-weight: 500;
       box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .delete-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .delete-btn:hover::before {
+      left: 100%;
     }
 
     .delete-btn:hover {
@@ -341,31 +387,32 @@
 
     .empty-state {
       text-align: center;
-      padding: 60px 20px;
-      color: #999999;
+      padding: 80px 20px;
+      color: #A08B7F;
     }
 
     .empty-state svg {
-      width: 80px;
-      height: 80px;
-      margin-bottom: 20px;
-      opacity: 0.5;
-      color: #f8bbd9;
+      width: 100px;
+      height: 100px;
+      margin-bottom: 25px;
+      opacity: 0.6;
+      color: #D19C97;
     }
 
     .empty-state p {
-      font-size: clamp(14px, 3.5vw, 16px);
+      font-size: clamp(16px, 3.5vw, 18px);
       font-weight: 500;
     }
 
     .loading {
       display: inline-block;
-      width: 20px;
-      height: 20px;
-      border: 2px solid #fce7f3;
+      width: 24px;
+      height: 24px;
+      border: 3px solid #D19C97;
       border-radius: 50%;
-      border-top-color: #f8bbd9;
+      border-top-color: #F1F0E2;
       animation: spin 1s ease-in-out infinite;
+      margin: 15px auto;
     }
 
     @keyframes spin {
@@ -378,31 +425,31 @@
       }
 
       .login-container, .admin-container {
-        padding: 25px 20px;
+        padding: 30px 20px;
       }
 
       .stats-grid {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-        gap: 15px;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 20px;
       }
 
       .stat-card {
-        padding: 20px 15px;
+        padding: 25px 20px;
       }
 
       .rsvp-list {
-        padding: 25px 20px;
-        max-height: 500px;
+        padding: 30px 20px;
+        max-height: 550px;
       }
 
       .rsvp-header {
         flex-direction: column;
         align-items: flex-start;
-        gap: 8px;
+        gap: 10px;
       }
 
       .rsvp-item {
-        padding: 16px;
+        padding: 20px;
       }
     }
 
@@ -412,35 +459,35 @@
       }
 
       .login-container, .admin-container {
-        padding: 20px 15px;
+        padding: 25px 15px;
         margin-bottom: 20px;
       }
 
       .stat-card {
-        padding: 18px 12px;
+        padding: 20px 15px;
       }
 
       .stats-grid {
-        gap: 12px;
+        gap: 15px;
       }
 
       .rsvp-list {
-        padding: 20px 15px;
+        padding: 25px 15px;
       }
     }
 
     @media screen and (orientation: landscape) and (max-height: 500px) {
       .header {
-        margin-bottom: 20px;
-        padding: 15px;
+        margin-bottom: 25px;
+        padding: 20px;
       }
 
       .rsvp-list {
-        max-height: 300px;
+        max-height: 350px;
       }
 
       .stats-grid {
-        margin-bottom: 20px;
+        margin-bottom: 25px;
       }
     }
 
@@ -456,21 +503,21 @@
     }
 
     .rsvp-list::-webkit-scrollbar {
-      width: 6px;
+      width: 8px;
     }
 
     .rsvp-list::-webkit-scrollbar-track {
-      background: #e9ecef;
+      background: #F1F0E2;
       border-radius: 10px;
     }
 
     .rsvp-list::-webkit-scrollbar-thumb {
-      background: #f8bbd9;
+      background: #D19C97;
       border-radius: 10px;
     }
 
     .rsvp-list::-webkit-scrollbar-thumb:hover {
-      background: #f5a6d3;
+      background: #C08B86;
     }
 
     @media (prefers-color-scheme: dark) {
@@ -486,13 +533,70 @@
         transition-duration: 0.01ms !important;
       }
     }
+
+    .rsvp-date {
+      font-size: 12px;
+      color: #A08B7F;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .success-message {
+      color: #15803d;
+      background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+      padding: 15px 20px;
+      border-radius: 15px;
+      border: 2px solid #86efac;
+      margin-top: 20px;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .error-message {
+      color: #dc2626;
+      background: linear-gradient(135deg, #fef2f2 0%, #fecaca 100%);
+      padding: 15px 20px;
+      border-radius: 15px;
+      border: 2px solid #fca5a5;
+      margin-top: 20px;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .floating-decoration {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border: 2px solid rgba(209, 156, 151, 0.1);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .floating-decoration.top-right {
+      top: -50px;
+      right: -50px;
+    }
+
+    .floating-decoration.bottom-left {
+      bottom: -50px;
+      left: -50px;
+      animation-delay: 3s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+    }
   </style>
 </head>
 <body>
   <div class="container">
+    <div class="floating-decoration top-right"></div>
+    <div class="floating-decoration bottom-left"></div>
+
     <div class="header">
       <h1>💒 관리자 페이지</h1>
-      <p>수지 & 현동의 결혼식 RSVP 관리</p>
+      <p>박현동♥박수지 결혼식 RSVP 관리</p>
     </div>
 
     <div class="login-container">
@@ -534,7 +638,7 @@
               <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM12 20C10.9 20 10 19.1 10 18C10 16.9 10.9 16 12 16C13.1 16 14 16.9 14 18C14 19.1 13.1 20 12 20ZM12 8C9.24 8 7 10.24 7 13C7 15.76 9.24 18 12 18C14.76 18 17 15.76 17 13C17 10.24 14.76 8 12 8Z"/>
             </svg>
             <p>데이터를 불러오는 중...</p>
-            <div class="loading" style="margin: 10px auto;"></div>
+            <div class="loading"></div>
           </div>
         </div>
       </div>
@@ -549,7 +653,7 @@
       apiKey: "AIzaSyAbaauVIvPWPT1O_h4kElc0nVkfPaiTbl4",
       authDomain: "poetic-planet-462812-f5.firebaseapp.com",
       projectId: "poetic-planet-462812-f5",
-      storageBucket: "poetic-planet-462812-f5.firebasestorage.app",
+      storageBucket: "poetic-planet-462812-f5.appspot.com",
       messagingSenderId: "375231510481",
       appId: "1:375231510481:web:5c06868eac02b01e0352f0",
       measurementId: "G-EC6J2HWNQ6"
@@ -566,17 +670,15 @@
       const button = document.querySelector('.login-form button');
       
       if (input === CORRECT_PASSWORD) {
-        message.textContent = '✅ 로그인 성공!';
-        message.style.color = '#15803d';
+        message.innerHTML = '<div class="success-message">✅ 로그인 성공!</div>';
         
         setTimeout(() => {
           document.querySelector('.login-container').style.display = 'none';
           document.querySelector('.admin-container').style.display = 'block';
           loadRSVPs();
-        }, 500);
+        }, 800);
       } else {
-        message.textContent = '❌ 비밀번호가 틀렸습니다';
-        message.style.color = '#dc2626';
+        message.innerHTML = '<div class="error-message">❌ 비밀번호가 틀렸습니다</div>';
         
         const inputField = document.getElementById('adminPassword');
         inputField.style.animation = 'shake 0.5s ease-in-out';
@@ -585,7 +687,7 @@
         }, 500);
         
         setTimeout(() => {
-          message.textContent = '';
+          message.innerHTML = '';
         }, 3000);
       }
     };
@@ -600,7 +702,7 @@
               <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM12 20C10.9 20 10 19.1 10 18C10 16.9 10.9 16 12 16C13.1 16 14 16.9 14 18C14 19.1 13.1 20 12 20ZM12 8C9.24 8 7 10.24 7 13C7 15.76 9.24 18 12 18C14.76 18 17 15.76 17 13C17 10.24 14.76 8 12 8Z"/>
             </svg>
             <p>데이터를 불러오는 중...</p>
-            <div class="loading" style="margin: 10px auto;"></div>
+            <div class="loading"></div>
           </div>
         `;
 
@@ -638,6 +740,15 @@
             status === "참석" ? "✅" :
             status === "불참" ? "❌" : "❓";
 
+          const createdAt = data.createdAt ? data.createdAt.toDate() : new Date();
+          const dateString = createdAt.toLocaleDateString('ko-KR', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+          });
+
           const div = document.createElement("div");
           div.className = "rsvp-item";
           div.innerHTML = `
@@ -646,7 +757,10 @@
               <div class="rsvp-status ${statusClass}">${statusEmoji} ${status}</div>
             </div>
             <div class="rsvp-message">"${data.message}"</div>
-            <button class="delete-btn" onclick="deleteRSVP('${docSnap.id}')">삭제</button>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div class="rsvp-date">${dateString}</div>
+              <button class="delete-btn" onclick="deleteRSVP('${docSnap.id}')">삭제</button>
+            </div>
           `;
           rsvpList.appendChild(div);
         });
@@ -672,7 +786,7 @@
     function updateStatWithAnimation(elementId, finalValue) {
       const element = document.getElementById(elementId);
       let currentValue = 0;
-      const increment = Math.ceil(finalValue / 20);
+      const increment = Math.ceil(finalValue / 25);
       
       const animation = setInterval(() => {
         currentValue += increment;
@@ -692,6 +806,7 @@
           
           button.textContent = '삭제중...';
           button.disabled = true;
+          button.style.opacity = '0.7';
           
           await deleteDoc(doc(db, "rsvps", id));
           
@@ -707,6 +822,7 @@
           alert("삭제 중 오류가 발생했습니다");
           button.textContent = originalText;
           button.disabled = false;
+          button.style.opacity = '1';
         }
       }
     };
@@ -721,11 +837,20 @@
     shakeStyle.textContent = `
       @keyframes shake {
         0%, 100% { transform: translateX(0); }
-        25% { transform: translateX(-5px); }
-        75% { transform: translateX(5px); }
+        25% { transform: translateX(-8px); }
+        75% { transform: translateX(8px); }
       }
     `;
     document.head.appendChild(shakeStyle);
+
+    window.addEventListener('load', () => {
+      document.body.style.opacity = '0';
+      document.body.style.transition = 'opacity 0.8s ease-in-out';
+      
+      setTimeout(() => {
+        document.body.style.opacity = '1';
+      }, 100);
+    });
   </script>
 </body>
 </html>

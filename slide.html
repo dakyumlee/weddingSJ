@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>수지 & 현동의 결혼식 초대장</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>박현동♥박수지 결혼식 초대장</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="mobile.css">
   <style>
     * {
       margin: 0;
@@ -16,11 +17,16 @@
 
     body {
       font-family: 'Noto Serif KR', serif;
-      background: #ffffff;
+      background: linear-gradient(135deg, #FDFCF8 0%, #F9F8F3 100%);
       min-height: 100vh;
-      color: #333333;
+      color: #8B6F5C;
       overflow-x: hidden;
       overflow-y: auto;
+    }
+
+    html {
+      scroll-snap-type: y mandatory;
+      -webkit-overflow-scrolling: touch;
     }
 
     .container {
@@ -29,77 +35,53 @@
       position: relative;
     }
 
-    .card-stack {
-      position: relative;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-
     .card {
-      width: 350px;
-      min-height: 85vh;
-      margin: 0 auto 15px;
-      background: #ffffff;
-      border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-      padding: 25px 20px;
+      width: 100%;
+      min-height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #FDFCF8 0%, #F9F8F3 100%);
+      padding: 40px 30px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      transition: all 0.6s ease;
       scroll-snap-align: start;
-      border: 1px solid #f0f0f0;
+      position: relative;
     }
 
-    html {
-      scroll-snap-type: y mandatory;
+    .card:nth-child(even) {
+      background: linear-gradient(135deg, #FDFCF8 0%, #F9F8F3 100%);
     }
 
     h1 {
-      font-size: 24px;
-      color: #333333;
-      margin-bottom: 15px;
+      font-size: 28px;
+      color: #D19C97;
+      margin-bottom: 20px;
       font-weight: 600;
-      letter-spacing: 0.5px;
+      letter-spacing: 1px;
     }
 
     h2 {
-      font-size: 22px;
-      color: #444444;
-      margin-bottom: 15px;
-      font-weight: 600;
-    }
-
-    h3 {
-      font-size: 18px;
-      color: #666666;
-      margin-bottom: 12px;
-      font-weight: 400;
-    }
-
-    p {
-      font-size: 15px;
-      line-height: 1.6;
-      margin-bottom: 10px;
-      color: #666666;
+      font-size: 24px;
+      color: #8B6F5C;
+      margin-bottom: 30px;
+      font-weight: 500;
     }
 
     .main-photo {
-      width: 250px;
-      height: 280px;
-      background: #f8f9fa;
-      border-radius: 12px;
-      margin: 15px 0;
+      width: 300px;
+      height: 400px;
+      background: linear-gradient(135deg, #FDFCF8 0%, #F9F8F3 100%);
+      border-radius: 20px;
+      margin: 0 auto 30px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #999999;
-      font-size: 13px;
-      border: 1px solid #e9ecef;
-      position: relative;
+      color: #D19C97;
+      font-size: 16px;
+      border: 3px solid #D19C97;
+      box-shadow: 0 15px 35px rgba(209, 156, 151, 0.2);
       overflow: hidden;
     }
 
@@ -107,139 +89,110 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 11px;
+      border-radius: 17px;
     }
 
-    .wedding-title {
-      font-family: 'Dancing Script', cursive;
-      font-size: 36px;
-      color: #f8bbd9;
-      margin: 20px 0;
-      font-weight: 700;
-      letter-spacing: 1px;
-      position: relative;
-      animation: writeEffect 3s ease-in-out;
-    }
-
-    @keyframes writeEffect {
-      0% {
-        opacity: 0;
-        transform: translateX(-15px);
-      }
-      50% {
-        opacity: 0.7;
-        transform: translateX(0);
-      }
-      100% {
-        opacity: 1;
-      }
-    }
-
-    .wedding-title::after {
-      content: '';
-      position: absolute;
-      bottom: -3px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 1px;
-      background: #f8bbd9;
-      border-radius: 1px;
-    }
-
-    .invitation-text {
-      text-align: center;
-      line-height: 1.8;
-      font-size: 15px;
-      color: #666666;
-      margin: 20px 0;
+    .greeting-text {
+      font-size: 18px;
+      line-height: 2.2;
+      color: #8B6F5C;
+      margin: 30px 0;
       word-break: keep-all;
+      font-weight: 400;
     }
 
-    .invitation-main {
-      font-size: 20px;
-      font-weight: 600;
-      margin-bottom: 18px;
-      color: #333333;
-    }
-
-    .invitation-content {
-      font-size: 15px;
-      line-height: 1.8;
-      color: #666666;
-      margin-bottom: 25px;
-      word-break: keep-all;
-    }
-
-    .contact-info {
-      background: #f8f9fa;
-      padding: 20px 15px;
-      border-radius: 12px;
-      margin: 20px 0;
-      line-height: 1.6;
+    .couple-section {
       width: 100%;
-      border: 1px solid #e9ecef;
+      max-width: 350px;
+      margin: 20px 0;
     }
 
-    .contact-info p {
-      margin-bottom: 8px;
+    .person-card {
+      background: linear-gradient(135deg, #FDFCF8 0%, #F9F8F3 100%);
+      padding: 30px 25px;
+      border-radius: 20px;
+      margin: 25px 0;
+      border: 2px solid #D19C97;
+      box-shadow: 0 8px 25px rgba(209, 156, 151, 0.1);
+    }
+
+    .person-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #FDFCF8 0%, #F9F8F3 100%);
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #D19C97;
       font-size: 14px;
-      text-align: center;
-      color: #666666;
+      border: 3px solid #D19C97;
+      overflow: hidden;
     }
 
-    .contact-info strong {
-      color: #333333;
+    .person-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
     }
 
-    .date-title {
-      font-size: 26px;
-      font-weight: 700;
-      color: #333333;
-      margin-bottom: 25px;
-      letter-spacing: 1px;
-      position: relative;
+    .person-name {
+      font-size: 22px;
+      font-weight: 600;
+      color: #D19C97;
+      margin-bottom: 20px;
+    }
+
+    .person-description {
+      font-size: 15px;
+      line-height: 1.8;
+      color: #8B6F5C;
+      font-weight: 300;
     }
 
     .calendar-container {
-      background: #f8f9fa;
-      padding: 25px 15px;
-      border-radius: 12px;
-      margin: 15px 0;
+      background: linear-gradient(135deg, #FDFCF8 0%, #F9F8F3 100%);
+      padding: 30px 20px;
+      border-radius: 20px;
+      margin: 30px 0;
       width: 100%;
-      border: 1px solid #e9ecef;
+      max-width: 350px;
+      border: 2px solid #D19C97;
+      box-shadow: 0 8px 25px rgba(209, 156, 151, 0.1);
     }
 
     .calendar-header {
       text-align: center;
-      margin-bottom: 18px;
+      margin-bottom: 25px;
     }
 
     .calendar-month {
-      font-size: 18px;
+      font-size: 26px;
       font-weight: 600;
-      color: #333333;
-      margin-bottom: 3px;
+      color: #D19C97;
+      margin-bottom: 8px;
     }
 
     .calendar-year {
-      font-size: 13px;
-      color: #666666;
+      font-size: 16px;
+      color: #8B6F5C;
     }
 
     .calendar-grid {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
-      gap: 6px;
-      margin-bottom: 15px;
+      gap: 8px;
+      margin-bottom: 25px;
     }
 
     .calendar-day-header {
-      padding: 6px 3px;
+      padding: 8px 4px;
       text-align: center;
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 600;
-      color: #666666;
+      color: #8B6F5C;
     }
 
     .calendar-day {
@@ -247,24 +200,26 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 13px;
-      border-radius: 6px;
+      font-size: 14px;
+      border-radius: 8px;
       transition: all 0.3s ease;
-      color: #666666;
+      color: #8B6F5C;
+      min-height: 35px;
+      position: relative;
+      width: 100%;
+      overflow: hidden;
     }
 
     .calendar-day.other-month {
-      color: #cccccc;
+      color: #C4B5A8;
     }
 
     .calendar-day.wedding-day {
-      background: transparent;
-      color: #f8bbd9;
+      background: none;
+      color: transparent;
       font-weight: 600;
       transform: scale(1.1);
       position: relative;
-      border: none;
-      border-radius: 8px;
     }
 
     .calendar-day.wedding-day::before {
@@ -273,64 +228,91 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 18px;
-      color: #f8bbd9;
+      font-size: 24px;
+      color: #D19C97;
+      animation: heartbeat 2s ease-in-out infinite;
+      z-index: 2;
     }
 
-    .calendar-day.today {
-      background: #f8f9fa;
-      color: #333333;
+    .calendar-day.wedding-day::after {
+      content: '13';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 12px;
+      color: #fff;
       font-weight: 600;
-      border: 1px solid #dee2e6;
+      z-index: 3;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -50%) scale(1.05); }
     }
 
     .d-day {
-      font-size: 22px;
+      font-size: 26px;
       font-weight: 700;
-      color: #f8bbd9;
-      margin-top: 20px;
-      padding: 12px 20px;
+      color: #D19C97;
+      padding: 15px 30px;
       background: #fff;
-      border-radius: 20px;
-      border: 2px solid #f8bbd9;
+      border-radius: 25px;
+      border: 2px solid #D19C97;
+      box-shadow: 0 4px 15px rgba(209, 156, 151, 0.2);
     }
 
     .venue-info {
       text-align: center;
       width: 100%;
-      background: #f8f9fa;
-      padding: 20px 15px;
-      border-radius: 12px;
-      margin: 15px 0;
-      border: 1px solid #e9ecef;
+      max-width: 350px;
+      background: #F1F0E2;
+      padding: 30px 25px;
+      border-radius: 20px;
+      margin: 30px 0;
+      border: 2px solid #D19C97;
+      box-shadow: 0 8px 25px rgba(209, 156, 151, 0.1);
     }
 
     .venue-name {
-      font-size: 20px;
+      font-size: 24px;
       font-weight: 600;
-      color: #333333;
-      margin-bottom: 6px;
+      color: #D19C97;
+      margin-bottom: 10px;
     }
 
     .venue-hall {
-      font-size: 16px;
-      color: #666666;
-      margin-bottom: 12px;
+      font-size: 18px;
+      color: #8B6F5C;
+      margin-bottom: 15px;
     }
 
     .venue-address {
-      font-size: 14px;
-      color: #888888;
+      font-size: 16px;
+      color: #A08B7F;
+      line-height: 1.5;
+    }
+
+    .venue-date-time {
+      font-size: 20px;
+      font-weight: 600;
+      color: #D19C97;
+      margin-bottom: 20px;
+      padding: 15px;
+      background: white;
+      border-radius: 15px;
+      border: 1px solid #E8E0D6;
     }
 
     .map-container {
       width: 100%;
-      height: 180px;
-      border-radius: 12px;
+      max-width: 350px;
+      height: 250px;
+      border-radius: 20px;
       overflow: hidden;
-      margin: 15px 0;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      border: 1px solid #e9ecef;
+      margin: 25px 0;
+      box-shadow: 0 8px 25px rgba(209, 156, 151, 0.2);
+      border: 2px solid #D19C97;
     }
 
     .map-container iframe {
@@ -341,39 +323,40 @@
 
     .transport-section {
       width: 100%;
-      margin: 15px 0;
+      max-width: 350px;
+      margin: 25px 0;
     }
 
     .accordion {
-      background: #f8f9fa;
-      border-radius: 12px;
-      margin-bottom: 10px;
+      background: #F1F0E2;
+      border-radius: 15px;
+      margin-bottom: 15px;
       overflow: hidden;
-      border: 1px solid #e9ecef;
+      border: 2px solid #D19C97;
+      box-shadow: 0 4px 15px rgba(209, 156, 151, 0.1);
     }
 
     .accordion-header {
-      padding: 15px 18px;
-      background: #ffffff;
+      padding: 20px 25px;
+      background: #D19C97;
       cursor: pointer;
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-weight: 600;
-      color: #333333;
+      color: white;
       transition: background 0.3s ease;
-      border-bottom: 1px solid #e9ecef;
+      font-size: 16px;
     }
 
     .accordion-header:hover {
-      background: #f8f9fa;
+      background: #C08B86;
     }
 
     .accordion-header::after {
       content: '+';
-      font-size: 18px;
+      font-size: 22px;
       transition: transform 0.3s ease;
-      color: #666666;
     }
 
     .accordion-header.active::after {
@@ -384,57 +367,101 @@
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.3s ease;
-      background: #f8f9fa;
+      background: #F1F0E2;
     }
 
     .accordion-content.active {
-      max-height: 300px;
+      max-height: 500px;
     }
 
     .accordion-body {
-      padding: 18px;
+      padding: 25px;
     }
 
-    .transport-info {
-      margin-bottom: 12px;
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin: 20px 0;
     }
 
-    .transport-info h4 {
-      font-size: 15px;
+    .contact-card {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      text-align: center;
+      border: 2px solid #D19C97;
+      box-shadow: 0 4px 15px rgba(209, 156, 151, 0.1);
+    }
+
+    .contact-emoji {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .contact-label {
+      font-size: 16px;
       font-weight: 600;
-      color: #333333;
-      margin-bottom: 6px;
+      color: #D19C97;
+      margin-bottom: 5px;
     }
 
-    .transport-info p {
+    .contact-name {
+      font-size: 14px;
+      color: #8B6F5C;
+      margin-bottom: 15px;
+    }
+
+    .phone-btn {
+      background: #D19C97;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 20px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .phone-btn:hover {
+      background: #C08B86;
+      transform: scale(1.05);
+    }
+
+    .parents-info {
+      margin-top: 25px;
+      padding: 20px;
+      background: white;
+      border-radius: 15px;
+      border: 1px solid #E8E0D6;
+    }
+
+    .parent-row {
+      margin-bottom: 8px;
       font-size: 13px;
-      color: #666666;
-      margin-bottom: 4px;
-      line-height: 1.4;
+      color: #A08B7F;
+      text-align: left;
     }
 
     .map-links {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-top: 12px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+      margin-top: 20px;
     }
 
     .map-link {
-      display: inline-block;
-      padding: 10px 16px;
+      display: block;
+      padding: 12px 8px;
       text-decoration: none;
       border-radius: 20px;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
       text-align: center;
       transition: all 0.3s ease;
       color: white;
-    }
-
-    .map-link:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
 
     .map-link.kakao {
@@ -450,344 +477,356 @@
       background: #ff6b35;
     }
 
-    .account-intro {
-      font-size: 14px;
-      line-height: 1.6;
-      color: #666666;
-      margin: 15px 0 20px;
-      text-align: center;
-      word-break: keep-all;
+    .map-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
     }
 
-    .account-info {
-      background: #f8f9fa;
-      padding: 20px 15px;
-      border-radius: 12px;
-      margin: 15px 0;
+    .account-intro {
+      font-size: 16px;
+      line-height: 2;
+      color: #8B6F5C;
+      margin: 30px 0;
+      text-align: center;
+      word-break: keep-all;
+      font-weight: 400;
+    }
+
+    .account-section {
+      background: #F1F0E2;
+      padding: 30px 25px;
+      border-radius: 20px;
+      margin: 25px 0;
       width: 100%;
-      text-align: left;
-      border: 1px solid #e9ecef;
+      max-width: 350px;
+      border: 2px solid #D19C97;
+      box-shadow: 0 8px 25px rgba(209, 156, 151, 0.1);
     }
 
     .account-item {
-      margin-bottom: 15px;
-      padding: 15px;
+      margin-bottom: 20px;
+      padding: 25px;
       background: white;
-      border-radius: 8px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-      border: 1px solid #e9ecef;
-    }
-
-    .account-item:last-child {
-      margin-bottom: 0;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(209, 156, 151, 0.1);
+      border: 1px solid #E8E0D6;
     }
 
     .account-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 8px;
+      margin-bottom: 15px;
     }
 
     .account-name {
       font-weight: 600;
-      color: #333333;
-      font-size: 15px;
+      color: #D19C97;
+      font-size: 18px;
     }
 
     .copy-btn {
-      background: #f8bbd9;
+      background: #D19C97;
       color: white;
       border: none;
-      padding: 6px 12px;
-      border-radius: 12px;
-      font-size: 11px;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-size: 14px;
       cursor: pointer;
       transition: all 0.3s ease;
+      font-weight: 500;
     }
 
     .copy-btn:hover {
-      background: #f5a6d3;
-      transform: scale(1.02);
+      background: #C08B86;
+      transform: scale(1.05);
     }
 
     .account-details {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      text-align: center;
     }
 
     .account-number {
       font-family: 'Courier New', monospace;
-      font-size: 14px;
-      color: #666666;
-      letter-spacing: 0.5px;
+      font-size: 16px;
+      color: #8B6F5C;
+      letter-spacing: 1px;
+      font-weight: 500;
     }
 
     .account-hidden {
-      font-size: 14px;
-      color: #999999;
+      font-size: 15px;
+      color: #A08B7F;
       font-style: italic;
     }
 
-    .kakaopay-link {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 12px 20px;
-      background: #fee500;
-      color: #3c1e1e;
-      text-decoration: none;
-      border-radius: 20px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-
-    .kakaopay-link:hover {
-      background: #fdd835;
-      transform: translateY(-1px);
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
+    .gallery-container {
       width: 100%;
-      margin: 15px 0;
+      max-width: 350px;
+      margin: 30px 0;
     }
 
-    .gallery-item {
-      aspect-ratio: 1;
-      background: #f8f9fa;
-      border-radius: 12px;
+    .gallery-main {
+      width: 100%;
+      height: 400px;
+      background: linear-gradient(45deg, #F1F0E2, #F8F7F0);
+      border-radius: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #999999;
-      font-size: 11px;
-      border: 1px solid #e9ecef;
+      color: #D19C97;
+      font-size: 18px;
+      border: 3px solid #D19C97;
+      box-shadow: 0 15px 35px rgba(209, 156, 151, 0.2);
+      cursor: pointer;
+      transition: all 0.3s ease;
       overflow: hidden;
     }
 
-    .gallery-item img {
+    .gallery-main:hover {
+      transform: scale(1.02);
+      box-shadow: 0 20px 40px rgba(209, 156, 151, 0.3);
+    }
+
+    .gallery-main img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 11px;
+      border-radius: 17px;
     }
 
-    .gallery-item.large {
-      grid-column: span 2;
-    }
-
-    .qr-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 18px;
-      width: 100%;
-    }
-
-    .qr-code {
-      width: 180px;
-      height: 180px;
-      background: #ffffff;
-      border-radius: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 2px solid #e9ecef;
-      overflow: hidden;
-      margin: 15px 0;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-      position: relative;
-    }
-
-    .qr-code img {
-      width: 85%;
-      height: 85%;
-      object-fit: contain;
-      border-radius: 8px;
-    }
-
-    .qr-description {
+    .gallery-info {
       text-align: center;
-      margin: 15px 0;
-    }
-
-    .qr-main-text {
-      font-size: 16px;
-      font-weight: 600;
-      color: #333333;
-      margin-bottom: 8px;
-      line-height: 1.5;
-    }
-
-    .qr-sub-text {
-      font-size: 13px;
-      color: #666666;
-      margin-bottom: 12px;
-    }
-
-    .qr-guide {
-      background: #f8f9fa;
-      padding: 12px 15px;
-      border-radius: 12px;
-      margin: 15px 0;
-      font-size: 12px;
-      color: #666666;
-      line-height: 1.4;
-      border: 1px solid #e9ecef;
-    }
-
-    .share-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 18px;
-      width: 100%;
-      max-width: 250px;
-    }
-
-    .share-btn {
-      padding: 12px 20px;
-      border: none;
-      border-radius: 25px;
+      margin-top: 15px;
       font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-family: 'Noto Serif KR', serif;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      color: #A08B7F;
     }
 
-    .share-btn.kakao {
-      background: #fee500;
-      color: #3c1e1e;
-      border: 1px solid #fdd835;
+    .rsvp-section {
+      width: 100%;
+      max-width: 350px;
+      margin: 30px 0;
     }
 
-    .share-btn.kakao:hover {
-      background: #fdd835;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(254, 229, 0, 0.3);
-    }
-
-    .share-btn.link {
-      background: #333333;
-      color: white;
-      border: 1px solid #555555;
-    }
-
-    .share-btn.link:hover {
-      background: #555555;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    .btn-icon {
+    .rsvp-intro {
       font-size: 16px;
-    }
-
-    .share-section-title {
-      font-size: 15px;
-      font-weight: 600;
-      color: #333333;
-      margin: 20px 0 12px;
+      line-height: 2;
+      color: #8B6F5C;
+      margin: 30px 0;
       text-align: center;
+      word-break: keep-all;
+      font-weight: 400;
     }
 
-    .decoration-hearts {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin: 15px 0;
-      opacity: 0.4;
-    }
-
-    .decoration-hearts span {
-      color: #f8bbd9;
-      font-size: 16px;
-      animation: heartbeat 2s ease-in-out infinite;
-    }
-
-    .decoration-hearts span:nth-child(2) {
-      animation-delay: 0.3s;
-    }
-
-    .decoration-hearts span:nth-child(3) {
-      animation-delay: 0.6s;
-    }
-
-    @keyframes heartbeat {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.1); }
+    .rsvp-info {
+      background: #F1F0E2;
+      padding: 25px;
+      border-radius: 15px;
+      margin-bottom: 25px;
+      font-size: 14px;
+      color: #8B6F5C;
+      text-align: left;
+      border: 2px solid #D19C97;
+      line-height: 1.8;
     }
 
     .rsvp-form {
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 20px;
     }
 
     .rsvp-form input,
     .rsvp-form select,
     .rsvp-form textarea {
       width: 100%;
-      padding: 12px;
-      border: 1px solid #e9ecef;
-      border-radius: 8px;
-      font-size: 15px;
+      padding: 18px;
+      border: 2px solid #D19C97;
+      border-radius: 15px;
+      font-size: 16px;
       font-family: 'Noto Serif KR', serif;
-      background: #ffffff;
-      transition: border-color 0.3s ease;
+      background: #F1F0E2;
+      transition: all 0.3s ease;
+      color: #8B6F5C;
     }
 
     .rsvp-form input:focus,
     .rsvp-form select:focus,
     .rsvp-form textarea:focus {
       outline: none;
-      border-color: #f8bbd9;
+      border-color: #C08B86;
       background: #fff;
+      box-shadow: 0 4px 15px rgba(209, 156, 151, 0.2);
     }
 
     .rsvp-form textarea {
-      min-height: 80px;
+      min-height: 120px;
       resize: vertical;
     }
 
     .rsvp-form button {
-      background: #f8bbd9;
+      background: #D19C97;
       color: white;
       border: none;
-      padding: 12px 25px;
-      border-radius: 20px;
-      font-size: 15px;
+      padding: 18px 30px;
+      border-radius: 25px;
+      font-size: 18px;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(209, 156, 151, 0.3);
     }
 
     .rsvp-form button:hover {
-      background: #f5a6d3;
-      transform: translateY(-1px);
+      background: #C08B86;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(209, 156, 151, 0.4);
     }
 
-    .rsvp-info {
-      background: #f8f9fa;
-      padding: 15px;
-      border-radius: 12px;
+    .qr-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      width: 100%;
+      margin: 30px 0;
+    }
+
+    .qr-description {
+      text-align: center;
+    }
+
+    .qr-main-text {
+      font-size: 20px;
+      font-weight: 600;
+      color: #D19C97;
       margin-bottom: 15px;
-      font-size: 13px;
-      color: #666666;
+      line-height: 1.6;
+    }
+
+    .qr-sub-text {
+      font-size: 16px;
+      color: #8B6F5C;
+    }
+
+    .qr-code {
+      width: 250px;
+      height: 250px;
+      background: linear-gradient(45deg, #fff, #F1F0E2);
+      border-radius: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 3px solid #D19C97;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(209, 156, 151, 0.2);
+    }
+
+    .qr-code img {
+      width: 90%;
+      height: 90%;
+      object-fit: contain;
+      border-radius: 15px;
+    }
+
+    .qr-guide {
+      background: #F1F0E2;
+      padding: 20px;
+      border-radius: 15px;
+      font-size: 14px;
+      color: #8B6F5C;
+      line-height: 1.8;
+      border: 2px solid #D19C97;
+      max-width: 320px;
       text-align: left;
-      border: 1px solid #e9ecef;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.9);
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      position: relative;
+      margin: 5% auto;
+      width: 90%;
+      max-width: 800px;
+      height: 80%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-image-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 15px;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .close:hover {
+      color: #D19C97;
+    }
+
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(209, 156, 151, 0.8);
+      color: white;
+      border: none;
+      padding: 20px 15px;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      z-index: 1001;
+    }
+
+    .prev {
+      left: 20px;
+    }
+
+    .next {
+      right: 20px;
+    }
+
+    .prev:hover, .next:hover {
+      background: rgba(192, 139, 134, 0.9);
+      transform: translateY(-50%) scale(1.1);
     }
 
     .music-player {
@@ -799,45 +838,49 @@
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 10px 18px;
+      border-radius: 25px;
+      backdrop-filter: blur(10px);
+      border: 2px solid #D19C97;
+      box-shadow: 0 4px 15px rgba(209, 156, 151, 0.2);
     }
 
     .music-icon {
-      width: 18px;
-      height: 18px;
-      color: #f8bbd9;
+      width: 22px;
+      height: 22px;
+      color: #D19C97;
       transition: color 0.3s ease;
-      opacity: 0.7;
     }
 
     .music-player.playing .music-icon {
-      color: #f5a6d3;
-      opacity: 1;
+      color: #C08B86;
     }
 
     .wave-container {
       display: flex;
       align-items: center;
-      gap: 2px;
-      height: 18px;
+      gap: 3px;
+      height: 22px;
     }
 
     .wave-bar {
-      width: 2px;
-      background: rgba(248, 187, 217, 0.3);
-      border-radius: 1px;
+      width: 3px;
+      background: rgba(209, 156, 151, 0.4);
+      border-radius: 2px;
       transition: all 0.3s ease;
     }
 
-    .wave-bar:nth-child(1) { height: 6px; }
-    .wave-bar:nth-child(2) { height: 10px; }
-    .wave-bar:nth-child(3) { height: 14px; }
-    .wave-bar:nth-child(4) { height: 8px; }
-    .wave-bar:nth-child(5) { height: 12px; }
-    .wave-bar:nth-child(6) { height: 6px; }
+    .wave-bar:nth-child(1) { height: 8px; }
+    .wave-bar:nth-child(2) { height: 14px; }
+    .wave-bar:nth-child(3) { height: 18px; }
+    .wave-bar:nth-child(4) { height: 12px; }
+    .wave-bar:nth-child(5) { height: 16px; }
+    .wave-bar:nth-child(6) { height: 10px; }
 
     .music-player.playing .wave-bar {
-      background: rgba(248, 187, 217, 0.8);
+      background: rgba(209, 156, 151, 0.8);
       animation: wave 1.2s ease-in-out infinite;
     }
 
@@ -850,17 +893,48 @@
 
     @keyframes wave {
       0%, 100% { transform: scaleY(1); }
-      50% { transform: scaleY(1.5); }
+      50% { transform: scaleY(1.8); }
+    }
+
+    .admin-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: none;
+      background: #D19C97;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(209, 156, 151, 0.3);
+    }
+
+    .admin-btn:hover {
+      background: #C08B86;
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(209, 156, 151, 0.4);
     }
 
     .scroll-indicator {
       position: fixed;
-      bottom: 20px;
+      bottom: 25px;
       left: 50%;
       transform: translateX(-50%);
-      color: rgba(248, 187, 217, 0.6);
-      font-size: 11px;
+      color: rgba(209, 156, 151, 0.7);
+      font-size: 14px;
       animation: bounce 2s infinite;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 10px 20px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(209, 156, 151, 0.3);
     }
 
     @keyframes bounce {
@@ -872,94 +946,98 @@
     @media (max-width: 480px) {
       .container {
         max-width: 100%;
-        padding: 0 8px;
+        padding: 0 10px;
       }
 
       .card {
-        width: 320px;
-        min-height: 80vh;
-        padding: 20px 18px;
+        padding: 30px 20px;
       }
 
-      h1 {
-        font-size: 22px;
-      }
-
-      h2 {
-        font-size: 20px;
-      }
+      h1 { font-size: 24px; }
+      h2 { font-size: 22px; }
 
       .main-photo {
-        width: 220px;
-        height: 260px;
+        width: 280px;
+        height: 360px;
       }
 
-      .wedding-title {
-        font-size: 32px;
+      .person-photo {
+        width: 100px;
+        height: 100px;
       }
 
-      .date-title {
-        font-size: 22px;
-      }
+      .calendar-grid { gap: 8px; }
+      .calendar-day { font-size: 14px; min-height: 35px; }
 
-      .calendar-grid {
-        gap: 4px;
-      }
-
-      .calendar-day {
-        font-size: 12px;
-      }
-
-      .share-buttons {
-        flex-direction: column;
-        width: 100%;
-        max-width: 220px;
-      }
-
-      .share-btn {
-        width: 100%;
-        font-size: 13px;
-        padding: 11px 18px;
-      }
+      .contact-grid { gap: 10px; }
+      .map-links { gap: 8px; }
 
       .qr-code {
-        width: 160px;
-        height: 160px;
+        width: 200px;
+        height: 200px;
       }
 
-      .qr-main-text {
-        font-size: 15px;
+      .gallery-main {
+        height: 320px;
       }
     }
 
     @media (max-width: 360px) {
       .card {
-        width: 300px;
-        min-height: 75vh;
-        padding: 18px 15px;
-      }
-
-      h1 {
-        font-size: 20px;
+        padding: 25px 15px;
       }
 
       .main-photo {
-        width: 200px;
-        height: 240px;
+        width: 260px;
+        height: 340px;
       }
 
-      .wedding-title {
-        font-size: 28px;
+      .calendar-container,
+      .venue-info,
+      .account-section {
+        max-width: 320px;
       }
+    }
 
-      .date-title {
-        font-size: 20px;
+    @supports (-webkit-touch-callout: none) {
+      html {
+        height: 100%;
+        height: -webkit-fill-available;
+      }
+      
+      body {
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
+      }
+      
+      input[type="text"],
+      textarea,
+      select {
+        font-size: 16px !important;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      
+      .scroll-indicator {
+        animation: none;
       }
     }
   </style>
 </head>
 <body>
   <div class="container">
+    <button class="admin-btn" onclick="window.open('admin.html', '_blank')">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+        <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 4V6L13 4V2H11V4L9 6V4L3 7V9L9 6V10C9 11.1 9.9 12 11 12H13C14.1 12 15 11.1 15 10V6L21 9ZM11 13V15H7V17H11V19H7V21H17V19H13V17H17V15H13V13H17V11H7V13H11Z"/>
+      </svg>
+    </button>
+
     <div class="music-player" id="musicPlayer">
       <svg class="music-icon" viewBox="0 0 24 24" fill="currentColor">
         <path d="12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
@@ -980,225 +1058,265 @@
 
     <div class="scroll-indicator">스크롤해서 초대장을 확인하세요 ↓</div>
 
-      <div class="card">
-        <div class="main-photo" style="width: 100%; height: 50vh; margin: 0;">
-          <span>웨딩 사진이 여기에 가득 차게</span>
-        </div>
-        <div class="wedding-title">Our Wedding Day</div>
-        <div class="invitation-main">소중한 분들을 초대합니다</div>
-        <div class="invitation-content">
-          저희 두 사람이 사랑으로<br>
-          하나 되어 결혼합니다.<br><br>
-          귀한 걸음으로 축하하여 주시면<br>
-          더 없는 기쁨으로 간직하겠습니다.
-        </div>
-        <div class="contact-info">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-            <div style="text-align: left;">
-              <div style="font-size: 13px; color: #888888; margin-bottom: 4px;">신랑</div>
-              <div style="font-weight: 600; color: #333333;">박현동 <span style="cursor: pointer; color: #f8bbd9;" onclick="callPhone('010-6626-2747')">📞</span></div>
-            </div>
-            <div style="text-align: right;">
-              <div style="font-size: 13px; color: #888888; margin-bottom: 4px;">신부</div>
-              <div style="font-weight: 600; color: #333333;">박수지 <span style="cursor: pointer; color: #f8bbd9;" onclick="callPhone('010-4166-6338')">📞</span></div>
-            </div>
+    <div class="card">
+      <div class="main-photo">
+        <img src="photo5.jpeg">
+      </div>
+      <div class="greeting-text">
+        함께 걷고 싶은 사람이 생겼습니다.<br><br>
+        서로의 삶을 나누기로 했습니다.<br><br>
+        작은 시작을 함께해 주시면<br>
+        감사하겠습니다.
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>신랑 & 신부</h2>
+      
+      <div class="couple-section">
+        <div class="person-card">
+          <div class="person-photo">
+            <img src="신랑단독샷.jpeg">
           </div>
+          <div class="person-name">신랑 박현동</div>
+          <div class="person-description">
+            차분하고 책임감 있는 성격으로<br>
+            오랜 시간 한결같은 마음을 지켜왔습니다.<br>
+            함께하는 삶을 소중히 여기며<br>
+            신부와의 새로운 시작을 준비하고 있습니다.
+          </div>
+        </div>
+
+        <div class="person-card">
+          <div class="person-photo">
+            <img src="photo13.jpeg">
+          </div>
+          <div class="person-name">신부 박수지</div>
+          <div class="person-description">
+            다정하고 성실한 사람으로<br>
+            주어진 일상에 늘 최선을 다해왔습니다.<br>
+            신랑과의 신뢰를 바탕으로<br>
+            서로를 깊이 이해하며 한 걸음 나아가려 합니다.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>2025년 9월 13일</h2>
+      <div class="calendar-container">
+        <div class="calendar-header">
+          <div class="calendar-month">9월</div>
+          <div class="calendar-year">2025</div>
+        </div>
+        <div class="calendar-grid">
+          <div class="calendar-day-header">일</div>
+          <div class="calendar-day-header">월</div>
+          <div class="calendar-day-header">화</div>
+          <div class="calendar-day-header">수</div>
+          <div class="calendar-day-header">목</div>
+          <div class="calendar-day-header">금</div>
+          <div class="calendar-day-header">토</div>
           
-          <div style="display: flex; justify-content: space-between; margin-top: 15px; padding-top: 15px; border-top: 1px solid #e9ecef;">
-            <div style="text-align: left; font-size: 11px; line-height: 1.5;">
-              <div style="color: #666666;">(고)박순권, 고기숙의 아들</div>
-            </div>
-            <div style="text-align: right; font-size: 11px; line-height: 1.5;">
-              <div style="color: #666666;">박현관, 이혜은의 딸</div>
-            </div>
-          </div>
+          <div class="calendar-day other-month">31</div>
+          <div class="calendar-day">1</div>
+          <div class="calendar-day">2</div>
+          <div class="calendar-day">3</div>
+          <div class="calendar-day">4</div>
+          <div class="calendar-day">5</div>
+          <div class="calendar-day">6</div>
+          
+          <div class="calendar-day">7</div>
+          <div class="calendar-day">8</div>
+          <div class="calendar-day">9</div>
+          <div class="calendar-day">10</div>
+          <div class="calendar-day">11</div>
+          <div class="calendar-day">12</div>
+          <div class="calendar-day wedding-day">13</div>
+          
+          <div class="calendar-day">14</div>
+          <div class="calendar-day">15</div>
+          <div class="calendar-day">16</div>
+          <div class="calendar-day">17</div>
+          <div class="calendar-day">18</div>
+          <div class="calendar-day">19</div>
+          <div class="calendar-day">20</div>
+          
+          <div class="calendar-day">21</div>
+          <div class="calendar-day">22</div>
+          <div class="calendar-day">23</div>
+          <div class="calendar-day">24</div>
+          <div class="calendar-day">25</div>
+          <div class="calendar-day">26</div>
+          <div class="calendar-day">27</div>
+          
+          <div class="calendar-day">28</div>
+          <div class="calendar-day">29</div>
+          <div class="calendar-day">30</div>
+          <div class="calendar-day other-month">1</div>
+          <div class="calendar-day other-month">2</div>
+          <div class="calendar-day other-month">3</div>
+          <div class="calendar-day other-month">4</div>
         </div>
       </div>
+      <div class="d-day">
+        <span id="dday">D-67</span>
+      </div>
+    </div>
 
-      <div class="card">
-        <div class="date-title">구월의 열세번째 날</div>
-        <div class="calendar-container">
-          <div class="calendar-header">
-            <div class="calendar-month">9월</div>
-            <div class="calendar-year">2025</div>
-          </div>
-          <div class="calendar-grid">
-            <div class="calendar-day-header">일</div>
-            <div class="calendar-day-header">월</div>
-            <div class="calendar-day-header">화</div>
-            <div class="calendar-day-header">수</div>
-            <div class="calendar-day-header">목</div>
-            <div class="calendar-day-header">금</div>
-            <div class="calendar-day-header">토</div>
-            
-            <div class="calendar-day other-month">31</div>
-            <div class="calendar-day">1</div>
-            <div class="calendar-day">2</div>
-            <div class="calendar-day">3</div>
-            <div class="calendar-day">4</div>
-            <div class="calendar-day">5</div>
-            <div class="calendar-day">6</div>
-            
-            <div class="calendar-day">7</div>
-            <div class="calendar-day">8</div>
-            <div class="calendar-day">9</div>
-            <div class="calendar-day">10</div>
-            <div class="calendar-day">11</div>
-            <div class="calendar-day">12</div>
-            <div class="calendar-day wedding-day">13</div>
-            
-            <div class="calendar-day">14</div>
-            <div class="calendar-day">15</div>
-            <div class="calendar-day">16</div>
-            <div class="calendar-day">17</div>
-            <div class="calendar-day">18</div>
-            <div class="calendar-day">19</div>
-            <div class="calendar-day">20</div>
-            
-            <div class="calendar-day">21</div>
-            <div class="calendar-day">22</div>
-            <div class="calendar-day">23</div>
-            <div class="calendar-day">24</div>
-            <div class="calendar-day">25</div>
-            <div class="calendar-day">26</div>
-            <div class="calendar-day">27</div>
-            
-            <div class="calendar-day">28</div>
-            <div class="calendar-day">29</div>
-            <div class="calendar-day">30</div>
-            <div class="calendar-day other-month">1</div>
-            <div class="calendar-day other-month">2</div>
-            <div class="calendar-day other-month">3</div>
-            <div class="calendar-day other-month">4</div>
-          </div>
-        </div>
-        <div class="d-day">
-          <span id="dday">D-67</span>
-        </div>
+    <div class="card">
+      <h2>예식장 안내</h2>
+      
+      <div class="venue-info">
+        <div class="venue-date-time">2025.9.13(토) 오전 11시</div>
+        <div class="venue-name">W시티 컨벤션 웨딩홀</div>
+        <div class="venue-hall">별관 7층 하우스가든홀</div>
+        <div class="venue-address">울산광역시 북구 진장17길 7</div>
+      </div>
+      
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3245.638349084956!2d129.35368171142778!3d35.56263293636567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3567cdeb50debba7%3A0x10980ca679fc2b13!2zV-yLnO2LsCDsu6jrsqTshZgg7Jeo65Sp7ZmA!5e0!3m2!1sko!2skr!4v1751851963762!5m2!1sko!2skr" allowfullscreen loading="lazy"></iframe>
       </div>
 
-      <div class="card">
-        <h2>예식장 안내 & 오시는 길</h2>
-        <div class="venue-info">
-          <div class="venue-name">W시티 컨벤션 웨딩홀</div>
-          <div class="venue-hall">별관 7층 하우스가든홀</div>
-          <div class="venue-address">울산광역시 북구 진장17길 7</div>
-        </div>
-        <div class="map-container">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3245.638349084956!2d129.35368171142778!3d35.56263293636567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3567cdeb50debba7%3A0x10980ca679fc2b13!2zV-yLnO2LsCDsu6jrsqTshZgg7Jeo65Sp7ZmA!5e0!3m2!1sko!2skr!4v1751851963762!5m2!1sko!2skr" allowfullscreen loading="lazy"></iframe>
-        </div>
+      <div class="map-links">
+        <a href="https://map.kakao.com/link/to/W시티컨벤션웨딩홀,35.56263293636567,129.35368171142778" class="map-link kakao" target="_blank">카카오맵</a>
+        <a href="https://map.naver.com/p/directions/-/-,129.35368171142778,35.56263293636567,W시티컨벤션웨딩홀/car" class="map-link naver" target="_blank">네이버지도</a>
+        <a href="tmap://route?goalname=W시티컨벤션웨딩홀&goalx=129.35368171142778&goaly=35.56263293636567" class="map-link tmap">티맵</a>
+      </div>
 
-        <div class="transport-section">
-          <div class="accordion">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
-              🚌 대중교통
-            </div>
-            <div class="accordion-content">
-              <div class="accordion-body">
-                <div class="transport-info">
-                  <h4>🚌 버스 이용시</h4>
-                  <p>104, 122, 126, 133, 401번</p>
-                  <p>진장시장 정류장 하차 후 도보 5분</p>
-                </div>
-                <div class="map-links">
-                  <a href="https://map.kakao.com/link/to/W시티컨벤션웨딩홀,35.56263293636567,129.35368171142778" class="map-link kakao" target="_blank">🥕 카카오맵으로 길찾기</a>
-                  <a href="https://map.naver.com/p/directions/-/-,129.35368171142778,35.56263293636567,W시티컨벤션웨딩홀/car" class="map-link naver" target="_blank">🟢 네이버지도로 길찾기</a>
-                  <a href="tmap://route?goalname=W시티컨벤션웨딩홀&goalx=129.35368171142778&goaly=35.56263293636567" class="map-link tmap">🧭 티맵으로 길찾기</a>
-                </div>
+      <div class="transport-section">
+        <div class="accordion">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            🚌 대중교통 이용 안내
+          </div>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <div style="margin-bottom: 15px;">
+                <strong style="color: #D19C97;">버스 이용시</strong><br>
+                104, 122, 126, 133, 401번<br>
+                진장시장 정류장 하차 후 도보 5분
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="accordion">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
-              🚗 주차안내
-            </div>
-            <div class="accordion-content">
-              <div class="accordion-body">
-                <div class="transport-info">
-                  <h4>🚗 주차 정보</h4>
-                  <p>신선도원몰 별관 1~6층</p>
-                </div>
-                <div class="transport-info">
-                  <h4>🛣️ 길찾기</h4>
-                  <p>경부고속도로 → 울산IC → 진장동 방면</p>
-                  <p>약 15분 소요</p>
-                </div>
+        <div class="accordion">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            🚗 주차 안내
+          </div>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <div style="margin-bottom: 15px;">
+                <strong style="color: #D19C97;">주차 정보</strong><br>
+                신선도원몰 별관 1~6층 주차장 이용<br>
+                주차비 무료 (당일 4시간)<br>
+                주차공간: 120대 수용 가능
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="card">
-        <h2>마음 전하실 곳</h2>
-        <div class="account-intro">
-          저희의 새 출발을 함께해주시는 모든 분들의 마음이 소중합니다.<br>
-          정성스러운 축복을 보내주시고 싶은 분들을 위해 안내해드립니다.
-        </div>
-        <div class="account-info">
-          <div class="account-item">
-            <div class="account-header">
-              <div class="account-name">신랑 박현동</div>
-              <button class="copy-btn" onclick="copyAccount('1002549859637', '우리은행', 'groom')">계좌 보기</button>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-emoji">🤵</div>
+          <div class="contact-label">신랑</div>
+          <div class="contact-name">박현동</div>
+          <div class="parent-row">(故)박순권,<br>고기숙의 아들</div>
+          <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion(this)" style="padding: 10px; margin: 0; border-radius: 10px;">
+              📞
             </div>
-            <div class="account-details">
-              <div class="account-number" id="groom-account" style="display: none;">우리은행 1002549859637</div>
-              <div class="account-hidden" id="groom-hidden">버튼을 눌러 계좌번호를 확인하세요</div>
-            </div>
-          </div>
-          <div class="account-item">
-            <div class="account-header">
-              <div class="account-name">신부 박수지</div>
-              <button class="copy-btn" onclick="copyAccount('06601211393753', '저축은행', 'bride')">계좌 보기</button>
-            </div>
-            <div class="account-details">
-              <div class="account-number" id="bride-account" style="display: none;">저축은행 06601211393753</div>
-              <div class="account-hidden" id="bride-hidden">버튼을 눌러 계좌번호를 확인하세요</div>
+            <div class="accordion-content">
+              <div class="accordion-body" style="padding: 15px;">
+                <button class="phone-btn" onclick="callPhone('010-6626-2747')">010-6626-2747</button>
+              </div>
             </div>
           </div>
         </div>
-        <div style="text-align: center;">
-          <a href="https://qr.kakaopay.com/FTGG36235u" target="_blank" class="kakaopay-link">
-            💳 카카오페이로 간편 송금하기
-          </a>
+
+        <div class="contact-card">
+          <div class="contact-emoji">👰</div>
+          <div class="contact-label">신부</div>
+          <div class="contact-name">박수지</div>
+          <div class="parent-row">박현관,<br>이혜은의 딸</div>
+          <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion(this)" style="padding: 10px; margin: 0; border-radius: 10px;">
+              📞
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-body" style="padding: 15px;">
+                <button class="phone-btn" onclick="callPhone('010-4166-6338')">010-4166-6338</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
 
-      <div class="card">
-        <h2>갤러리</h2>
-        <div class="gallery-grid">
-          <div class="gallery-item">
-            사진 1
+    <div class="card">
+      <h2>마음 전하실 곳</h2>
+      <div class="account-intro">
+        바쁘신 중에도<br>
+        축하의 마음을 전해 주시는 모든 분들께<br>
+        깊이 감사드립니다.<br><br>
+        직접 인사드리지 못하는 분들을 위해<br>
+        마음을 전하실 수 있는 계좌를<br>
+        함께 안내드립니다.
+      </div>
+      
+      <div class="account-section">
+        <div class="account-item">
+          <div class="account-header">
+            <div class="account-name">신랑 박현동</div>
+            <button class="copy-btn" onclick="toggleAccount('groom')">계좌 보기</button>
           </div>
-          <div class="gallery-item">
-            사진 2
-          </div>
-          <div class="gallery-item large">
-            메인 사진
-          </div>
-          <div class="gallery-item">
-            사진 3
-          </div>
-          <div class="gallery-item">
-            사진 4
+          <div class="account-details">
+            <div class="account-number" id="groom-account" style="display: none;">우리은행 1002549859637</div>
+            <div class="account-hidden" id="groom-hidden">버튼을 눌러 계좌번호를 확인하세요</div>
           </div>
         </div>
-        <div class="gallery-description">
-          소중한 순간들을 담은 사진들입니다.<br>
-          함께한 시간들이 아름다운 추억이 되었으면 좋겠습니다.
+        
+        <div class="account-item">
+          <div class="account-header">
+            <div class="account-name">신부 박수지</div>
+            <button class="copy-btn" onclick="toggleAccount('bride')">계좌 보기</button>
+          </div>
+          <div class="account-details">
+            <div class="account-number" id="bride-account" style="display: none;">저축은행 06601211393753</div>
+            <div class="account-hidden" id="bride-hidden">버튼을 눌러 계좌번호를 확인하세요</div>
+          </div>
         </div>
       </div>
+    </div>
 
-      <div class="card">
-        <h2>참석 여부 & 축하 메시지</h2>
+    <div class="card">
+      <h2>갤러리</h2>
+      <div class="gallery-container">
+        <div class="gallery-main" onclick="openModal()">
+          <img src="photo14.jpeg">
+        </div>
+        <div class="gallery-info">사진을 터치하면 크게 볼 수 있습니다</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>참석 여부 & 방명록</h2>
+      <div class="rsvp-section">
+        <div class="rsvp-intro">
+          원활한 진행을 위해<br>
+          참석 여부를 미리 확인드리고자 합니다.<br>
+          회신 주시면 감사하겠습니다.
+        </div>
+        
         <div class="rsvp-info">
-          <strong>📝 참석 여부 안내</strong><br>
+          <strong>안내사항</strong><br><br>
           • 참석 여부는 9월 1일까지 남겨주시면 감사하겠습니다.<br>
           • 동반 가족이 있으시면 메시지에 함께 적어주세요.<br>
           • 식사 준비를 위해 정확한 인원수가 필요합니다.<br>
           • 문의사항은 신랑·신부에게 연락주세요.
         </div>
+        
         <form class="rsvp-form">
           <input type="text" placeholder="이름을 입력해주세요" required>
           <select required>
@@ -1208,59 +1326,45 @@
             <option value="미정">미정</option>
           </select>
           <textarea placeholder="축하 메시지와 동반 인원수를 남겨주세요&#10;(예: 가족 4명 함께 참석)" required></textarea>
-          <input type="password" placeholder="비밀번호 (수정/삭제용, 4자리 이상)" required>
           <button type="submit">마음 전하기 💕</button>
         </form>
       </div>
+    </div>
 
-      <div class="card">
-        <h2>모바일 청첩장</h2>
-        <div class="qr-container">
-          <div class="qr-description">
-            <div class="qr-main-text">
-              모바일로 간편하게 확인하세요<br>
-              QR코드를 스캔하면 청첩장이 열립니다
-            </div>
-            <div class="qr-sub-text">
-              스마트폰 카메라로 아래 QR코드를 비춰보세요
-            </div>
+    <div class="card">
+      <h2>모바일 청첩장</h2>
+      <div class="qr-container">
+        <div class="qr-description">
+          <div class="qr-main-text">
+            모바일로 간편하게 확인하세요
           </div>
-          
-          <div class="qr-code">
-            <img src="suji_wedding_qr.png" alt="청첩장 QR코드">
+          <div class="qr-sub-text">
+            QR코드를 스캔하면 청첩장이 열립니다
           </div>
-          
-          <div class="qr-guide">
-            📱 <strong>사용방법</strong><br>
-            1. 스마트폰 카메라 앱을 실행하세요<br>
-            2. QR코드에 카메라를 가져다 대세요<br>
-            3. 자동으로 나타나는 링크를 터치하세요
-          </div>
-
-          <div class="decoration-hearts">
-            <span>♡</span>
-            <span>♡</span>
-            <span>♡</span>
-          </div>
-
-          <div class="share-section-title">소중한 분들에게 공유해주세요</div>
-          
-          <div class="share-buttons">
-            <button class="share-btn kakao" onclick="shareKakao()">
-              <span class="btn-icon">💬</span>
-              카카오톡으로 공유하기
-            </button>
-            <button class="share-btn link" onclick="copyLink()">
-              <span class="btn-icon">🔗</span>
-              링크 주소 복사하기
-            </button>
-          </div>
-
-          <p style="font-size: 12px; color: #888888; margin-top: 15px; text-align: center; line-height: 1.5;">
-            청첩장을 받으신 분들께서도<br>
-            가족, 친구들에게 자유롭게 공유해 주세요 💕
-          </p>
         </div>
+        
+        <div class="qr-code">
+          <img src="suji_wedding_qr.png" alt="청첩장 QR코드">
+        </div>
+        
+        <div class="qr-guide">
+          <strong>📱 사용방법</strong><br><br>
+          1. 스마트폰 카메라 앱을 실행하세요<br>
+          2. QR코드에 카메라를 가져다 대세요<br>
+          3. 자동으로 나타나는 링크를 터치하세요<br><br>
+          소중한 분들에게 자유롭게 공유해 주세요 💕
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="imageModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+    <button class="next" onclick="changeSlide(1)">&#10095;</button>
+    <div class="modal-content">
+      <div class="modal-image-container">
+        <img id="modalImage" src="" alt="">
       </div>
     </div>
   </div>
@@ -1286,6 +1390,28 @@
     const musicPlayer = document.getElementById('musicPlayer');
     let isPlaying = false;
 
+    const galleryImages = [
+      'photo1.jpeg',
+      'photo2.jpeg', 
+      'photo3.jpeg',
+      'photo4.jpeg',
+      'photo5.jpeg',
+      'photo6.jpeg',
+      'photo7.jpeg',
+      'photo8.jpeg',
+      'photo9.jpeg',
+      'photo10.jpeg',
+      'photo11.jpeg',
+      'photo12.jpeg',
+      'photo14.jpeg',
+      'photo15.jpeg',
+      'photo16.jpeg',
+      'photo17.jpeg',
+      'photo18.jpeg',
+      'photo19.jpeg'
+    ];
+    let currentImageIndex = 0;
+
     function toggleMusic() {
       if (isPlaying) {
         bgMusic.pause();
@@ -1298,23 +1424,15 @@
       }
     }
 
-    function startMusic() {
-      bgMusic.play().catch(e => {
-        console.log('자동재생 실패:', e);
-      });
-      musicPlayer.classList.add('playing');
-      isPlaying = true;
-    }
-
     musicPlayer.addEventListener('click', toggleMusic);
 
     document.addEventListener('click', () => {
       if (!isPlaying) {
-        startMusic();
+        bgMusic.play().catch(e => console.log('자동재생 실패:', e));
+        musicPlayer.classList.add('playing');
+        isPlaying = true;
       }
     }, { once: true });
-
-    setTimeout(startMusic, 1000);
 
     const weddingDate = new Date('2025-09-13T11:00:00+09:00');
     const today = new Date();
@@ -1337,7 +1455,11 @@
       }
     };
 
-    window.copyAccount = function(accountNumber, bankName, type) {
+    window.callPhone = function(phoneNumber) {
+      window.location.href = `tel:${phoneNumber}`;
+    };
+
+    window.toggleAccount = function(type) {
       const accountElement = document.getElementById(type + '-account');
       const hiddenElement = document.getElementById(type + '-hidden');
       const button = event.target;
@@ -1347,87 +1469,50 @@
         hiddenElement.style.display = 'none';
         button.textContent = '복사하기';
       } else {
-        const fullAccount = bankName + ' ' + accountNumber;
-        navigator.clipboard.writeText(fullAccount).then(() => {
+        const accountText = accountElement.textContent;
+        navigator.clipboard.writeText(accountText).then(() => {
           button.textContent = '복사됨!';
           button.style.background = '#4CAF50';
           setTimeout(() => {
             button.textContent = '복사하기';
-            button.style.background = '#f8bbd9';
+            button.style.background = '#D19C97';
           }, 2000);
         }).catch(() => {
-          alert('계좌번호: ' + fullAccount);
+          alert('계좌번호: ' + accountText);
         });
       }
     };
 
-    window.callPhone = function(phoneNumber) {
-      if (confirm(`${phoneNumber}로 전화를 걸까요?`)) {
-        window.location.href = `tel:${phoneNumber}`;
+    window.openModal = function() {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+      
+      modalImg.src = galleryImages[currentImageIndex];
+      modal.style.display = 'block';
+    };
+
+    window.closeModal = function() {
+      const modal = document.getElementById('imageModal');
+      modal.style.display = 'none';
+    };
+
+    window.changeSlide = function(direction) {
+      currentImageIndex += direction;
+      if (currentImageIndex >= galleryImages.length) {
+        currentImageIndex = 0;
+      } else if (currentImageIndex < 0) {
+        currentImageIndex = galleryImages.length - 1;
       }
+      
+      const modalImg = document.getElementById('modalImage');
+      modalImg.src = galleryImages[currentImageIndex];
     };
 
-    window.shareKakao = function() {
-      const button = event.target.closest('.share-btn');
-      const originalText = button.innerHTML;
-      
-      button.innerHTML = '<span class="btn-icon">⏳</span>준비 중...';
-      button.style.pointerEvents = 'none';
-      
-      setTimeout(() => {
-        if (typeof Kakao !== 'undefined') {
-          Kakao.Link.sendDefault({
-            objectType: 'feed',
-            content: {
-              title: '💒 박현동♥박수지 결혼식 초대장',
-              description: '2025년 9월 13일 토요일 오전 11시\nW시티 컨벤션 웨딩홀에서 만나요 💕',
-              imageUrl: 'https://example.com/wedding-image.jpg',
-              link: {
-                mobileWebUrl: window.location.href,
-                webUrl: window.location.href,
-              },
-            },
-          });
-          button.innerHTML = '<span class="btn-icon">✅</span>공유완료!';
-          button.style.background = '#4CAF50';
-        } else {
-          button.innerHTML = '<span class="btn-icon">📱</span>카카오톡 앱에서 열어주세요';
-          button.style.background = '#ff9800';
-        }
-        
-        setTimeout(() => {
-          button.innerHTML = originalText;
-          button.style.background = '';
-          button.style.pointerEvents = '';
-        }, 3000);
-      }, 500);
-    };
-
-    window.copyLink = function() {
-      const button = event.target.closest('.share-btn');
-      const originalText = button.innerHTML;
-      
-      button.innerHTML = '<span class="btn-icon">📋</span>복사 중...';
-      button.style.pointerEvents = 'none';
-      
-      navigator.clipboard.writeText(window.location.href).then(() => {
-        button.innerHTML = '<span class="btn-icon">✅</span>복사완료!';
-        button.style.background = '#4CAF50';
-        setTimeout(() => {
-          button.innerHTML = originalText;
-          button.style.background = '';
-          button.style.pointerEvents = '';
-        }, 3000);
-      }).catch(() => {
-        button.innerHTML = '<span class="btn-icon">❌</span>복사 실패';
-        button.style.background = '#f44336';
-        alert('링크 주소: ' + window.location.href);
-        setTimeout(() => {
-          button.innerHTML = originalText;
-          button.style.background = '';
-          button.style.pointerEvents = '';
-        }, 3000);
-      });
+    window.onclick = function(event) {
+      const modal = document.getElementById('imageModal');
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
     };
 
     const rsvpForm = document.querySelector('.rsvp-form');
@@ -1437,19 +1522,12 @@
         const name = rsvpForm.querySelector('input[type="text"]').value;
         const status = rsvpForm.querySelector('select').value;
         const message = rsvpForm.querySelector('textarea').value;
-        const password = rsvpForm.querySelector('input[type="password"]').value;
-
-        if (password.length < 4) {
-          alert('비밀번호는 4자리 이상 입력해주세요.');
-          return;
-        }
 
         try {
           await addDoc(collection(db, "rsvps"), {
             name,
             status,
             message,
-            password,
             createdAt: serverTimestamp()
           });
 
@@ -1473,6 +1551,14 @@
         }, 300);
       }
     });
+
+    setTimeout(() => {
+      if (!isPlaying) {
+        bgMusic.play().catch(e => console.log('자동재생 실패:', e));
+        musicPlayer.classList.add('playing');
+        isPlaying = true;
+      }
+    }, 1000);
   </script>
 </body>
 </html>
