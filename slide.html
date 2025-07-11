@@ -1739,7 +1739,7 @@
             <div class="accordion-content">
               <div class="accordion-body" style="padding: 15px; font-size: 13px; color: #8B6F5C; line-height: 1.6;">
                 <div style="margin-bottom: 8px;"><strong>좋아하는 것:</strong> 카페투어, 음악감상, 여행</div>
-                <div style="margin-bottom: 8px;"><strong>취미:</strong> 고양이랑 놀기</div>
+                <div style="margin-bottom: 8px;"><strong>취미:</strong> 고양이 돌보기</div>
                 <div><strong>좌우명:</strong> "작은 행복을 소중히 여기자"</div>
               </div>
             </div>
@@ -2011,12 +2011,103 @@
     </div>
 
     <div class="card">
+      <div style="margin-top: 20px;"></div>
       <h2>갤러리</h2>
+      <div style="font-size: 15px; color: #A08B7F; margin-bottom: 30px; font-style: italic; line-height: 1.6;">
+        "사랑은 시간 속에서 피어나는<br>
+        가장 아름다운 이야기입니다"
+      </div>
+      
       <div class="gallery-container">
         <div class="gallery-main" onclick="openModal()">
           <img src="photo14.jpeg">
         </div>
         <div class="gallery-info">사진을 터치하면 크게 볼 수 있습니다</div>
+      </div>
+
+      <div class="accordion" style="margin-top: 25px; width: 100%; max-width: 350px;">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          더 많은 사진 보기
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px;">
+              <div style="aspect-ratio: 1; background: linear-gradient(45deg, #F1F0E2, #F8F7F0); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #D19C97; font-size: 10px; border: 1px dashed #D19C97; cursor: pointer;" onclick="openModalWithIndex(0)">
+                프로필
+              </div>
+              <div style="aspect-ratio: 1; background: linear-gradient(45deg, #F1F0E2, #F8F7F0); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #D19C97; font-size: 10px; border: 1px dashed #D19C97; cursor: pointer;" onclick="openModalWithIndex(1)">
+                데이트
+              </div>
+              <div style="aspect-ratio: 1; background: linear-gradient(45deg, #F1F0E2, #F8F7F0); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #D19C97; font-size: 10px; border: 1px dashed #D19C97; cursor: pointer;" onclick="openModalWithIndex(2)">
+                여행
+              </div>
+              <div style="aspect-ratio: 1; background: linear-gradient(45deg, #F1F0E2, #F8F7F0); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #D19C97; font-size: 10px; border: 1px dashed #D19C97; cursor: pointer;" onclick="openModalWithIndex(3)">
+                스튜디오
+              </div>
+              <div style="aspect-ratio: 1; background: linear-gradient(45deg, #F1F0E2, #F8F7F0); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #D19C97; font-size: 10px; border: 1px dashed #D19C97; cursor: pointer;" onclick="openModalWithIndex(4)">
+                일상
+              </div>
+              <div style="aspect-ratio: 1; background: linear-gradient(45deg, #F1F0E2, #F8F7F0); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #D19C97; font-size: 10px; border: 1px dashed #D19C97; cursor: pointer;" onclick="openModalWithIndex(5)">
+                가족
+              </div>
+            </div>
+            <div style="font-size: 13px; color: #8B6F5C; text-align: center; line-height: 1.6;">
+              두 사람의 소중한 순간들을 담았습니다.<br>
+              각각의 사진에는 특별한 추억이 담겨있어요.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion" style="margin-top: 15px; width: 100%; max-width: 350px;">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          포토 촬영 후기
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <div style="font-size: 14px; color: #8B6F5C; line-height: 1.8;">
+              <div style="margin-bottom: 15px;">
+                <strong style="color: #D19C97;">스튜디오 촬영</strong><br>
+                처음에는 어색했지만 사진작가님의 도움으로 자연스러운 모습을 담을 수 있었어요. 
+                서로를 바라보며 웃던 그 순간이 가장 예뻤습니다.
+              </div>
+              <div style="margin-bottom: 15px;">
+                <strong style="color: #D19C97;">야외 촬영</strong><br>
+                계절의 변화와 함께 우리의 사랑도 깊어졌어요. 
+                자연스러운 햇살 아래에서 찍은 사진들이 가장 소중한 추억입니다.
+              </div>
+              <div>
+                <strong style="color: #D19C97;">일상 스냅</strong><br>
+                카페에서, 공원에서, 평범한 일상 속에서도 
+                함께라면 모든 순간이 특별했습니다.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion" style="margin-top: 15px; width: 100%; max-width: 350px;">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          사진 촬영 정보
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <div style="font-size: 14px; color: #8B6F5C; line-height: 1.8;">
+              <div style="margin-bottom: 10px;">
+                <strong style="color: #D19C97;">촬영 장소:</strong> 부산 해운대, 감천문화마을, 스튜디오
+              </div>
+              <div style="margin-bottom: 10px;">
+                <strong style="color: #D19C97;">촬영 기간:</strong> 2024년 4월 - 2024년 12월
+              </div>
+              <div style="margin-bottom: 10px;">
+                <strong style="color: #D19C97;">사진작가:</strong> 김포토그래퍼 스튜디오
+              </div>
+              <div>
+                <strong style="color: #D19C97;">컨셉:</strong> 자연스러운 일상, 로맨틱한 순간들
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
