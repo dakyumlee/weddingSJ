@@ -97,10 +97,10 @@
       min-height: 100vh;
       margin: 0;
       background: linear-gradient(135deg, #FDFCF8 0%, #F9F8F3 100%);
-      padding: 40px 30px;
+      padding: 30px 25px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
       text-align: center;
       scroll-snap-align: start;
@@ -108,6 +108,7 @@
       opacity: 0;
       transform: translateY(50px);
       transition: all 0.8s ease;
+      overflow-y: auto;
     }
 
     .card.visible {
@@ -1666,8 +1667,19 @@
     <div class="scroll-indicator">스크롤해서 초대장을 확인하세요 ↓</div>
 
     <div class="card">
+      <div style="margin-top: 40px;"></div>
+      <div style="font-size: 16px; color: #A08B7F; margin-bottom: 20px; font-style: italic; line-height: 1.8;">
+        "진정한 사랑은 두 영혼이 만나<br>
+        하나의 마음이 되는 것입니다"
+      </div>
       <div class="main-photo">
         <img src="photo5.jpeg">
+      </div>
+      <div style="font-size: 18px; color: #D19C97; margin: 20px 0 10px; font-weight: 600; letter-spacing: 2px;">
+        박현동 & 박수지
+      </div>
+      <div style="font-size: 14px; color: #8B6F5C; margin-bottom: 25px;">
+        2025년 9월 13일 토요일 오전 11시
       </div>
       <div class="greeting-text">
         함께 걷고 싶은 사람이 생겼습니다.<br>
@@ -1678,7 +1690,12 @@
     </div>
 
     <div class="card">
+      <div style="margin-top: 20px;"></div>
       <h2>신랑 & 신부</h2>
+      <div style="font-size: 15px; color: #A08B7F; margin-bottom: 30px; font-style: italic; line-height: 1.6;">
+        "서로 다른 길을 걸어왔지만<br>
+        이제는 같은 꿈을 향해 함께 걸어갑니다"
+      </div>
       
       <div class="couple-section">
         <div class="person-card">
@@ -1691,6 +1708,19 @@
             오랜 시간 한결같은 마음을 지켜왔습니다.<br>
             함께하는 삶을 소중히 여기며<br>
             신부와의 새로운 시작을 준비하고 있습니다.
+          </div>
+          
+          <div class="accordion" style="margin-top: 20px;">
+            <div class="accordion-header" onclick="toggleAccordion(this)" style="padding: 12px 15px; margin: 0; border-radius: 10px; font-size: 14px;">
+              더 알아보기
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-body" style="padding: 15px; font-size: 13px; color: #8B6F5C; line-height: 1.6;">
+                <div style="margin-bottom: 8px;"><strong>좋아하는 것:</strong> 독서, 영화감상, 산책</div>
+                <div style="margin-bottom: 8px;"><strong>취미:</strong> 사진촬영, 요리</div>
+                <div><strong>좌우명:</strong> "성실함이 가장 큰 재능이다"</div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -1705,12 +1735,55 @@
             신랑과의 신뢰를 바탕으로 서로를<br>
             깊이 이해하며 한 걸음 나아가려 합니다.
           </div>
+          
+          <div class="accordion" style="margin-top: 20px;">
+            <div class="accordion-header" onclick="toggleAccordion(this)" style="padding: 12px 15px; margin: 0; border-radius: 10px; font-size: 14px;">
+              더 알아보기
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-body" style="padding: 15px; font-size: 13px; color: #8B6F5C; line-height: 1.6;">
+                <div style="margin-bottom: 8px;"><strong>좋아하는 것:</strong> 카페투어, 음악감상, 여행</div>
+                <div style="margin-bottom: 8px;"><strong>취미:</strong> 베이킹, 플라워 아트</div>
+                <div><strong>좌우명:</strong> "작은 행복을 소중히 여기자"</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion" style="margin-top: 30px; width: 100%; max-width: 350px;">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          우리의 러브스토리
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <div style="font-size: 14px; color: #8B6F5C; line-height: 1.8;">
+              <div style="margin-bottom: 15px;">
+                <strong style="color: #D19C97;">2022년 봄</strong><br>
+                친구의 소개로 처음 만났습니다. 첫 만남부터 편안하고 자연스러운 대화가 이어졌습니다.
+              </div>
+              <div style="margin-bottom: 15px;">
+                <strong style="color: #D19C97;">2023년 여름</strong><br>
+                서로의 마음을 확인하고 공식적인 연인이 되었습니다. 함께하는 시간이 늘어날수록 더욱 깊은 신뢰가 쌓여갔습니다.
+              </div>
+              <div>
+                <strong style="color: #D19C97;">2024년 겨울</strong><br>
+                평생을 함께하기로 약속하며 결혼을 결심했습니다. 이제 새로운 시작을 준비하고 있습니다.
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="card">
+      <div style="margin-top: 20px;"></div>
       <h2>2025년 9월 13일</h2>
+      <div style="font-size: 15px; color: #A08B7F; margin-bottom: 25px; font-style: italic; line-height: 1.6;">
+        "모든 아름다운 순간은<br>
+        준비된 마음에서 시작됩니다"
+      </div>
+      
       <div class="calendar-container">
         <div class="calendar-header">
           <div class="calendar-month">9월</div>
@@ -1766,8 +1839,52 @@
           <div class="calendar-day other-month">4</div>
         </div>
       </div>
+      
       <div class="d-day">
         <span id="dday">D-67</span>
+      </div>
+
+      <div class="accordion" style="margin-top: 30px; width: 100%; max-width: 350px;">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          결혼식 타임라인
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <div style="font-size: 14px; color: #8B6F5C; line-height: 2;">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                <span style="font-weight: 600; color: #D19C97;">10:30</span>
+                <span>게스트 입장 및 접수</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                <span style="font-weight: 600; color: #D19C97;">11:00</span>
+                <span>결혼식 시작</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                <span style="font-weight: 600; color: #D19C97;">11:30</span>
+                <span>가족 사진 촬영</span>
+              </div>
+              <div style="display: flex; justify-content: space-between;">
+                <span style="font-weight: 600; color: #D19C97;">12:00</span>
+                <span>피로연 및 식사</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion" style="margin-top: 15px; width: 100%; max-width: 350px;">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          결혼식 준비 이야기
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <div style="font-size: 14px; color: #8B6F5C; line-height: 1.8;">
+              웨딩홀을 고르는 것부터 드레스 선택까지, 모든 순간이 소중한 추억이 되었습니다. 
+              두 가족이 하나가 되는 이 특별한 날을 위해 정성스럽게 준비했습니다. 
+              여러분과 함께 나누고 싶은 행복한 시간이 되기를 바랍니다.
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1917,11 +2034,25 @@
         </div>
         
         <div class="rsvp-info">
-          <strong>안내사항</strong><br><br>
-          • 참석 여부는 9월 1일까지 남겨주시면 감사하겠습니다.<br>
-          • 동반 가족이 있으시면 메시지에 함께 적어주세요.<br>
-          • 식사 준비를 위해 정확한 인원수가 필요합니다.<br>
-          • 문의사항은 신랑·신부에게 연락주세요.
+          <div style="font-size: 16px; font-weight: 600; color: #D19C97; margin-bottom: 20px; text-align: center;">
+            참석 안내
+          </div>
+          <div style="margin-bottom: 15px; padding: 12px; background: rgba(209, 156, 151, 0.05); border-radius: 8px; border-left: 3px solid #D19C97;">
+            <div style="font-weight: 600; color: #D19C97; margin-bottom: 5px;">회신 기한</div>
+            <div style="font-size: 14px;">8월 말까지 알려주시면 감사하겠습니다</div>
+          </div>
+          <div style="margin-bottom: 15px; padding: 12px; background: rgba(209, 156, 151, 0.05); border-radius: 8px; border-left: 3px solid #D19C97;">
+            <div style="font-weight: 600; color: #D19C97; margin-bottom: 5px;">동반 참석</div>
+            <div style="font-size: 14px;">함께 오실 분이 계시면 메시지에 적어주세요</div>
+          </div>
+          <div style="margin-bottom: 15px; padding: 12px; background: rgba(209, 156, 151, 0.05); border-radius: 8px; border-left: 3px solid #D19C97;">
+            <div style="font-weight: 600; color: #D19C97; margin-bottom: 5px;">식사 준비</div>
+            <div style="font-size: 14px;">정확한 인원 파악이 필요합니다</div>
+          </div>
+          <div style="padding: 12px; background: rgba(209, 156, 151, 0.05); border-radius: 8px; border-left: 3px solid #D19C97;">
+            <div style="font-weight: 600; color: #D19C97; margin-bottom: 5px;">문의 사항</div>
+            <div style="font-size: 14px;">신랑신부에게 언제든 연락주세요</div>
+          </div>
         </div>
         
         <form class="rsvp-form">
