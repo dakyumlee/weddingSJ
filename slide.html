@@ -1320,6 +1320,10 @@
       object-fit: contain;
       border-radius: 15px;
       animation: modalImageZoom 0.4s ease;
+      transition: all 0.3s ease;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: none;
     }
 
     @keyframes modalImageZoom {
@@ -1755,16 +1759,16 @@
           <div class="accordion-body">
             <div style="font-size: 14px; color: #8B6F5C; line-height: 1.8;">
               <div style="margin-bottom: 15px;">
-                <strong style="color: #D19C97;">2022년 봄</strong><br>
-                친구의 소개로 처음 만났습니다. 첫 만남부터 편안하고 자연스러운 대화가 이어졌습니다.
+                <strong style="color: #D19C97;">날짜</strong><br>
+                니 기억 남는 일화
               </div>
               <div style="margin-bottom: 15px;">
-                <strong style="color: #D19C97;">2023년 여름</strong><br>
-                서로의 마음을 확인하고 공식적인 연인이 되었습니다. 함께하는 시간이 늘어날수록 더욱 깊은 신뢰가 쌓여갔습니다.
+                <strong style="color: #D19C97;">날짜</strong><br>
+                뭐 여행이라든가
               </div>
               <div>
-                <strong style="color: #D19C97;">2024년 겨울</strong><br>
-                평생을 함께하기로 약속하며 결혼을 결심했습니다. 이제 새로운 시작을 준비하고 있습니다.
+                <strong style="color: #D19C97;">날짜</strong><br>
+                결혼 결심이라든가
               </div>
             </div>
           </div>
@@ -2383,6 +2387,11 @@
       document.body.style.overflow = 'hidden';
     };
 
+    window.openModalWithIndex = function(index) {
+      currentImageIndex = index;
+      openModal();
+    };
+
     window.closeModal = function() {
       const modal = document.getElementById('imageModal');
       modal.style.display = 'none';
@@ -2391,8 +2400,9 @@
 
     window.changeSlide = function(direction) {
       const modalImg = document.getElementById('modalImage');
+      
+      modalImg.style.transform = `translateX(${direction > 0 ? '-100%' : '100%'}) scale(0.8)`;
       modalImg.style.opacity = '0';
-      modalImg.style.transform = 'scale(0.8)';
       
       setTimeout(() => {
         currentImageIndex += direction;
@@ -2403,9 +2413,13 @@
         }
         
         modalImg.src = galleryImages[currentImageIndex];
-        modalImg.style.opacity = '1';
-        modalImg.style.transform = 'scale(1)';
-      }, 200);
+        modalImg.style.transform = `translateX(${direction > 0 ? '100%' : '-100%'}) scale(0.8)`;
+        
+        setTimeout(() => {
+          modalImg.style.transform = 'translateX(0%) scale(1)';
+          modalImg.style.opacity = '1';
+        }, 50);
+      }, 150);
     };
 
     window.onclick = function(event) {
@@ -2414,6 +2428,69 @@
         closeModal();
       }
     };
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let touchStartY = 0;
+    let touchEndY = 0;
+    let isDragging = false;
+
+    const modalImage = document.getElementById('modalImage');
+    const modal = document.getElementById('imageModal');
+
+    modal.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].screenX;
+      touchStartY = e.changedTouches[0].screenY;
+      isDragging = true;
+      
+      modalImage.style.transition = 'none';
+    }, { passive: true });
+
+    modal.addEventListener('touchmove', e => {
+      if (!isDragging) return;
+      
+      const currentX = e.changedTouches[0].screenX;
+      const currentY = e.changedTouches[0].screenY;
+      const deltaX = currentX - touchStartX;
+      const deltaY = currentY - touchStartY;
+      
+      if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 10) {
+        e.preventDefault();
+        
+        const movePercent = (deltaX / window.innerWidth) * 100;
+        modalImage.style.transform = `translateX(${movePercent}%) scale(${1 - Math.abs(movePercent) * 0.001})`;
+        modalImage.style.opacity = 1 - Math.abs(movePercent) * 0.002;
+      }
+    }, { passive: false });
+
+    modal.addEventListener('touchend', e => {
+      if (!isDragging) return;
+      
+      touchEndX = e.changedTouches[0].screenX;
+      touchEndY = e.changedTouches[0].screenY;
+      isDragging = false;
+      
+      modalImage.style.transition = 'all 0.3s ease';
+      
+      handleGesture();
+    }, { passive: true });
+
+    function handleGesture() {
+      const swipeThreshold = 80;
+      const deltaX = touchEndX - touchStartX;
+      const deltaY = touchEndY - touchStartY;
+      
+      if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > swipeThreshold) {
+        if (deltaX > 0) {
+          changeSlide(-1);
+        } else {
+          changeSlide(1);
+        }
+      } else {
+        modalImage.style.transform = 'translateX(0%) scale(1)';
+        modalImage.style.opacity = '1';
+      }
+    }
 
     const rsvpForm = document.querySelector('.rsvp-form');
     if (rsvpForm) {
@@ -2557,28 +2634,6 @@
       }
     });
 
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    document.getElementById('imageModal').addEventListener('touchstart', e => {
-      touchStartX = e.changedTouches[0].screenX;
-    });
-
-    document.getElementById('imageModal').addEventListener('touchend', e => {
-      touchEndX = e.changedTouches[0].screenX;
-      handleGesture();
-    });
-
-    function handleGesture() {
-      const swipeThreshold = 50;
-      if (touchEndX < touchStartX - swipeThreshold) {
-        changeSlide(1);
-      }
-      if (touchEndX > touchStartX + swipeThreshold) {
-        changeSlide(-1);
-      }
-    }
-
     function debounce(func, wait) {
       let timeout;
       return function executedFunction(...args) {
@@ -2592,8 +2647,6 @@
     }
 
     window.addEventListener('scroll', debounce(updateScrollProgress, 10));
-
-    console.log('✨ Enhanced Wedding Invitation Loaded Successfully! ✨');
   </script>
 </body>
 </html>
