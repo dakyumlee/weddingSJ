@@ -6,7 +6,6 @@
   <title>박현동♥박수지 결혼식 초대장</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="mobile.css">
   <style>
     * {
       margin: 0;
@@ -23,10 +22,12 @@
       overflow-x: hidden;
       overflow-y: auto;
       position: relative;
+      will-change: scroll-position;
     }
 
     html {
-      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+      scroll-snap-type: y proximity;
       -webkit-overflow-scrolling: touch;
     }
 
@@ -43,16 +44,17 @@
 
     .floating-heart {
       position: absolute;
-      color: rgba(209, 156, 151, 0.2);
-      font-size: 20px;
-      animation: floatUp 8s linear infinite;
+      color: rgba(209, 156, 151, 0.1);
+      font-size: 18px;
+      animation: floatUp 15s linear infinite;
+      will-change: transform;
     }
 
-    .floating-heart:nth-child(1) { left: 10%; animation-delay: 0s; }
-    .floating-heart:nth-child(2) { left: 30%; animation-delay: 2s; }
-    .floating-heart:nth-child(3) { left: 50%; animation-delay: 4s; }
-    .floating-heart:nth-child(4) { left: 70%; animation-delay: 6s; }
-    .floating-heart:nth-child(5) { left: 90%; animation-delay: 1s; }
+    .floating-heart:nth-child(1) { left: 15%; animation-delay: 0s; }
+    .floating-heart:nth-child(2) { left: 35%; animation-delay: 5s; }
+    .floating-heart:nth-child(3) { left: 55%; animation-delay: 10s; }
+    .floating-heart:nth-child(4) { left: 75%; animation-delay: 3s; }
+    .floating-heart:nth-child(5) { left: 85%; animation-delay: 8s; }
 
     @keyframes floatUp {
       0% {
@@ -69,20 +71,6 @@
         transform: translateY(-50px) rotate(360deg);
         opacity: 0;
       }
-    }
-
-    .sparkle {
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      background: radial-gradient(circle, #D19C97, transparent);
-      border-radius: 50%;
-      animation: sparkle 3s ease-in-out infinite;
-    }
-
-    @keyframes sparkle {
-      0%, 100% { opacity: 0; transform: scale(0); }
-      50% { opacity: 1; transform: scale(1); }
     }
 
     .container {
@@ -106,18 +94,15 @@
       scroll-snap-align: start;
       position: relative;
       opacity: 0;
-      transform: translateY(50px);
-      transition: all 0.8s ease;
+      transform: translate3d(0, 30px, 0);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       overflow-y: auto;
+      will-change: transform, opacity;
     }
 
     .card.visible {
       opacity: 1;
-      transform: translateY(0);
-    }
-
-    .card:nth-child(even) {
-      background: linear-gradient(135deg, #FDFCF8 0%, #F9F8F3 100%);
+      transform: translate3d(0, 0, 0);
     }
 
     h1 {
@@ -126,12 +111,6 @@
       margin-bottom: 20px;
       font-weight: 600;
       letter-spacing: 1px;
-      animation: titleGlow 3s ease-in-out infinite;
-    }
-
-    @keyframes titleGlow {
-      0%, 100% { text-shadow: 0 0 10px rgba(209, 156, 151, 0.3); }
-      50% { text-shadow: 0 0 20px rgba(209, 156, 151, 0.6); }
     }
 
     h2 {
@@ -153,73 +132,48 @@
       justify-content: center;
       color: #D19C97;
       font-size: 16px;
-      border: 3px solid #D19C97;
-      box-shadow: 0 15px 35px rgba(209, 156, 151, 0.2);
+      border: 2px solid #D19C97;
+      box-shadow: 0 10px 30px rgba(209, 156, 151, 0.15);
       overflow: hidden;
       cursor: pointer;
-      transition: all 0.5s ease;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       position: relative;
+      will-change: transform;
     }
 
     .main-photo:hover {
-      transform: scale(1.02) rotate(1deg);
-      box-shadow: 0 25px 50px rgba(209, 156, 151, 0.4);
-    }
-
-    .main-photo::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
-      transform: rotate(45deg);
-      transition: all 0.6s ease;
-      opacity: 0;
-    }
-
-    .main-photo:hover::before {
-      animation: shimmer 1.5s ease-in-out;
-    }
-
-    @keyframes shimmer {
-      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); opacity: 0; }
-      50% { opacity: 1; }
-      100% { transform: translateX(100%) translateY(100%) rotate(45deg); opacity: 0; }
+      transform: translate3d(0, -5px, 0);
+      box-shadow: 0 20px 40px rgba(209, 156, 151, 0.25);
     }
 
     .main-photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 17px;
-      transition: all 0.5s ease;
-    }
-
-    .main-photo:hover img {
-      transform: scale(1.05);
+      border-radius: 18px;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform;
     }
 
     .greeting-text {
-      font-size: 18px;
-      line-height: 2.2;
+      font-size: 17px;
+      line-height: 2;
       color: #8B6F5C;
       margin: 30px 0;
       word-break: keep-all;
       font-weight: 400;
       opacity: 0;
-      animation: fadeInUp 1s ease 0.5s forwards;
+      animation: fadeInUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
     }
 
     @keyframes fadeInUp {
       from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translate3d(0, 20px, 0);
       }
       to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translate3d(0, 0, 0);
       }
     }
 
@@ -231,73 +185,36 @@
 
     .person-card {
       background: linear-gradient(135deg, #FDFCF8 0%, #F9F8F3 100%);
-      padding: 30px 25px;
+      padding: 25px 20px;
       border-radius: 20px;
-      margin: 25px 0;
+      margin: 20px 0;
       border: 2px solid #D19C97;
-      box-shadow: 0 8px 25px rgba(209, 156, 151, 0.1);
-      cursor: pointer;
-      transition: all 0.4s ease;
+      box-shadow: 0 6px 20px rgba(209, 156, 151, 0.1);
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       position: relative;
-      overflow: hidden;
-    }
-
-    .person-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(209, 156, 151, 0.1), transparent);
-      transition: left 0.6s ease;
-    }
-
-    .person-card:hover::before {
-      left: 100%;
+      will-change: transform;
     }
 
     .person-card:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 20px 40px rgba(209, 156, 151, 0.2);
+      transform: translate3d(0, -5px, 0);
+      box-shadow: 0 12px 30px rgba(209, 156, 151, 0.15);
     }
 
     .person-photo {
-      width: 120px;
-      height: 120px;
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
       background: linear-gradient(135deg, #FDFCF8 0%, #F9F8F3 100%);
-      margin: 0 auto 20px;
+      margin: 0 auto 15px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #D19C97;
-      font-size: 14px;
-      border: 3px solid #D19C97;
+      font-size: 12px;
+      border: 2px solid #D19C97;
       overflow: hidden;
-      transition: all 0.4s ease;
-      position: relative;
-    }
-
-    .person-photo::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: conic-gradient(from 0deg, transparent, rgba(209, 156, 151, 0.3), transparent);
-      animation: photoRotate 4s linear infinite;
-      opacity: 0;
-    }
-
-    .person-card:hover .person-photo::after {
-      opacity: 1;
-    }
-
-    @keyframes photoRotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform;
     }
 
     .person-photo img {
@@ -305,93 +222,61 @@
       height: 100%;
       object-fit: cover;
       border-radius: 50%;
-      transition: all 0.4s ease;
-    }
-
-    .person-card:hover .person-photo img {
-      transform: scale(1.1);
     }
 
     .person-name {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 600;
       color: #D19C97;
-      margin-bottom: 20px;
-      position: relative;
+      margin-bottom: 15px;
     }
 
     .person-description {
-      font-size: 15px;
-      line-height: 1.8;
+      font-size: 14px;
+      line-height: 1.6;
       color: #8B6F5C;
       font-weight: 300;
     }
 
     .calendar-container {
       background: linear-gradient(135deg, #FDFCF8 0%, #F9F8F3 100%);
-      padding: 30px 20px;
+      padding: 25px 20px;
       border-radius: 20px;
-      margin: 30px 0;
+      margin: 25px 0;
       width: 100%;
       max-width: 350px;
       border: 2px solid #D19C97;
-      box-shadow: 0 8px 25px rgba(209, 156, 151, 0.1);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .calendar-container::before {
-      content: '';
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      background: linear-gradient(45deg, #D19C97, #F9F8F3, #D19C97);
-      border-radius: 22px;
-      z-index: -1;
-      animation: borderGlow 3s linear infinite;
-    }
-
-    @keyframes borderGlow {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 0.8; }
+      box-shadow: 0 6px 20px rgba(209, 156, 151, 0.1);
     }
 
     .calendar-header {
       text-align: center;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
     }
 
     .calendar-month {
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 600;
       color: #D19C97;
-      margin-bottom: 8px;
-      animation: monthPulse 2s ease-in-out infinite;
-    }
-
-    @keyframes monthPulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+      margin-bottom: 5px;
     }
 
     .calendar-year {
-      font-size: 16px;
+      font-size: 14px;
       color: #8B6F5C;
     }
 
     .calendar-grid {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
-      gap: 8px;
-      margin-bottom: 25px;
+      gap: 6px;
+      margin-bottom: 20px;
     }
 
     .calendar-day-header {
-      padding: 8px 4px;
+      padding: 6px 4px;
       text-align: center;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 600;
       color: #8B6F5C;
     }
@@ -401,20 +286,18 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 14px;
-      border-radius: 8px;
-      transition: all 0.3s ease;
+      font-size: 12px;
+      border-radius: 6px;
+      transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       color: #8B6F5C;
-      min-height: 35px;
-      position: relative;
-      width: 100%;
-      overflow: hidden;
+      min-height: 30px;
       cursor: pointer;
+      will-change: transform;
     }
 
     .calendar-day:hover {
       background: rgba(209, 156, 151, 0.1);
-      transform: scale(1.1);
+      transform: translate3d(0, -1px, 0);
     }
 
     .calendar-day.other-month {
@@ -435,10 +318,11 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 24px;
+      font-size: 20px;
       color: #D19C97;
-      animation: heartPulse 1.5s ease-in-out infinite;
+      animation: heartPulse 2s ease-in-out infinite;
       z-index: 2;
+      will-change: transform;
     }
 
     .calendar-day.wedding-day::after {
@@ -447,7 +331,7 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 12px;
+      font-size: 10px;
       color: #D19C97;
       font-weight: 600;
       z-index: 3;
@@ -456,159 +340,122 @@
     @keyframes heartPulse {
       0%, 100% { 
         transform: translate(-50%, -50%) scale(1);
-        filter: drop-shadow(0 0 5px rgba(209, 156, 151, 0.5));
+        filter: drop-shadow(0 0 3px rgba(209, 156, 151, 0.5));
       }
       50% { 
         transform: translate(-50%, -50%) scale(1.2);
-        filter: drop-shadow(0 0 15px rgba(209, 156, 151, 0.8));
+        filter: drop-shadow(0 0 8px rgba(209, 156, 151, 0.8));
       }
     }
 
     .d-day {
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 700;
       color: #D19C97;
-      padding: 15px 30px;
+      padding: 12px 25px;
       background: #fff;
-      border-radius: 25px;
+      border-radius: 20px;
       border: 2px solid #D19C97;
-      box-shadow: 0 4px 15px rgba(209, 156, 151, 0.2);
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-    }
-
-    .d-day::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(209, 156, 151, 0.1), transparent);
-      animation: dDayPulse 2s ease-in-out infinite;
-    }
-
-    @keyframes dDayPulse {
-      0%, 100% { transform: scale(0); opacity: 1; }
-      50% { transform: scale(1); opacity: 0; }
+      box-shadow: 0 4px 15px rgba(209, 156, 151, 0.15);
     }
 
     .venue-info {
       text-align: center;
       width: 100%;
       max-width: 350px;
-      background: #F1F0E2;
-      padding: 30px 25px;
+      background: #F8F7F0;
+      padding: 25px 20px;
       border-radius: 20px;
-      margin: 30px 0;
+      margin: 25px 0;
       border: 2px solid #D19C97;
-      box-shadow: 0 8px 25px rgba(209, 156, 151, 0.1);
-      transition: all 0.4s ease;
-      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(209, 156, 151, 0.1);
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform;
     }
 
     .venue-info:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(209, 156, 151, 0.2);
+      transform: translate3d(0, -3px, 0);
+      box-shadow: 0 10px 25px rgba(209, 156, 151, 0.15);
     }
 
     .venue-name {
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 600;
       color: #D19C97;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .venue-hall {
-      font-size: 18px;
+      font-size: 16px;
       color: #8B6F5C;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
     }
 
     .venue-address {
-      font-size: 16px;
+      font-size: 14px;
       color: #A08B7F;
-      line-height: 1.5;
+      line-height: 1.4;
     }
 
     .venue-date-time {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 600;
       color: #D19C97;
-      margin-bottom: 20px;
-      padding: 15px;
+      margin-bottom: 15px;
+      padding: 12px;
       background: white;
-      border-radius: 15px;
+      border-radius: 12px;
       border: 1px solid #E8E0D6;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .venue-date-time::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(209, 156, 151, 0.1), transparent);
-      animation: dateTimeShine 3s ease-in-out infinite;
-    }
-
-    @keyframes dateTimeShine {
-      0% { left: -100%; }
-      50% { left: 100%; }
-      100% { left: -100%; }
     }
 
     .map-container {
       width: 100%;
       max-width: 350px;
-      height: 250px;
+      height: 220px;
       border-radius: 20px;
       overflow: hidden;
-      margin: 25px 0;
-      box-shadow: 0 8px 25px rgba(209, 156, 151, 0.2);
+      margin: 20px 0;
+      box-shadow: 0 6px 20px rgba(209, 156, 151, 0.15);
       border: 2px solid #D19C97;
-      transition: all 0.4s ease;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform;
     }
 
     .map-container:hover {
-      transform: scale(1.02);
-      box-shadow: 0 15px 35px rgba(209, 156, 151, 0.3);
+      transform: scale(1.01);
+      box-shadow: 0 10px 30px rgba(209, 156, 151, 0.2);
     }
 
     .map-container iframe {
       width: 100%;
       height: 100%;
       border: none;
-      transition: all 0.4s ease;
     }
 
     .transport-section {
       width: 100%;
       max-width: 350px;
-      margin: 25px 0;
+      margin: 20px 0;
     }
 
     .accordion {
-      background: #F1F0E2;
+      background: #F8F7F0;
       border-radius: 15px;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
       overflow: hidden;
       border: 2px solid #D19C97;
       box-shadow: 0 4px 15px rgba(209, 156, 151, 0.1);
-      transition: all 0.4s ease;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform;
     }
 
     .accordion:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(209, 156, 151, 0.2);
+      transform: translate3d(0, -2px, 0);
+      box-shadow: 0 6px 20px rgba(209, 156, 151, 0.15);
     }
 
     .accordion-header {
-      padding: 20px 25px;
+      padding: 15px 20px;
       background: #D19C97;
       cursor: pointer;
       display: flex;
@@ -616,25 +463,9 @@
       align-items: center;
       font-weight: 600;
       color: white;
-      transition: all 0.3s ease;
-      font-size: 16px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .accordion-header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: left 0.6s ease;
-    }
-
-    .accordion-header:hover::before {
-      left: 100%;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      font-size: 14px;
+      will-change: background-color;
     }
 
     .accordion-header:hover {
@@ -643,8 +474,9 @@
 
     .accordion-header::after {
       content: '+';
-      font-size: 22px;
-      transition: all 0.3s ease;
+      font-size: 18px;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform;
     }
 
     .accordion-header.active::after {
@@ -654,113 +486,71 @@
     .accordion-content {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.4s ease;
-      background: #F1F0E2;
+      transition: max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      background: #F8F7F0;
     }
 
     .accordion-content.active {
-      max-height: 500px;
+      max-height: 400px;
     }
 
     .accordion-body {
-      padding: 25px;
+      padding: 20px;
     }
 
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 15px;
-      margin: 20px 0;
+      gap: 12px;
+      margin: 15px 0;
     }
 
     .contact-card {
       background: white;
-      padding: 20px;
+      padding: 18px;
       border-radius: 15px;
       text-align: center;
       border: 2px solid #D19C97;
       box-shadow: 0 4px 15px rgba(209, 156, 151, 0.1);
-      transition: all 0.4s ease;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .contact-card::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(209, 156, 151, 0.1), transparent);
-      transform: scale(0);
-      transition: transform 0.4s ease;
-    }
-
-    .contact-card:hover::before {
-      transform: scale(1);
+      will-change: transform;
     }
 
     .contact-card:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 12px 25px rgba(209, 156, 151, 0.2);
+      transform: translate3d(0, -3px, 0);
+      box-shadow: 0 8px 20px rgba(209, 156, 151, 0.15);
     }
 
     .contact-emoji {
-      font-size: 30px;
-      margin-bottom: 10px;
-      animation: emojiFloat 3s ease-in-out infinite;
-    }
-
-    @keyframes emojiFloat {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-5px); }
+      font-size: 24px;
+      margin-bottom: 8px;
     }
 
     .contact-label {
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 600;
       color: #D19C97;
-      margin-bottom: 5px;
+      margin-bottom: 3px;
     }
 
     .contact-name {
-      font-size: 14px;
+      font-size: 13px;
       color: #8B6F5C;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
 
     .phone-btn {
       background: #D19C97;
       color: white;
       border: none;
-      padding: 10px 15px;
-      border-radius: 20px;
-      font-size: 14px;
+      padding: 8px 12px;
+      border-radius: 15px;
+      font-size: 12px;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       font-weight: 500;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .phone-btn::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      background: rgba(255,255,255,0.3);
-      border-radius: 50%;
-      transition: all 0.4s ease;
-      transform: translate(-50%, -50%);
-    }
-
-    .phone-btn:hover::before {
-      width: 200%;
-      height: 200%;
+      will-change: transform;
     }
 
     .phone-btn:hover {
@@ -769,8 +559,8 @@
     }
 
     .parent-row {
-      margin-bottom: 8px;
-      font-size: 13px;
+      margin-bottom: 6px;
+      font-size: 11px;
       color: #A08B7F;
       text-align: left;
     }
@@ -778,38 +568,22 @@
     .map-links {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      gap: 10px;
-      margin-top: 20px;
+      gap: 8px;
+      margin-top: 15px;
     }
 
     .map-link {
       display: block;
-      padding: 12px 8px;
+      padding: 10px 6px;
       text-decoration: none;
-      border-radius: 20px;
-      font-size: 12px;
+      border-radius: 15px;
+      font-size: 11px;
       font-weight: 600;
       text-align: center;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       color: white;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .map-link::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-      transition: left 0.4s ease;
-    }
-
-    .map-link:hover::before {
-      left: 100%;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      will-change: transform;
     }
 
     .map-link.kakao {
@@ -826,120 +600,79 @@
     }
 
     .map-link:hover {
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      transform: translate3d(0, -2px, 0);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
     }
 
     .account-intro {
-      font-size: 16px;
-      line-height: 2;
+      font-size: 15px;
+      line-height: 1.8;
       color: #8B6F5C;
-      margin: 30px 0;
+      margin: 25px 0;
       text-align: center;
       word-break: keep-all;
       font-weight: 400;
-      animation: textFlow 4s ease-in-out infinite;
-    }
-
-    @keyframes textFlow {
-      0%, 100% { opacity: 0.8; }
-      50% { opacity: 1; }
     }
 
     .account-section {
-      background: #F1F0E2;
-      padding: 30px 25px;
+      background: #F8F7F0;
+      padding: 25px 20px;
       border-radius: 20px;
-      margin: 25px 0;
+      margin: 20px 0;
       width: 100%;
       max-width: 350px;
       border: 2px solid #D19C97;
-      box-shadow: 0 8px 25px rgba(209, 156, 151, 0.1);
-      transition: all 0.4s ease;
+      box-shadow: 0 6px 20px rgba(209, 156, 151, 0.1);
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform;
     }
 
     .account-section:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(209, 156, 151, 0.2);
+      transform: translate3d(0, -3px, 0);
+      box-shadow: 0 10px 25px rgba(209, 156, 151, 0.15);
     }
 
     .account-item {
-      margin-bottom: 20px;
-      padding: 25px;
+      margin-bottom: 15px;
+      padding: 20px;
       background: white;
       border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(209, 156, 151, 0.1);
+      box-shadow: 0 3px 10px rgba(209, 156, 151, 0.1);
       border: 1px solid #E8E0D6;
-      transition: all 0.4s ease;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .account-item::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(209, 156, 151, 0.05), transparent);
-      transition: left 0.6s ease;
-    }
-
-    .account-item:hover::before {
-      left: 100%;
+      will-change: transform;
     }
 
     .account-item:hover {
-      transform: scale(1.02);
-      box-shadow: 0 8px 25px rgba(209, 156, 151, 0.15);
+      transform: scale(1.01);
+      box-shadow: 0 6px 15px rgba(209, 156, 151, 0.12);
     }
 
     .account-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
     }
 
     .account-name {
       font-weight: 600;
       color: #D19C97;
-      font-size: 18px;
-      position: relative;
+      font-size: 16px;
     }
 
     .copy-btn {
       background: #D19C97;
       color: white;
       border: none;
-      padding: 10px 20px;
-      border-radius: 20px;
-      font-size: 14px;
+      padding: 8px 15px;
+      border-radius: 15px;
+      font-size: 12px;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       font-weight: 500;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .copy-btn::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      background: rgba(255,255,255,0.3);
-      border-radius: 50%;
-      transition: all 0.4s ease;
-      transform: translate(-50%, -50%);
-    }
-
-    .copy-btn:hover::before {
-      width: 200%;
-      height: 200%;
+      will-change: transform, background-color;
     }
 
     .copy-btn:hover {
@@ -949,165 +682,134 @@
 
     .account-details {
       text-align: center;
+      overflow: hidden;
+    }
+
+    .account-number, .account-hidden {
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      color: #8B6F5C;
+      letter-spacing: 0.5px;
+      font-weight: 500;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform, opacity;
     }
 
     .account-number {
-      font-family: 'Courier New', monospace;
-      font-size: 16px;
-      color: #8B6F5C;
-      letter-spacing: 1px;
-      font-weight: 500;
+      transform: translate3d(0, -10px, 0);
+      opacity: 0;
+    }
+
+    .account-number.show {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
     }
 
     .account-hidden {
-      font-size: 15px;
-      color: #A08B7F;
       font-style: italic;
+      color: #A08B7F;
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
+
+    .account-hidden.hide {
+      transform: translate3d(0, -10px, 0);
+      opacity: 0;
     }
 
     .gallery-container {
       width: 100%;
       max-width: 350px;
-      margin: 30px 0;
+      margin: 25px 0;
     }
 
     .gallery-main {
       width: 100%;
-      height: 400px;
-      background: linear-gradient(45deg, #F1F0E2, #F8F7F0);
+      height: 350px;
+      background: linear-gradient(45deg, #F8F7F0, #FDFCF8);
       border-radius: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #D19C97;
-      font-size: 18px;
-      border: 3px solid #D19C97;
-      box-shadow: 0 15px 35px rgba(209, 156, 151, 0.2);
+      font-size: 16px;
+      border: 2px solid #D19C97;
+      box-shadow: 0 10px 30px rgba(209, 156, 151, 0.15);
       cursor: pointer;
-      transition: all 0.5s ease;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       overflow: hidden;
-      position: relative;
-    }
-
-    .gallery-main::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: conic-gradient(from 0deg, transparent, rgba(209, 156, 151, 0.2), transparent);
-      animation: galleryRotate 6s linear infinite;
-      opacity: 0;
-    }
-
-    .gallery-main:hover::before {
-      opacity: 1;
-    }
-
-    @keyframes galleryRotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+      will-change: transform;
     }
 
     .gallery-main:hover {
-      transform: scale(1.03) rotate(1deg);
-      box-shadow: 0 25px 50px rgba(209, 156, 151, 0.4);
+      transform: translate3d(0, -5px, 0);
+      box-shadow: 0 20px 40px rgba(209, 156, 151, 0.25);
     }
 
     .gallery-main img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 17px;
-      transition: all 0.5s ease;
-    }
-
-    .gallery-main:hover img {
-      transform: scale(1.1) rotate(-1deg);
+      border-radius: 18px;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform;
     }
 
     .gallery-info {
       text-align: center;
-      margin-top: 15px;
-      font-size: 14px;
+      margin-top: 12px;
+      font-size: 12px;
       color: #A08B7F;
-      animation: infoFloat 3s ease-in-out infinite;
-    }
-
-    @keyframes infoFloat {
-      0%, 100% { opacity: 0.7; }
-      50% { opacity: 1; }
     }
 
     .rsvp-section {
       width: 100%;
       max-width: 350px;
-      margin: 30px 0;
+      margin: 25px 0;
     }
 
     .rsvp-intro {
-      font-size: 16px;
-      line-height: 2;
+      font-size: 15px;
+      line-height: 1.8;
       color: #8B6F5C;
-      margin: 30px 0;
+      margin: 25px 0;
       text-align: center;
       word-break: keep-all;
       font-weight: 400;
     }
 
     .rsvp-info {
-      background: #F1F0E2;
-      padding: 25px;
+      background: #F8F7F0;
+      padding: 20px;
       border-radius: 15px;
-      margin-bottom: 25px;
-      font-size: 14px;
+      margin-bottom: 20px;
+      font-size: 13px;
       color: #8B6F5C;
       text-align: left;
       border: 2px solid #D19C97;
-      line-height: 1.8;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .rsvp-info::before {
-      content: '';
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      background: linear-gradient(45deg, #D19C97, #F9F8F3, #D19C97);
-      border-radius: 17px;
-      z-index: -1;
-      animation: infoBorder 4s linear infinite;
-    }
-
-    @keyframes infoBorder {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 0.8; }
+      line-height: 1.6;
     }
 
     .rsvp-form {
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 15px;
     }
 
     .rsvp-form input,
     .rsvp-form select,
     .rsvp-form textarea {
       width: 100%;
-      padding: 18px;
+      padding: 15px;
       border: 2px solid #D19C97;
-      border-radius: 15px;
-      font-size: 16px;
+      border-radius: 12px;
+      font-size: 14px;
       font-family: 'Noto Serif KR', serif;
-      background: #F1F0E2;
-      transition: all 0.3s ease;
+      background: #F8F7F0;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       color: #8B6F5C;
-      position: relative;
+      will-change: border-color, background-color;
     }
 
     .rsvp-form input:focus,
@@ -1116,12 +818,11 @@
       outline: none;
       border-color: #C08B86;
       background: #fff;
-      box-shadow: 0 4px 15px rgba(209, 156, 151, 0.2);
-      transform: translateY(-2px);
+      box-shadow: 0 3px 10px rgba(209, 156, 151, 0.15);
     }
 
     .rsvp-form textarea {
-      min-height: 120px;
+      min-height: 100px;
       resize: vertical;
     }
 
@@ -1129,45 +830,29 @@
       background: linear-gradient(45deg, #D19C97, #C08B86);
       color: white;
       border: none;
-      padding: 18px 30px;
-      border-radius: 25px;
-      font-size: 18px;
+      padding: 15px 25px;
+      border-radius: 20px;
+      font-size: 16px;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.4s ease;
-      box-shadow: 0 8px 25px rgba(209, 156, 151, 0.3);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .rsvp-form button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-      transition: left 0.6s ease;
-    }
-
-    .rsvp-form button:hover::before {
-      left: 100%;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: 0 6px 20px rgba(209, 156, 151, 0.25);
+      will-change: transform, background;
     }
 
     .rsvp-form button:hover {
       background: linear-gradient(45deg, #C08B86, #A67B76);
-      transform: translateY(-5px) scale(1.02);
-      box-shadow: 0 15px 35px rgba(209, 156, 151, 0.4);
+      transform: translate3d(0, -3px, 0);
+      box-shadow: 0 10px 30px rgba(209, 156, 151, 0.35);
     }
 
     .qr-container {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 30px;
+      gap: 25px;
       width: 100%;
-      margin: 30px 0;
+      margin: 25px 0;
     }
 
     .qr-description {
@@ -1175,107 +860,56 @@
     }
 
     .qr-main-text {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 600;
       color: #D19C97;
-      margin-bottom: 15px;
-      line-height: 1.6;
-      animation: qrTextGlow 3s ease-in-out infinite;
-    }
-
-    @keyframes qrTextGlow {
-      0%, 100% { text-shadow: 0 0 10px rgba(209, 156, 151, 0.3); }
-      50% { text-shadow: 0 0 20px rgba(209, 156, 151, 0.6); }
+      margin-bottom: 12px;
+      line-height: 1.5;
     }
 
     .qr-sub-text {
-      font-size: 16px;
+      font-size: 14px;
       color: #8B6F5C;
     }
 
     .qr-code {
-      width: 250px;
-      height: 250px;
-      background: linear-gradient(45deg, #fff, #F1F0E2);
-      border-radius: 25px;
+      width: 220px;
+      height: 220px;
+      background: linear-gradient(45deg, #fff, #F8F7F0);
+      border-radius: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 3px solid #D19C97;
+      border: 2px solid #D19C97;
       overflow: hidden;
-      box-shadow: 0 15px 35px rgba(209, 156, 151, 0.2);
-      position: relative;
+      box-shadow: 0 10px 30px rgba(209, 156, 151, 0.15);
       cursor: pointer;
-      transition: all 0.5s ease;
-    }
-
-    .qr-code::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: conic-gradient(from 0deg, transparent, rgba(209, 156, 151, 0.2), transparent);
-      animation: qrRotate 8s linear infinite;
-      opacity: 0;
-    }
-
-    .qr-code:hover::before {
-      opacity: 1;
-    }
-
-    @keyframes qrRotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform;
     }
 
     .qr-code:hover {
-      transform: scale(1.05) rotate(2deg);
-      box-shadow: 0 25px 50px rgba(209, 156, 151, 0.4);
+      transform: scale(1.02);
+      box-shadow: 0 15px 40px rgba(209, 156, 151, 0.25);
     }
 
     .qr-code img {
-      width: 90%;
-      height: 90%;
+      width: 85%;
+      height: 85%;
       object-fit: contain;
-      border-radius: 15px;
-      transition: all 0.5s ease;
-    }
-
-    .qr-code:hover img {
-      transform: scale(1.1) rotate(-2deg);
+      border-radius: 12px;
     }
 
     .qr-guide {
-      background: #F1F0E2;
-      padding: 20px;
+      background: #F8F7F0;
+      padding: 18px;
       border-radius: 15px;
-      font-size: 14px;
+      font-size: 13px;
       color: #8B6F5C;
-      line-height: 1.8;
+      line-height: 1.6;
       border: 2px solid #D19C97;
-      max-width: 320px;
+      max-width: 300px;
       text-align: left;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .qr-guide::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(209, 156, 151, 0.1), transparent);
-      animation: guideShine 4s ease-in-out infinite;
-    }
-
-    @keyframes guideShine {
-      0% { left: -100%; }
-      50% { left: 100%; }
-      100% { left: -100%; }
     }
 
     .modal {
@@ -1286,20 +920,27 @@
       top: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0,0,0,0.9);
-      animation: modalFadeIn 0.4s ease;
+      background-color: rgba(0,0,0,0.95);
+      animation: modalFadeIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      backdrop-filter: blur(5px);
     }
 
     @keyframes modalFadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from { 
+        opacity: 0;
+        backdrop-filter: blur(0px);
+      }
+      to { 
+        opacity: 1;
+        backdrop-filter: blur(5px);
+      }
     }
 
     .modal-content {
       position: relative;
       margin: 5% auto;
       width: 90%;
-      max-width: 800px;
+      max-width: 700px;
       height: 80%;
       display: flex;
       align-items: center;
@@ -1319,34 +960,48 @@
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
-      border-radius: 15px;
-      animation: modalImageZoom 0.4s ease;
-      transition: all 0.3s ease;
-      user-select: none;
-      -webkit-user-select: none;
-      touch-action: none;
+      border-radius: 12px;
+      animation: modalImageZoom 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform, opacity;
     }
 
     @keyframes modalImageZoom {
-      from { transform: scale(0.8); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
+      from { 
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to { 
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .modal-image-transition {
+      animation: modalImageTransition 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    @keyframes modalImageTransition {
+      0% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0; transform: scale(0.95); }
+      100% { opacity: 1; transform: scale(1); }
     }
 
     .close {
       position: absolute;
-      top: 20px;
-      right: 35px;
+      top: 15px;
+      right: 25px;
       color: #f1f1f1;
-      font-size: 40px;
+      font-size: 30px;
       font-weight: bold;
       cursor: pointer;
       z-index: 1001;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: color, transform;
     }
 
     .close:hover {
       color: #D19C97;
-      transform: scale(1.2);
+      transform: scale(1.1);
     }
 
     .prev, .next {
@@ -1356,20 +1011,22 @@
       background: rgba(209, 156, 151, 0.8);
       color: white;
       border: none;
-      padding: 20px 15px;
-      font-size: 18px;
+      padding: 15px 12px;
+      font-size: 16px;
       cursor: pointer;
       border-radius: 50%;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       z-index: 1001;
+      backdrop-filter: blur(10px);
+      will-change: transform, background-color;
     }
 
     .prev {
-      left: 20px;
+      left: 15px;
     }
 
     .next {
-      right: 20px;
+      right: 15px;
     }
 
     .prev:hover, .next:hover {
@@ -1379,65 +1036,62 @@
 
     .music-player {
       position: fixed;
-      top: 20px;
+      top: 15px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 200;
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       background: rgba(255, 255, 255, 0.95);
-      padding: 10px 18px;
-      border-radius: 25px;
+      padding: 8px 15px;
+      border-radius: 20px;
       backdrop-filter: blur(10px);
       border: 2px solid #D19C97;
-      box-shadow: 0 4px 15px rgba(209, 156, 151, 0.2);
-      transition: all 0.3s ease;
+      box-shadow: 0 3px 10px rgba(209, 156, 151, 0.15);
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform;
     }
 
     .music-player:hover {
       transform: translateX(-50%) scale(1.05);
-      box-shadow: 0 8px 25px rgba(209, 156, 151, 0.3);
+      box-shadow: 0 6px 15px rgba(209, 156, 151, 0.25);
     }
 
     .music-icon {
-      width: 22px;
-      height: 22px;
+      width: 18px;
+      height: 18px;
       color: #D19C97;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: color;
     }
 
     .music-player.playing .music-icon {
       color: #C08B86;
-      animation: musicIconSpin 2s linear infinite;
-    }
-
-    @keyframes musicIconSpin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
     }
 
     .wave-container {
       display: flex;
       align-items: center;
-      gap: 3px;
-      height: 22px;
+      gap: 2px;
+      height: 18px;
     }
 
     .wave-bar {
-      width: 3px;
+      width: 2px;
       background: rgba(209, 156, 151, 0.4);
-      border-radius: 2px;
-      transition: all 0.3s ease;
+      border-radius: 1px;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform, background-color;
     }
 
-    .wave-bar:nth-child(1) { height: 8px; }
-    .wave-bar:nth-child(2) { height: 14px; }
-    .wave-bar:nth-child(3) { height: 18px; }
-    .wave-bar:nth-child(4) { height: 12px; }
-    .wave-bar:nth-child(5) { height: 16px; }
-    .wave-bar:nth-child(6) { height: 10px; }
+    .wave-bar:nth-child(1) { height: 6px; }
+    .wave-bar:nth-child(2) { height: 10px; }
+    .wave-bar:nth-child(3) { height: 14px; }
+    .wave-bar:nth-child(4) { height: 8px; }
+    .wave-bar:nth-child(5) { height: 12px; }
+    .wave-bar:nth-child(6) { height: 6px; }
 
     .music-player.playing .wave-bar {
       background: rgba(209, 156, 151, 0.8);
@@ -1453,71 +1107,56 @@
 
     @keyframes musicWave {
       0%, 100% { transform: scaleY(1); }
-      50% { transform: scaleY(2); }
+      50% { transform: scaleY(1.8); }
     }
 
     .admin-btn {
       position: fixed;
-      top: 20px;
-      right: 20px;
-      width: 45px;
-      height: 45px;
+      top: 15px;
+      right: 15px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       border: none;
       background: #D19C97;
       color: white;
-      font-size: 18px;
+      font-size: 16px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       z-index: 200;
-      transition: all 0.4s ease;
-      box-shadow: 0 4px 15px rgba(209, 156, 151, 0.3);
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: 0 3px 10px rgba(209, 156, 151, 0.25);
+      will-change: transform, background-color;
     }
 
     .admin-btn:hover {
       background: #C08B86;
-      transform: scale(1.1) rotate(360deg);
-      box-shadow: 0 8px 25px rgba(209, 156, 151, 0.5);
+      transform: scale(1.1);
+      box-shadow: 0 6px 15px rgba(209, 156, 151, 0.35);
     }
 
     .scroll-indicator {
       position: fixed;
-      bottom: 25px;
+      bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
       color: rgba(209, 156, 151, 0.7);
-      font-size: 14px;
+      font-size: 12px;
       animation: indicatorBounce 2s infinite;
       background: rgba(255, 255, 255, 0.9);
-      padding: 10px 20px;
-      border-radius: 20px;
+      padding: 8px 15px;
+      border-radius: 15px;
       backdrop-filter: blur(10px);
       border: 1px solid rgba(209, 156, 151, 0.3);
-      transition: all 0.3s ease;
+      will-change: transform;
     }
 
     @keyframes indicatorBounce {
       0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-      40% { transform: translateX(-50%) translateY(-8px); }
-      60% { transform: translateX(-50%) translateY(-4px); }
-    }
-
-    .ripple {
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(209, 156, 151, 0.3);
-      transform: scale(0);
-      animation: rippleEffect 0.6s linear;
-      pointer-events: none;
-    }
-
-    @keyframes rippleEffect {
-      to {
-        transform: scale(4);
-        opacity: 0;
-      }
+      40% { transform: translateX(-50%) translateY(-6px); }
+      60% { transform: translateX(-50%) translateY(-3px); }
     }
 
     .scroll-progress {
@@ -1525,70 +1164,71 @@
       top: 0;
       left: 0;
       width: 0%;
-      height: 3px;
+      height: 2px;
       background: linear-gradient(90deg, #D19C97, #C08B86);
       z-index: 1000;
-      transition: width 0.1s ease;
+      transition: width 0.1s ease-out;
+      will-change: width;
     }
 
     @media (max-width: 480px) {
       .container {
         max-width: 100%;
-        padding: 0 10px;
+        padding: 0 8px;
       }
 
       .card {
-        padding: 30px 20px;
+        padding: 25px 18px;
       }
 
-      h1 { font-size: 24px; }
-      h2 { font-size: 22px; }
+      h1 { font-size: 22px; }
+      h2 { font-size: 20px; }
 
       .main-photo {
-        width: 280px;
-        height: 360px;
+        width: 260px;
+        height: 340px;
       }
 
       .person-photo {
-        width: 100px;
-        height: 100px;
+        width: 80px;
+        height: 80px;
       }
 
-      .calendar-grid { gap: 6px; }
-      .calendar-day { font-size: 12px; min-height: 32px; }
+      .calendar-grid { gap: 4px; }
+      .calendar-day { font-size: 11px; min-height: 28px; }
 
-      .contact-grid { gap: 10px; }
-      .map-links { gap: 8px; }
+      .contact-grid { gap: 8px; }
+      .map-links { gap: 6px; }
 
       .qr-code {
-        width: 200px;
-        height: 200px;
+        width: 180px;
+        height: 180px;
       }
 
       .gallery-main {
-        height: 320px;
+        height: 280px;
       }
 
       .music-player {
-        padding: 8px 15px;
-        gap: 10px;
+        padding: 6px 12px;
+        gap: 8px;
       }
 
       .admin-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 16px;
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
       }
     }
 
     @media (max-width: 360px) {
       .card {
-        padding: 25px 15px;
+        padding: 20px 15px;
       }
 
       .main-photo {
-        width: 260px;
-        height: 340px;
+        width: 240px;
+        height: 320px;
       }
 
       .calendar-container,
@@ -1642,7 +1282,7 @@
 
   <div class="container">
     <button class="admin-btn" onclick="window.open('admin.html', '_blank')">
-      <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
         <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 4V6L13 4V2H11V4L9 6V4L3 7V9L9 6V10C9 11.1 9.9 12 11 12H13C14.1 12 15 11.1 15 10V6L21 9ZM11 13V15H7V17H11V19H7V21H17V19H13V17H17V15H13V13H17V11H7V13H11Z"/>
       </svg>
     </button>
@@ -1661,7 +1301,7 @@
       </div>
     </div>
 
-    <audio id="bgMusic" loop>
+    <audio id="bgMusic" loop preload="auto">
       <source src="Gareth Donkin - Falling For You (Official Audio).mp3" type="audio/mpeg">
     </audio>
 
@@ -1669,12 +1309,8 @@
 
     <div class="card">
       <div style="margin-top: 40px;"></div>
-      <div style="font-size: 16px; color: #A08B7F; margin-bottom: 20px; font-style: italic; line-height: 1.8;">
-        "진정한 사랑은 두 영혼이 만나<br>
-        하나의 마음이 되는 것입니다"
-      </div>
       <div class="main-photo">
-        <img src="photo5.jpeg">
+        <img src="photo5.jpeg" alt="메인 웨딩 사진" loading="eager">
       </div>
       <div style="font-size: 18px; color: #D19C97; margin: 20px 0 10px; font-weight: 600; letter-spacing: 2px;">
         박현동 & 박수지
@@ -1701,7 +1337,7 @@
       <div class="couple-section">
         <div class="person-card">
           <div class="person-photo">
-            <img src="신랑단독샷.png">
+            <img src="신랑단독샷.png" alt="신랑 박현동" loading="lazy">
           </div>
           <div class="person-name">신랑 박현동</div>
           <div class="person-description">
@@ -1710,24 +1346,11 @@
             함께하는 삶을 소중히 여기며<br>
             신부와의 새로운 시작을 준비하고 있습니다.
           </div>
-          
-          <div class="accordion" style="margin-top: 20px;">
-            <div class="accordion-header" onclick="toggleAccordion(this)" style="padding: 12px 15px; margin: 0; border-radius: 10px; font-size: 14px;">
-              더 알아보기
-            </div>
-            <div class="accordion-content">
-              <div class="accordion-body" style="padding: 15px; font-size: 13px; color: #8B6F5C; line-height: 1.6;">
-                <div style="margin-bottom: 8px;"><strong>좋아하는 것:</strong> 독서, 영화감상, 산책</div>
-                <div style="margin-bottom: 8px;"><strong>취미:</strong> 사진촬영, 요리</div>
-                <div><strong>좌우명:</strong> "성실함이 가장 큰 재능이다"</div>
-              </div>
-            </div>
-          </div>
         </div>
 
         <div class="person-card">
           <div class="person-photo">
-            <img src="신부단독샷.png">
+            <img src="신부단독샷.png" alt="신부 박수지" loading="lazy">
           </div>
           <div class="person-name">신부 박수지</div>
           <div class="person-description">
@@ -1735,43 +1358,6 @@
             주어진 일상에 늘 최선을 다해왔습니다.<br>
             신랑과의 신뢰를 바탕으로 서로를<br>
             깊이 이해하며 한 걸음 나아가려 합니다.
-          </div>
-          
-          <div class="accordion" style="margin-top: 20px;">
-            <div class="accordion-header" onclick="toggleAccordion(this)" style="padding: 12px 15px; margin: 0; border-radius: 10px; font-size: 14px;">
-              더 알아보기
-            </div>
-            <div class="accordion-content">
-              <div class="accordion-body" style="padding: 15px; font-size: 13px; color: #8B6F5C; line-height: 1.6;">
-                <div style="margin-bottom: 8px;"><strong>좋아하는 것:</strong> 카페투어, 음악감상, 여행</div>
-                <div style="margin-bottom: 8px;"><strong>취미:</strong> 고양이 돌보기</div>
-                <div><strong>좌우명:</strong> "작은 행복을 소중히 여기자"</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="accordion" style="margin-top: 30px; width: 100%; max-width: 350px;">
-        <div class="accordion-header" onclick="toggleAccordion(this)">
-          우리의 러브스토리
-        </div>
-        <div class="accordion-content">
-          <div class="accordion-body">
-            <div style="font-size: 14px; color: #8B6F5C; line-height: 1.8;">
-              <div style="margin-bottom: 15px;">
-                <strong style="color: #D19C97;">날짜</strong><br>
-                니 기억 남는 일화
-              </div>
-              <div style="margin-bottom: 15px;">
-                <strong style="color: #D19C97;">날짜</strong><br>
-                뭐 여행이라든가
-              </div>
-              <div>
-                <strong style="color: #D19C97;">날짜</strong><br>
-                결혼 결심이라든가
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -1872,21 +1458,6 @@
           </div>
         </div>
       </div>
-
-      <div class="accordion" style="margin-top: 15px; width: 100%; max-width: 350px;">
-        <div class="accordion-header" onclick="toggleAccordion(this)">
-          결혼식 준비 이야기
-        </div>
-        <div class="accordion-content">
-          <div class="accordion-body">
-            <div style="font-size: 14px; color: #8B6F5C; line-height: 1.8;">
-              웨딩홀을 고르는 것부터 드레스 선택까지, 모든 순간이 소중한 추억이 되었습니다. 
-              두 가족이 하나가 되는 이 특별한 날을 위해 정성스럽게 준비했습니다. 
-              여러분과 함께 나누고 싶은 행복한 시간이 되기를 바랍니다.
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
 
     <div class="card">
@@ -1912,14 +1483,28 @@
       <div class="transport-section">
         <div class="accordion">
           <div class="accordion-header" onclick="toggleAccordion(this)">
-            🚌 대중교통 이용 안내
+            🚌 대중교통 안내
           </div>
           <div class="accordion-content">
             <div class="accordion-body">
               <div style="margin-bottom: 15px;">
-                <strong style="color: #D19C97;">버스 이용시</strong><br>
-                104, 122, 126, 133, 401번<br>
-                진장시장 정류장 하차 후 도보 5분
+                <strong style="color: #D19C97;">울산시내버스</strong><br>
+                <p style="font-size:12px; margin-top: 5px;">신북 R: 114, 724, 1114<br>
+                공업탑 R: 715, 724, 735<br>
+                시외버스터미널: 711, 721, 순환21<br>
+                기타: 118, 128, 762</p>
+              </div>
+              
+              <div style="margin-bottom: 15px;">
+                <strong style="color: #D19C97;">KTX 울산역</strong><br>
+                <p style="font-size:12px; margin-top: 5px;">5002번 리무진버스 → 중구청 앞 하차 → 118번 환승<br>
+                5003번 리무진버스 → 학성공원 하차 → 721번 환승</p>
+              </div>
+              
+              <div>
+                <strong style="color: #D19C97;">KTX 태화강역</strong><br>
+                <p style="font-size:12px; margin-top: 5px;">태화강역 2번 정류소 → 762번 승차<br>
+                세양정구청 → 녹구05, 442번 승차</p>
               </div>
             </div>
           </div>
@@ -1927,15 +1512,34 @@
 
         <div class="accordion">
           <div class="accordion-header" onclick="toggleAccordion(this)">
-            🚗 주차 안내
+            🚗 자가용 이용
           </div>
           <div class="accordion-content">
             <div class="accordion-body">
               <div style="margin-bottom: 15px;">
-                <strong style="color: #D19C97;">주차 정보</strong><br>
-                신선도원몰 별관 1~6층 주차장 이용<br>
-                주차비 무료 (당일 4시간)<br>
-                주차공간: 120대 수용 가능
+                <strong style="color: #D19C97;">경부고속도로</strong><br>
+                <p style="font-size:12px; margin-top: 5px;">울산IC → 신북R 차회전 → 경주/교통청 방면 고가도로 → 동명아파트 앞 우회전 → MBC 사거리 직진 → 복산사거리 우회전 → 반구사거리 직진</p>
+              </div>
+              
+              <div>
+                <strong style="color: #D19C97;">부산울산고속도로</strong><br>
+                <p style="font-size:12px; margin-top: 5px;">청량IC → 두왕사거리 직진 → 종합R 우회전 → 터미널 사거리 직진 → 반구사거리 직진</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            🅿️ 주차 안내
+          </div>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <div>
+                <strong style="color: #D19C97;">신선도원몰 별관 1~6층</strong><br>
+                <p style="font-size:12px; margin-top: 5px;">• 답례품 손님: 2시간 무료<br>
+                • 식사 손님: 3시간 무료<br>
+                • 주차권은 답례품 교환처 및 뷔페 입구에서 수령</p>
               </div>
             </div>
           </div>
@@ -1947,13 +1551,13 @@
           <div class="contact-emoji">🤵</div>
           <div class="contact-label">신랑</div>
           <div class="contact-name">박현동</div>
-          <div class="parent-row">(故)박순권,<br>고기숙의 아들</div>
+          <div class="parent-row">(故)박순권, 고기숙의 아들</div>
           <div class="accordion">
-            <div class="accordion-header" onclick="toggleAccordion(this)" style="padding: 10px; margin: 0; border-radius: 10px;">
-              📞
+            <div class="accordion-header" onclick="toggleAccordion(this)" style="padding: 8px; margin: 0; border-radius: 8px; font-size: 12px;">
+              연락하기
             </div>
             <div class="accordion-content">
-              <div class="accordion-body" style="padding: 15px;">
+              <div class="accordion-body" style="padding: 12px;">
                 <button class="phone-btn" onclick="callPhone('010-6626-2747')">010-6626-2747</button>
               </div>
             </div>
@@ -1964,13 +1568,13 @@
           <div class="contact-emoji">👰</div>
           <div class="contact-label">신부</div>
           <div class="contact-name">박수지</div>
-          <div class="parent-row">박현관,<br>이혜은의 딸</div>
+          <div class="parent-row">박현관, 이혜은의 딸</div>
           <div class="accordion">
-            <div class="accordion-header" onclick="toggleAccordion(this)" style="padding: 10px; margin: 0; border-radius: 10px;">
-              📞
+            <div class="accordion-header" onclick="toggleAccordion(this)" style="padding: 8px; margin: 0; border-radius: 8px; font-size: 12px;">
+              연락하기
             </div>
             <div class="accordion-content">
-              <div class="accordion-body" style="padding: 15px;">
+              <div class="accordion-body" style="padding: 12px;">
                 <button class="phone-btn" onclick="callPhone('010-4166-6338')">010-4166-6338</button>
               </div>
             </div>
@@ -1982,12 +1586,10 @@
     <div class="card">
       <h2>마음 전하실 곳</h2>
       <div class="account-intro">
-        바쁘신 중에도<br>
-        축하의 마음을 전해 주시는 모든 분들께<br>
-        깊이 감사드립니다.<br><br>
+        바쁘신 중에도 축하의 마음을 전해 주시는<br>
+        모든 분들께 깊이 감사드립니다.<br><br>
         직접 인사드리지 못하는 분들을 위해<br>
-        마음을 전하실 수 있는 계좌를<br>
-        함께 안내드립니다.
+        마음을 전하실 수 있는 계좌를 안내드립니다.
       </div>
       
       <div class="account-section">
@@ -1997,7 +1599,7 @@
             <button class="copy-btn" onclick="toggleAccount('groom')">계좌 보기</button>
           </div>
           <div class="account-details">
-            <div class="account-number" id="groom-account" style="display: none;">우리은행 1002549859637</div>
+            <div class="account-number" id="groom-account">우리은행 1002549859637</div>
             <div class="account-hidden" id="groom-hidden">버튼을 눌러 계좌번호를 확인하세요</div>
           </div>
         </div>
@@ -2008,7 +1610,7 @@
             <button class="copy-btn" onclick="toggleAccount('bride')">계좌 보기</button>
           </div>
           <div class="account-details">
-            <div class="account-number" id="bride-account" style="display: none;">저축은행 06601211393753</div>
+            <div class="account-number" id="bride-account">저축은행 06601211393753</div>
             <div class="account-hidden" id="bride-hidden">버튼을 눌러 계좌번호를 확인하세요</div>
           </div>
         </div>
@@ -2025,70 +1627,9 @@
       
       <div class="gallery-container">
         <div class="gallery-main" onclick="openModal()">
-          <img src="photo14.jpeg">
+          <img src="photo14.jpeg" alt="갤러리 대표 사진" loading="lazy">
         </div>
         <div class="gallery-info">사진을 터치하면 크게 볼 수 있습니다</div>
-      </div>
-
-      <div class="accordion" style="margin-top: 25px; width: 100%; max-width: 350px;">
-        <div class="accordion-header" onclick="toggleAccordion(this)">
-          더 많은 사진 보기
-        </div>
-        <div class="accordion-content">
-          <div class="accordion-body">
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px;">
-              <div style="aspect-ratio: 1; background: linear-gradient(45deg, #F1F0E2, #F8F7F0); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #D19C97; font-size: 10px; border: 1px dashed #D19C97; cursor: pointer;" onclick="openModalWithIndex(0)">
-                프로필
-              </div>
-              <div style="aspect-ratio: 1; background: linear-gradient(45deg, #F1F0E2, #F8F7F0); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #D19C97; font-size: 10px; border: 1px dashed #D19C97; cursor: pointer;" onclick="openModalWithIndex(1)">
-                데이트
-              </div>
-              <div style="aspect-ratio: 1; background: linear-gradient(45deg, #F1F0E2, #F8F7F0); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #D19C97; font-size: 10px; border: 1px dashed #D19C97; cursor: pointer;" onclick="openModalWithIndex(2)">
-                여행
-              </div>
-              <div style="aspect-ratio: 1; background: linear-gradient(45deg, #F1F0E2, #F8F7F0); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #D19C97; font-size: 10px; border: 1px dashed #D19C97; cursor: pointer;" onclick="openModalWithIndex(3)">
-                스튜디오
-              </div>
-              <div style="aspect-ratio: 1; background: linear-gradient(45deg, #F1F0E2, #F8F7F0); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #D19C97; font-size: 10px; border: 1px dashed #D19C97; cursor: pointer;" onclick="openModalWithIndex(4)">
-                일상
-              </div>
-              <div style="aspect-ratio: 1; background: linear-gradient(45deg, #F1F0E2, #F8F7F0); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #D19C97; font-size: 10px; border: 1px dashed #D19C97; cursor: pointer;" onclick="openModalWithIndex(5)">
-                가족
-              </div>
-            </div>
-            <div style="font-size: 13px; color: #8B6F5C; text-align: center; line-height: 1.6;">
-              두 사람의 소중한 순간들을 담았습니다.<br>
-              각각의 사진에는 특별한 추억이 담겨있어요.
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="accordion" style="margin-top: 15px; width: 100%; max-width: 350px;">
-        <div class="accordion-header" onclick="toggleAccordion(this)">
-          포토 촬영 후기
-        </div>
-        <div class="accordion-content">
-          <div class="accordion-body">
-            <div style="font-size: 14px; color: #8B6F5C; line-height: 1.8;">
-              <div style="margin-bottom: 15px;">
-                <strong style="color: #D19C97;">스튜디오 촬영</strong><br>
-                처음에는 어색했지만 사진작가님의 도움으로 자연스러운 모습을 담을 수 있었어요. 
-                서로를 바라보며 웃던 그 순간이 가장 예뻤습니다.
-              </div>
-              <div style="margin-bottom: 15px;">
-                <strong style="color: #D19C97;">야외 촬영</strong><br>
-                계절의 변화와 함께 우리의 사랑도 깊어졌어요. 
-                자연스러운 햇살 아래에서 찍은 사진들이 가장 소중한 추억입니다.
-              </div>
-              <div>
-                <strong style="color: #D19C97;">일상 스냅</strong><br>
-                카페에서, 공원에서, 평범한 일상 속에서도 
-                함께라면 모든 순간이 특별했습니다.
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 
       <div class="accordion" style="margin-top: 15px; width: 100%; max-width: 350px;">
@@ -2097,18 +1638,15 @@
         </div>
         <div class="accordion-content">
           <div class="accordion-body">
-            <div style="font-size: 14px; color: #8B6F5C; line-height: 1.8;">
-              <div style="margin-bottom: 10px;">
-                <strong style="color: #D19C97;">촬영 장소:</strong> 부산 해운대, 감천문화마을, 스튜디오
+            <div style="font-size: 13px; color: #8B6F5C; line-height: 1.6;">
+              <div style="margin-bottom: 8px;">
+                <strong style="color: #D19C97;">촬영 장소:</strong> 부산 기장군
               </div>
-              <div style="margin-bottom: 10px;">
-                <strong style="color: #D19C97;">촬영 기간:</strong> 2024년 4월 - 2024년 12월
-              </div>
-              <div style="margin-bottom: 10px;">
-                <strong style="color: #D19C97;">사진작가:</strong> 김포토그래퍼 스튜디오
+              <div style="margin-bottom: 8px;">
+                <strong style="color: #D19C97;">촬영 날짜:</strong> 2025년 3월 15일
               </div>
               <div>
-                <strong style="color: #D19C97;">컨셉:</strong> 자연스러운 일상, 로맨틱한 순간들
+                <strong style="color: #D19C97;">사진작가:</strong> 구한빈 작가님
               </div>
             </div>
           </div>
@@ -2120,30 +1658,30 @@
       <h2>참석 여부 & 방명록</h2>
       <div class="rsvp-section">
         <div class="rsvp-intro">
-          원활한 진행을 위해<br>
-          참석 여부를 미리 확인드리고자 합니다.<br>
+          원활한 진행을 위해 참석 여부를<br>
+          미리 확인드리고자 합니다.<br>
           회신 주시면 감사하겠습니다.
         </div>
         
         <div class="rsvp-info">
-          <div style="font-size: 16px; font-weight: 600; color: #D19C97; margin-bottom: 20px; text-align: center;">
+          <div style="font-size: 15px; font-weight: 600; color: #D19C97; margin-bottom: 15px; text-align: center;">
             참석 안내
           </div>
-          <div style="margin-bottom: 15px; padding: 12px; background: rgba(209, 156, 151, 0.05); border-radius: 8px; border-left: 3px solid #D19C97;">
-            <div style="font-weight: 600; color: #D19C97; margin-bottom: 5px;">회신 기한</div>
-            <div style="font-size: 14px;">8월 말까지 알려주시면 감사하겠습니다</div>
+          <div style="margin-bottom: 12px; padding: 10px; background: rgba(209, 156, 151, 0.05); border-radius: 6px; border-left: 3px solid #D19C97;">
+            <div style="font-weight: 600; color: #D19C97; margin-bottom: 3px; font-size: 12px;">회신 기한</div>
+            <div style="font-size: 11px;">8월 말까지 알려주시면 감사하겠습니다</div>
           </div>
-          <div style="margin-bottom: 15px; padding: 12px; background: rgba(209, 156, 151, 0.05); border-radius: 8px; border-left: 3px solid #D19C97;">
-            <div style="font-weight: 600; color: #D19C97; margin-bottom: 5px;">동반 참석</div>
-            <div style="font-size: 14px;">함께 오실 분이 계시면 메시지에 적어주세요</div>
+          <div style="margin-bottom: 12px; padding: 10px; background: rgba(209, 156, 151, 0.05); border-radius: 6px; border-left: 3px solid #D19C97;">
+            <div style="font-weight: 600; color: #D19C97; margin-bottom: 3px; font-size: 12px;">동반 참석</div>
+            <div style="font-size: 11px;">함께 오실 분이 계시면 메시지에 적어주세요</div>
           </div>
-          <div style="margin-bottom: 15px; padding: 12px; background: rgba(209, 156, 151, 0.05); border-radius: 8px; border-left: 3px solid #D19C97;">
-            <div style="font-weight: 600; color: #D19C97; margin-bottom: 5px;">식사 준비</div>
-            <div style="font-size: 14px;">정확한 인원 파악이 필요합니다</div>
+          <div style="margin-bottom: 12px; padding: 10px; background: rgba(209, 156, 151, 0.05); border-radius: 6px; border-left: 3px solid #D19C97;">
+            <div style="font-weight: 600; color: #D19C97; margin-bottom: 3px; font-size: 12px;">식사 준비</div>
+            <div style="font-size: 11px;">정확한 인원 파악이 필요합니다</div>
           </div>
-          <div style="padding: 12px; background: rgba(209, 156, 151, 0.05); border-radius: 8px; border-left: 3px solid #D19C97;">
-            <div style="font-weight: 600; color: #D19C97; margin-bottom: 5px;">문의 사항</div>
-            <div style="font-size: 14px;">신랑신부에게 언제든 연락주세요</div>
+          <div style="padding: 10px; background: rgba(209, 156, 151, 0.05); border-radius: 6px; border-left: 3px solid #D19C97;">
+            <div style="font-weight: 600; color: #D19C97; margin-bottom: 3px; font-size: 12px;">문의 사항</div>
+            <div style="font-size: 11px;">신랑신부에게 언제든 연락주세요</div>
           </div>
         </div>
         
@@ -2174,7 +1712,7 @@
         </div>
         
         <div class="qr-code">
-          <img src="suji_wedding_qr.png" alt="청첩장 QR코드">
+          <img src="suji_wedding_qr.png" alt="청첩장 QR코드" loading="lazy">
         </div>
         
         <div class="qr-guide">
@@ -2227,16 +1765,38 @@
       'photo17.jpeg', 'photo18.jpeg', 'photo19.jpeg'
     ];
     let currentImageIndex = 0;
+    let imagesPreloaded = false;
 
+    function preloadImages() {
+      if (imagesPreloaded) return;
+      
+      galleryImages.forEach((src, index) => {
+        const img = new Image();
+        img.src = src;
+        if (index === 0) {
+          img.onload = () => {
+            imagesPreloaded = true;
+          };
+        }
+      });
+    }
+
+    let scrollTimeout;
     function updateScrollProgress() {
-      const scrollTop = window.pageYOffset;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercent = (scrollTop / docHeight) * 100;
-      document.getElementById('scrollProgress').style.width = scrollPercent + '%';
+      if (scrollTimeout) {
+        cancelAnimationFrame(scrollTimeout);
+      }
+      
+      scrollTimeout = requestAnimationFrame(() => {
+        const scrollTop = window.pageYOffset;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = Math.min((scrollTop / docHeight) * 100, 100);
+        document.getElementById('scrollProgress').style.width = scrollPercent + '%';
+      });
     }
 
     const observerOptions = {
-      threshold: 0.1,
+      threshold: 0.15,
       rootMargin: '0px 0px -50px 0px'
     };
 
@@ -2244,44 +1804,12 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          addSparkles(entry.target);
+          if (entry.target === document.querySelector('.card')) {
+            preloadImages();
+          }
         }
       });
     }, observerOptions);
-
-    function addSparkles(element) {
-      for (let i = 0; i < 5; i++) {
-        setTimeout(() => {
-          const sparkle = document.createElement('div');
-          sparkle.className = 'sparkle';
-          sparkle.style.left = Math.random() * 100 + '%';
-          sparkle.style.top = Math.random() * 100 + '%';
-          sparkle.style.animationDelay = Math.random() * 2 + 's';
-          element.appendChild(sparkle);
-          
-          setTimeout(() => sparkle.remove(), 3000);
-        }, i * 200);
-      }
-    }
-
-    function createRipple(event) {
-      const button = event.currentTarget;
-      const circle = document.createElement('span');
-      const diameter = Math.max(button.clientWidth, button.clientHeight);
-      const radius = diameter / 2;
-      
-      circle.style.width = circle.style.height = `${diameter}px`;
-      circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
-      circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
-      circle.classList.add('ripple');
-      
-      const ripple = button.getElementsByClassName('ripple')[0];
-      if (ripple) {
-        ripple.remove();
-      }
-      
-      button.appendChild(circle);
-    }
 
     function toggleMusic() {
       if (isPlaying) {
@@ -2303,39 +1831,42 @@
       
       const dDayElement = document.getElementById('dday');
       const newText = diffDays > 0 ? `D-${diffDays}` : '오늘입니다!';
-      
-      dDayElement.style.transform = 'scale(1.2)';
-      dDayElement.style.opacity = '0.5';
-      
-      setTimeout(() => {
-        dDayElement.textContent = newText;
-        dDayElement.style.transform = 'scale(1)';
-        dDayElement.style.opacity = '1';
-      }, 200);
+      dDayElement.textContent = newText;
     }
 
     window.toggleAccordion = function(header) {
       const content = header.nextElementSibling;
       const isActive = header.classList.contains('active');
       
-      document.querySelectorAll('.accordion-header').forEach(h => {
-        h.classList.remove('active');
-        h.nextElementSibling.classList.remove('active');
+      document.querySelectorAll('.accordion-header.active').forEach(h => {
+        if (h !== header) {
+          h.classList.remove('active');
+          h.nextElementSibling.classList.remove('active');
+        }
       });
       
       if (!isActive) {
         header.classList.add('active');
         content.classList.add('active');
-        
-        setTimeout(() => {
-          header.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 300);
+
+        requestAnimationFrame(() => {
+          setTimeout(() => {
+            header.scrollIntoView({ 
+              behavior: 'smooth', 
+              block: 'center',
+              inline: 'nearest'
+            });
+          }, 300);
+        });
+      } else {
+        header.classList.remove('active');
+        content.classList.remove('active');
       }
     };
 
     window.callPhone = function(phoneNumber) {
       if (navigator.vibrate) {
-        navigator.vibrate(100);
+        navigator.vibrate(50);
       }
       window.location.href = `tel:${phoneNumber}`;
     };
@@ -2345,33 +1876,30 @@
       const hiddenElement = document.getElementById(type + '-hidden');
       const button = event.target;
       
-      if (accountElement.style.display === 'none') {
-        accountElement.style.display = 'block';
-        accountElement.style.opacity = '0';
-        accountElement.style.transform = 'translateY(-10px)';
-        hiddenElement.style.display = 'none';
-        button.textContent = '복사하기';
+      if (!accountElement.classList.contains('show')) {
+        hiddenElement.classList.add('hide');
         
         setTimeout(() => {
-          accountElement.style.opacity = '1';
-          accountElement.style.transform = 'translateY(0)';
-        }, 10);
+          hiddenElement.style.display = 'none';
+          accountElement.style.display = 'block';
+          accountElement.classList.add('show');
+          button.textContent = '복사하기';
+        }, 200);
       } else {
+
         const accountText = accountElement.textContent;
         navigator.clipboard.writeText(accountText).then(() => {
           button.textContent = '복사됨! ✨';
           button.style.background = 'linear-gradient(45deg, #4CAF50, #45a049)';
-          button.style.transform = 'scale(1.1)';
           
           if (navigator.vibrate) {
-            navigator.vibrate([50, 50, 50]);
+            navigator.vibrate([30, 30, 30]);
           }
           
           setTimeout(() => {
             button.textContent = '복사하기';
             button.style.background = '#D19C97';
-            button.style.transform = 'scale(1)';
-          }, 2000);
+          }, 1500);
         }).catch(() => {
           alert('계좌번호: ' + accountText);
         });
@@ -2384,13 +1912,11 @@
       
       modalImg.src = galleryImages[currentImageIndex];
       modal.style.display = 'block';
-      
       document.body.style.overflow = 'hidden';
-    };
-
-    window.openModalWithIndex = function(index) {
-      currentImageIndex = index;
-      openModal();
+      
+      modalImg.onload = () => {
+        modalImg.style.opacity = '1';
+      };
     };
 
     window.closeModal = function() {
@@ -2402,8 +1928,7 @@
     window.changeSlide = function(direction) {
       const modalImg = document.getElementById('modalImage');
       
-      modalImg.style.transform = `translateX(${direction > 0 ? '-100%' : '100%'}) scale(0.8)`;
-      modalImg.style.opacity = '0';
+      modalImg.classList.add('modal-image-transition');
       
       setTimeout(() => {
         currentImageIndex += direction;
@@ -2414,12 +1939,10 @@
         }
         
         modalImg.src = galleryImages[currentImageIndex];
-        modalImg.style.transform = `translateX(${direction > 0 ? '100%' : '-100%'}) scale(0.8)`;
         
         setTimeout(() => {
-          modalImg.style.transform = 'translateX(0%) scale(1)';
-          modalImg.style.opacity = '1';
-        }, 50);
+          modalImg.classList.remove('modal-image-transition');
+        }, 300);
       }, 150);
     };
 
@@ -2434,62 +1957,31 @@
     let touchEndX = 0;
     let touchStartY = 0;
     let touchEndY = 0;
-    let isDragging = false;
 
-    const modalImage = document.getElementById('modalImage');
     const modal = document.getElementById('imageModal');
 
     modal.addEventListener('touchstart', e => {
       touchStartX = e.changedTouches[0].screenX;
       touchStartY = e.changedTouches[0].screenY;
-      isDragging = true;
-      
-      modalImage.style.transition = 'none';
     }, { passive: true });
 
-    modal.addEventListener('touchmove', e => {
-      if (!isDragging) return;
-      
-      const currentX = e.changedTouches[0].screenX;
-      const currentY = e.changedTouches[0].screenY;
-      const deltaX = currentX - touchStartX;
-      const deltaY = currentY - touchStartY;
-      
-      if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 10) {
-        e.preventDefault();
-        
-        const movePercent = (deltaX / window.innerWidth) * 100;
-        modalImage.style.transform = `translateX(${movePercent}%) scale(${1 - Math.abs(movePercent) * 0.001})`;
-        modalImage.style.opacity = 1 - Math.abs(movePercent) * 0.002;
-      }
-    }, { passive: false });
-
     modal.addEventListener('touchend', e => {
-      if (!isDragging) return;
-      
       touchEndX = e.changedTouches[0].screenX;
       touchEndY = e.changedTouches[0].screenY;
-      isDragging = false;
-      
-      modalImage.style.transition = 'all 0.3s ease';
-      
       handleGesture();
     }, { passive: true });
 
     function handleGesture() {
-      const swipeThreshold = 80;
+      const swipeThreshold = 50;
       const deltaX = touchEndX - touchStartX;
-      const deltaY = touchEndY - touchStartY;
+      const deltaY = Math.abs(touchEndY - touchStartY);
       
-      if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > swipeThreshold) {
+      if (Math.abs(deltaX) > swipeThreshold && deltaY < 100) {
         if (deltaX > 0) {
           changeSlide(-1);
         } else {
           changeSlide(1);
         }
-      } else {
-        modalImage.style.transform = 'translateX(0%) scale(1)';
-        modalImage.style.opacity = '1';
       }
     }
 
@@ -2499,6 +1991,7 @@
         e.preventDefault();
         const submitBtn = rsvpForm.querySelector('button[type="submit"]');
         const originalText = submitBtn.textContent;
+        const originalBg = submitBtn.style.background;
         
         submitBtn.textContent = '전송 중... ✨';
         submitBtn.disabled = true;
@@ -2517,10 +2010,8 @@
           submitBtn.textContent = '전송 완료! 💕';
           submitBtn.style.background = 'linear-gradient(45deg, #4CAF50, #45a049)';
           
-          createCelebration();
-          
           if (navigator.vibrate) {
-            navigator.vibrate([100, 50, 100, 50, 100]);
+            navigator.vibrate([100, 50, 100]);
           }
           
           setTimeout(() => {
@@ -2528,66 +2019,36 @@
             rsvpForm.reset();
             submitBtn.textContent = originalText;
             submitBtn.disabled = false;
-            submitBtn.style.background = 'linear-gradient(45deg, #D19C97, #C08B86)';
-          }, 2000);
+            submitBtn.style.background = originalBg;
+          }, 1500);
 
         } catch (error) {
           console.error("Error:", error);
-          submitBtn.textContent = '전송 실패 😥';
+          submitBtn.textContent = '전송 실패';
           submitBtn.style.background = 'linear-gradient(45deg, #f44336, #d32f2f)';
           
           setTimeout(() => {
             alert("전송 중 오류가 발생했습니다. 다시 시도해주세요.");
             submitBtn.textContent = originalText;
             submitBtn.disabled = false;
-            submitBtn.style.background = 'linear-gradient(45deg, #D19C97, #C08B86)';
-          }, 2000);
+            submitBtn.style.background = originalBg;
+          }, 1500);
         }
       });
     }
 
-    function createCelebration() {
-      const colors = ['#D19C97', '#C08B86', '#F9F8F3', '#FDFCF8'];
-      
-      for (let i = 0; i < 20; i++) {
-        setTimeout(() => {
-          const confetti = document.createElement('div');
-          confetti.style.cssText = `
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            background: ${colors[Math.floor(Math.random() * colors.length)]};
-            left: ${Math.random() * 100}vw;
-            top: -10px;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            animation: confettiFall 3s linear forwards;
-          `;
-          document.body.appendChild(confetti);
-          
-          setTimeout(() => confetti.remove(), 3000);
-        }, i * 100);
-      }
-    }
-
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes confettiFall {
-        to {
-          transform: translateY(100vh) rotate(720deg);
-          opacity: 0;
-        }
-      }
-    `;
-    document.head.appendChild(style);
-
     musicPlayer.addEventListener('click', toggleMusic);
-    window.addEventListener('scroll', updateScrollProgress);
     
-    document.querySelectorAll('button, .copy-btn, .phone-btn, .map-link').forEach(element => {
-      element.addEventListener('click', createRipple);
-    });
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          updateScrollProgress();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
 
     document.querySelectorAll('.card').forEach(card => {
       cardObserver.observe(card);
@@ -2603,7 +2064,7 @@
           indicator.style.display = 'none';
         }, 300);
       }
-    });
+    }, { passive: true });
 
     document.addEventListener('click', () => {
       if (!isPlaying) {
@@ -2613,7 +2074,25 @@
       }
     }, { once: true });
 
+    document.addEventListener('keydown', (e) => {
+      const modal = document.getElementById('imageModal');
+      if (modal.style.display === 'block') {
+        switch(e.key) {
+          case 'Escape':
+            closeModal();
+            break;
+          case 'ArrowLeft':
+            changeSlide(-1);
+            break;
+          case 'ArrowRight':
+            changeSlide(1);
+            break;
+        }
+      }
+    });
+
     updateDDay();
+    
     setTimeout(() => {
       if (!isPlaying) {
         bgMusic.play().catch(e => console.log('자동재생 실패:', e));
@@ -2621,19 +2100,6 @@
         isPlaying = true;
       }
     }, 1000);
-
-    document.addEventListener('keydown', (e) => {
-      const modal = document.getElementById('imageModal');
-      if (modal.style.display === 'block') {
-        if (e.key === 'Escape') {
-          closeModal();
-        } else if (e.key === 'ArrowLeft') {
-          changeSlide(-1);
-        } else if (e.key === 'ArrowRight') {
-          changeSlide(1);
-        }
-      }
-    });
 
     function debounce(func, wait) {
       let timeout;
@@ -2647,7 +2113,8 @@
       };
     }
 
-    window.addEventListener('scroll', debounce(updateScrollProgress, 10));
+    window.addEventListener('resize', debounce(() => {
+    }, 250), { passive: true });
   </script>
 </body>
 </html>
